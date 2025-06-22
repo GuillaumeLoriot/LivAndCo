@@ -1,0 +1,232 @@
+{
+    "shared": [
+        {
+            "name": "Ascenseur",
+            "icon": "elevator.svg"
+        },
+        {
+            "name": "Espace de vie",
+            "icon": "life-space.svg"
+        },
+        {
+            "name": "Espace détente",
+            "icon": "relax-space.svg"
+        },
+        {
+            "name": "Boite à colis connectée",
+            "icon": "shipment.svg"
+        },
+        {
+            "name": "Sauna",
+            "icon": "sauna.svg"
+        },
+        {
+            "name": "Atelier de Bricolage",
+            "icon": "workshop.svg"
+        },
+        {
+            "name": "Salle à manger",
+            "icon": "dining-room.svg"
+        },
+        {
+            "name": "Ventilateur",
+            "icon": "fan.svg"
+        },
+        {
+            "name": "WiFi ",
+            "icon": "wifi.svg"
+        },
+        {
+            "name": "Salle de sport",
+            "icon": "sport-room.svg"
+        },
+        {
+            "name": "Climatisation",
+            "icon": "clim.svg"
+        },
+        {
+            "name": "BBQ",
+            "icon": "bbq.svg"
+        },
+        {
+            "name": "Vélo",
+            "icon": "bicycle.svg"
+        },
+        {
+            "name": "Billard",
+            "icon": "billiard.svg"
+        },
+        {
+            "name": "Télévision",
+            "icon": "tv.svg"
+        },
+        {
+            "name": "Fer/table à repasser",
+            "icon": "iron.svg"
+        },
+        {
+            "name": "Jardin",
+            "icon": "garden.svg"
+        },
+        {
+            "name": "Projecteur",
+            "icon": "projector.svg"
+        },
+        {
+            "name": "Piscine",
+            "icon": "pool.svg"
+        },
+        {
+            "name": "Balcon",
+            "icon": "balcony.svg"
+        },
+        {
+            "name": "Adapté PMR",
+            "icon": "disabled.svg"
+        },
+        {
+            "name": "Salle de réunion",
+            "icon": "meeting-room.svg"
+        },
+        {
+            "name": "Espace de coworking",
+            "icon": "working-space.svg"
+        },
+        {
+            "name": "Parking ",
+            "icon": "parking.svg"
+        },
+        {
+            "name": "Cuisine équipée",
+            "icon": "kitchen.svg"
+        },
+        {
+            "name": "Lave-vaisselle",
+            "icon": "dishwasher.svg"
+        },
+        {
+            "name": "Lave-linge",
+            "icon": "laundry.svg"
+        },
+        {
+            "name": "Sèche-linge",
+            "icon": "dryer.svg"
+        },
+        {
+            "name": "Animaux acceptés",
+            "icon": "pet.svg"
+        },
+        {
+            "name": "Compost",
+            "icon": "compost.svg"
+        },
+        {
+            "name": "Distributeur d'eau",
+            "icon": "filtered-water.svg"
+        },
+        {
+            "name": "Extincteur",
+            "icon": "fire-extinguisher.svg"
+        },
+        {
+            "name": "Agent de sécurité",
+            "icon": "security-agent.svg"
+        },
+        {
+            "name": "Propriété clôturée",
+            "icon": "fence.svg"
+        },
+        {
+            "name": "Coffre-fort",
+            "icon": "safe.svg"
+        },
+        {
+            "name": "Studio de musique",
+            "icon": "music-room.svg"
+        },
+        {
+            "name": "Salle cinema",
+            "icon": "theater.svg"
+        },
+        {
+            "name": "Bibliothèque",
+            "icon": "library.svg"
+        },
+        {
+            "name": "Machine à café barista",
+            "icon": "coffee-maker.svg"
+        },
+        {
+            "name": "Instruments de musique",
+            "icon": "piano.svg"
+        },
+        {
+            "name": "Terrasse",
+            "icon": "deck.svg"
+        },
+        {
+            "name": "Local vélo",
+            "icon": "bike-room.svg"
+        },
+        {
+            "name": "Salle de bain",
+            "icon": "bathroom.svg"
+        },
+        {
+            "name": "Baignoire",
+            "icon": "bathtub.svg"
+        }
+    ],
+
+    
+    "private": [
+        {
+            "name": "Ventilateur",
+            "icon": "fan.svg"
+        },
+        {
+            "name": "Climatisation",
+            "icon": "clim.svg"
+        },
+        {
+            "name": "Télévision",
+            "icon": "tv.svg"
+        },
+        {
+            "name": "Fer/table à repasser",
+            "icon": "iron.svg"
+        },
+        {
+            "name": "Projecteur",
+            "icon": "projector.svg"
+        },
+        {
+            "name": "Balcon",
+            "icon": "balcony.svg"
+        },
+        {
+            "name": "Adapté PMR",
+            "icon": "disabled.svg"
+        },
+        {
+            "name": "Coffre-fort",
+            "icon": "safe.svg"
+        },
+        {
+            "name": "Terrasse",
+            "icon": "deck.svg"
+        },
+        {
+            "name": "Salle de bain",
+            "icon": "bathroom.svg"
+        },
+        {
+            "name": "Baignoire",
+            "icon": "bathtub.svg"
+        },
+        {
+            "name": "Cuisine équipée",
+            "icon": "kitchen.svg"
+        }
+    ]
+}

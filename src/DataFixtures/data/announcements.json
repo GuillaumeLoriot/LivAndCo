@@ -1,0 +1,476 @@
+[
+  {
+    "title": "Havre intime en coliving",
+    "description": "Je vous ouvre les portes d'une chambre où l'on ressent instantanément une atmosphère de calme et de liberté. La luminosité naturelle accompagne les moments d'étude comme les pauses méditatives, et les soirées se prolongent souvent en discussions pleines de rires et d'idées neuves. Chacun est encouragé à s'exprimer, à partager ses passions et à respecter le rythme des autres. Ici, la bienveillance n'est pas un concept abstrait : c'est une pratique quotidienne qui favorise l'épanouissement personnel et le sentiment réconfortant d'être véritablement à sa place.",
+    "dailyPrice": 29,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite chaleureuse à partager",
+    "description": "Au sein de cette vaste pièce, le temps semble ralentir pour laisser place à la créativité et aux échanges sincères. Les matinées invitent à la réflexion tranquille, tandis que les fins d'après-midi deviennent le théâtre de rencontres improvisées autour d'un morceau de musique ou d'une anecdote inspirante. Le respect mutuel guide chaque geste ; on évite les contraintes inutiles pour laisser s'épanouir une dynamique collective fluide et joyeuse. Un vrai refuge pour celles et ceux qui aiment cultiver leur autonomie tout en nourrissant leur curiosité humaine.",
+    "dailyPrice": 26,
+    "nbPlace": 2
+  },
+  {
+    "title": "Grand espace esprit cocoon",
+    "description": "Cette chambre spacieuse respire la quiétude et donne à chacun le loisir d'installer ses routines sans empiéter sur celles des autres. Les après-repas se transforment spontanément en débats passionnés ou en silences partagés selon l'inspiration du jour. Ici, on croit à l'intelligence collective : tout le monde apporte sa touche, qu'il s'agisse d'une playlist, d'une recette unique ou d'un instant de lâcher-prise. L'ensemble crée une atmosphère très douce, propice à la fois à l'introspection et au plaisir simple d'être bien entouré.",
+    "dailyPrice": 20,
+    "nbPlace": 3
+  },
+  {
+    "title": "Chambre lumineuse et paisible",
+    "description": "Dès l'entrée, la clarté invite à respirer plus profondément et à laisser derrière soi le tumulte de la journée. Les matinées y sont calmes, ponctuées de rituels personnels, tandis que les soirées voient naître des échanges authentiques autour d'un projet artistique, d'un souvenir de voyage ou d'un fou rire communicatif. Le lieu est pensé pour encourager l'ouverture d'esprit : chacun peut exprimer son univers tout en découvrant celui des autres. C'est l'endroit parfait pour qui recherche un juste équilibre entre partage et tranquillité.",
+    "dailyPrice": 28,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite zen pour esprit curieux",
+    "description": "Ici, on cultive l'art de ralentir sans jamais s'ennuyer. La chambre offre un environnement propice à la contemplation comme à la conversation profonde. Les journées s'égrènent au rythme des passions des colivers : lecture collective, session d'écriture spontanée ou simple observation des nuages par la fenêtre. Le soir venu, la douceur ambiante favorise les confidences et les rêves communs. Si vous aimez l'idée de grandir au contact d'autres sensibilités tout en préservant votre bulle personnelle, vous apprécierez l'énergie subtile de cet espace.",
+    "dailyPrice": 15,
+    "nbPlace": 2
+  },
+  {
+    "title": "Refuge créatif à deux pas du calme",
+    "description": "La pièce dégage un charme singulier qui stimule l'imagination : chaque détail semble inviter à griffonner une idée, à composer quelques notes ou à laisser filer ses pensées. On y partage souvent de petits rituels bienveillants, comme l'écriture d'un mot d'encouragement laissé sur la porte ou l'organisation d'une mini-exposition collective de dessins. Cette atmosphère encourage chacun à expérimenter sans jugement, à écouter et à se laisser surprendre par la richesse des personnalités réunies. Un bel espace pour nourrir projets et amitiés.",
+    "dailyPrice": 27,
+    "nbPlace": 2
+  },
+  {
+    "title": "Alcôve paisible esprit coliving",
+    "description": "Le charme discret de cette alcôve en fait un véritable cocon, idéal pour allonger les moments de réflexion et savourer des instants d'intimité. La vie commune s'organise autour de valeurs simples : écoute active, spontanéité et respect des besoins individuels. Les anecdotes se partagent sans filtre et les élans de solidarité jaillissent naturellement, qu'il s'agisse d'un coup de main ponctuel ou d'un mot réconfortant. Chacun repart de cet espace avec le sentiment d'avoir gagné en sérénité… et souvent de nouveaux amis.",
+    "dailyPrice": 49,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite conviviale et inspirante",
+    "description": "L'esprit de cet endroit ? Accueillir les idées folles comme les moments de silence. En journée, la pièce se prête aux brainstormings impromptus ou aux sessions de concentration profonde selon l'énergie de chacun. Lorsque la lumière décline, les discussions s'ouvrent sur des thématiques variées : projets de voyage, découvertes culturelles ou réflexions existentielles. L'ambiance est toujours empreinte d'un respect joyeux : la diversité des parcours enrichit les échanges, créant un climat où l'on se sent libre d'être authentique et d'apprendre continuellement.",
+    "dailyPrice": 50,
+    "nbPlace": 4
+  },
+  {
+    "title": "Espace calme pour se ressourcer",
+    "description": "Cette chambre invite à lever le pied et à apprécier la simplicité des choses. On y savoure les matins lents, ponctués d'instants introspectifs, puis les soirées douces où l'on partage un récit de la journée, un morceau de musique découvert par hasard, ou une réflexion surgie d'une lecture inspirante. La communauté fonctionne sur la confiance : chacun ajuste sa présence selon ses besoins. Les relations qui se tissent ici sont souvent profondes, fondées sur l'authenticité et le plaisir de grandir côte à côte.",
+    "dailyPrice": 15,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite spacieuse pleine d'énergie",
+    "description": "La vaste pièce favorise une circulation fluide entre moments d'échange et parenthèses de solitude choisie. Certains matins résonnent d'un éclat de rire contagieux, d'autres se déroulent dans un silence complice : tout dépend de l'humeur collective. On aime aussi improviser des soirées thématiques - découverte musicale, projection de documentaires ou partage de passions culinaires - où chacun apporte sa touche personnelle. L'objectif est de créer un environnement stimulant où l'on se sent suffisamment soutenu pour oser explorer de nouvelles facettes de soi.",
+    "dailyPrice": 48,
+    "nbPlace": 3
+  },
+  {
+    "title": "Cocon tranquille pour rêveurs",
+    "description": "Cet espace est un appel à la rêverie. La quiétude ambiante encourage les esprits vagabonds à noter leurs idées les plus audacieuses ou à contempler longuement le passage du temps. On y pratique volontiers l'art de la conversation profonde, celle qui laisse une trace bienfaisante dans la mémoire. Chaque résident apporte sa couleur : une anecdote touchante, un talent caché, un point de vue surprenant. Ensemble, on tisse une toile d'expériences partagées qui nourrit et réconforte.",
+    "dailyPrice": 16,
+    "nbPlace": 1
+  },
+  {
+    "title": "Chambre ouverte aux échanges",
+    "description": "Le charme de cette chambre réside dans la fluidité qui s'installe entre ses occupants. On passe aisément d'un moment de concentration individuelle à une conversation spontanée qui rallume l'inspiration. Les récits se croisent : succès professionnels, doutes créatifs, souvenirs d'enfance, autant de fils qui tissent une complicité sincère. Ici, le mot-clé est flexibilité : chacun module sa présence et son rythme, sachant qu'il trouvera toujours une oreille attentive ou un silence respectueux selon l'envie du moment.",
+    "dailyPrice": 18,
+    "nbPlace": 2
+  },
+  {
+    "title": "Suite paisible pour âme curieuse",
+    "description": "Cette pièce invite à l'exploration intérieure autant qu'à la découverte de nouvelles affinités. On s'y sent tout de suite à l'aise pour dévoiler ses passions singulières, qu'il s'agisse d'écriture, de photographie ou de cuisine d'inspiration lointaine. En retour, on récolte des regards bienveillants et des retours stimulants. La symbiose se crée quand chacun assume son authenticité ; l'atmosphère devient alors un véritable catalyseur de projets, qu'ils soient artistiques ou tout simplement humains.",
+    "dailyPrice": 18,
+    "nbPlace": 2
+  },
+  {
+    "title": "Alcôve inspirante et sereine",
+    "description": "Dès la porte franchie, on ressent le souffle apaisant d'un lieu pensé pour l'équilibre personnel. On y trouve un temps suspendu, propice à la réflexion profonde et aux conversations sans masque. Les colivers aiment organiser des pauses inspirantes : lecture à voix haute, partage d'un podcast marquant, ou séance de brainstorming sur un sujet improbable. Tout est prétexte à la découverte et à la connexion authentique, dans le respect intégral du besoin d'intimité de chacun.",
+    "dailyPrice": 20,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite conviviale pour passionnés",
+    "description": "Cette chambre spacieuse accueille volontiers les élans créatifs et les remises en question positives. L'énergie collective s'entretient par de petites attentions : un post-it motivant glissé sous la porte, une chanson partagée en début de journée, un échange de compétences organisé à la volée. On mise sur la parole vraie et l'écoute active pour construire un climat de confiance où chacun se sent libre d'évoluer à son rythme. L'entraide devient alors une seconde nature.",
+    "dailyPrice": 46,
+    "nbPlace": 3
+  },
+  {
+    "title": "Espace serein pour esprit ouvert",
+    "description": "Vous cherchez un lieu où l'on accorde autant d'importance au silence réparateur qu'au rire spontané ? Cette chambre répond à ce double besoin. Les journées s'articulent autour d'activités choisies en conscience : séance de lecture commune, échange d'idées sur un sujet sociétal, ou simple observation des changements de lumière. On cultive la curiosité et la douceur, convaincus que le respect des rythmes individuels est le socle d'une cohabitation harmonieuse et stimulante.",
+    "dailyPrice": 34,
+    "nbPlace": 1
+  },
+  {
+    "title": "Grande chambre pleine de vie",
+    "description": "Ici, on respire la convivialité. Les résidents ont pour tradition de partager un temps fort chaque semaine : qu'il prenne la forme d'un atelier créatif improvisé ou d'un moment d'échange sur un livre marquant, l'effet catalyseur est garanti. Le reste du temps, chacun navigue librement entre ses objectifs personnels et la douceur d'une présence collective bienveillante. Cette dynamique rend l'espace vivant tout en laissant une place privilégiée au repos et à la réflexion intime.",
+    "dailyPrice": 36,
+    "nbPlace": 4
+  },
+  {
+    "title": "Nid paisible pour rêveurs actifs",
+    "description": "Mêler action et contemplation : telle est la promesse de cette chambre qui favorise à la fois l'élan créatif et la détente profonde. On y célèbre les victoires du quotidien - une idée clarifiée, un texte enfin bouclé, un doute dépassé - autour d'un échange spontané et d'une bonne dose d'humour. L'ambiance se nourrit de petites traditions : mots d'encouragement, playlists partagées, soirées à thème improvisées. Idéal pour cultiver un sentiment de progression dans un cadre affectueux.",
+    "dailyPrice": 39,
+    "nbPlace": 2
+  },
+  {
+    "title": "Suite intime et inspirante",
+    "description": "Cette pièce offre le luxe de s'écouter véritablement. On s'y réveille avec le sentiment d'avoir de la place, non seulement physiquement mais aussi mentalement, pour façonner sa journée comme on l'entend. L'après-midi peut se transformer en salon d'idées, tandis que la nuit invite au retour à soi. Les moments de connexion y sont d'une grande qualité, nourris par l'attention sincère portée aux mots et aux silences. On repart souvent plus ancré, plus confiant, et enrichi d'amitiés durables.",
+    "dailyPrice": 34,
+    "nbPlace": 1
+  },
+  {
+    "title": "Alcôve conviviale pour explorateurs",
+    "description": "Cette chambre est un point de départ idéal pour ceux qui aiment explorer nouvelles pratiques et nouvelles perspectives. On y expérimente la co-création : une soirée poésie qui apparaît spontanément, une session d'échange de savoir-faire ou un cercle de discussion où l'écoute prime. Chacun est invité à amener sa singularité au groupe, convaincu que la diversité est source d'inspiration. Le respect reste la règle d'or, garantissant un environnement sûr où il fait bon grandir.",
+    "dailyPrice": 34,
+    "nbPlace": 3
+  },
+  {
+    "title": "Suite paisible aux ondes positives",
+    "description": "Un sentiment de légèreté flotte dans cette chambre. Rien n'y semble pressé ; les heures s'étirent pour laisser place à la contemplation ou à des échanges spontanés entre colivers. On aime y partager des découvertes culturelles, s'encourager mutuellement dans les phases de doute et célébrer les petites réussites avec un enthousiasme sincère. Le tout se déroule dans une atmosphère discrète, respectueuse des tempéraments plus introvertis comme des personnalités rayonnantes.",
+    "dailyPrice": 48,
+    "nbPlace": 2
+  },
+  {
+    "title": "Grande suite pour esprit collectif",
+    "description": "Au cœur de cette chambre généreuse, l'énergie circule librement, portée par la confiance et la curiosité mutuelles. On valorise l'écoute active et la communication non violente pour résoudre les petites frictions et renforcer le sentiment d'appartenance. Les projets communs naissent souvent autour d'une idée simple : organiser un mini-festival de films, lancer un club lecture ou préparer un défi créatif hebdomadaire. Cette dynamique assure un quotidien pétillant, toujours aligné avec le respect des espaces personnels.",
+    "dailyPrice": 25,
+    "nbPlace": 4
+  },
+  {
+    "title": "Chambre tranquille pour esprit zen",
+    "description": "Cet espace respire la quiétude ; il accueille vos méditations matinales comme vos élans d'écriture nocturnes. On y insiste beaucoup sur la qualité de présence : regarder quelqu'un dans les yeux, écouter sans préparer sa réponse, laisser une parole se déposer. Cette attention subtile crée un climat apaisant où chacun peut se sentir vu et compris. Les résidents cultivent un mode de vie équilibré : alternance de moments collectifs nourrissants et de plages de solitude ressourçante.",
+    "dailyPrice": 41,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite vibrante et bienveillante",
+    "description": "Ici, la bonne humeur est contagieuse. Les journées démarrent souvent par un mot d'encouragement écrit sur le tableau commun avant que chacun ne file vers ses occupations. Le soir, cette pièce devient un théâtre de récits et de découvertes musicales. Les partages se font sans filtre, dans un climat de confiance qui laisse la place aux vulnérabilités. La solidarité se vit autant dans les petites attentions du quotidien que dans le soutien moral pendant les périodes de challenge personnel.",
+    "dailyPrice": 22,
+    "nbPlace": 3
+  },
+  {
+    "title": "Espace doux pour esprit intuitif",
+    "description": "Si vous appréciez les ambiances feutrées et la sincérité des échanges, cette chambre devrait vous parler. Les résidents y cultivent l'écoute de soi et l'écoute de l'autre, conscients que le bien-être collectif passe par le respect des besoins individuels. On y partage volontiers un instant de gratitude, un mantra ou une réflexion inspirante glanée au détour d'une lecture. Cette douceur quotidienne crée un terreau fertile pour grandir personnellement tout en tissant des liens profonds.",
+    "dailyPrice": 27,
+    "nbPlace": 2
+  },
+  {
+    "title": "Suite spacieuse pour créatifs",
+    "description": "Que vous soyez artiste en herbe ou simplement curieux, cette chambre vous encourage à donner forme à vos idées les plus libres. Les échanges entre colivers sont nourris d'enthousiasme et de bienveillance, propices aux collaborations improvisées. Une fois la porte refermée, la paix intérieure reprend ses droits, permettant de se recentrer avant de partager à nouveau l'élan collectif. Vous repartirez d'ici avec des projets nourris, des souvenirs lumineux et sans doute l'envie de revenir.",
+    "dailyPrice": 33,
+    "nbPlace": 2
+  },
+  {
+    "title": "Alcôve sereine pour pause bienvenue",
+    "description": "Cette chambre est pensée comme un souffle, une respiration au cœur d'un quotidien parfois frénétique. On y trouve le temps de laisser retomber la poussière des pensées et de savourer de simples instants de présence. Les colivers ont à cœur de respecter les besoins de retrait de chacun tout en proposant des moments d'échange de haute qualité. Il plane ici une sensation de douceur et de sécurité qui facilite l'introspection, stimule la créativité et nourrit la gratitude.",
+    "dailyPrice": 25,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite conviviale pour humanistes",
+    "description": "Cette pièce accueille volontiers les discussions passionnantes sur le sens de la vie, les voyages intérieurs ou les projets sociétaux. On y pratique l'humour comme baume pour l'âme et l'authenticité comme fil conducteur. Chaque histoire personnelle est écoutée avec respect, chaque silence est accepté sans gêne. Les rituels collectifs - cercle de parole, moment musical ou pause contemplation - soudent le groupe dans la simplicité et la bienveillance. Un lieu pour apprendre à grandir ensemble.",
+    "dailyPrice": 44,
+    "nbPlace": 3
+  },
+  {
+    "title": "Chambre paisible pour explorateurs",
+    "description": "Vous cherchez un espace où poser vos valises et explorer autant vos passions intérieures que la richesse des relations humaines ? Cette chambre offre un écrin sécurisant pour libérer la créativité et les élans du cœur. On y valorise l'expression authentique : partager un poème, une histoire drôle ou un moment de doute devient une célébration du vivant. C'est un lieu où l'on se surprend à oser davantage, porté par l'attention sincère d'une petite communauté curieuse.",
+    "dailyPrice": 43,
+    "nbPlace": 2
+  },
+  {
+    "title": "Suite tranquille pour esprit agile",
+    "description": "Cette chambre spacieuse favorise la flexibilité : elle s'adapte à vos rythmes changeants, qu'ils soient matinaux ou noctambules. La vie collective se construit sur la base d'une communication claire et de gestes de générosité spontanés. Les histoires se croisent, les idées fusent, et l'on ressort souvent de chaque échange avec une perspective élargie. Entre ces moments riches, l'espace se fait cocon silencieux pour recharger les batteries et laisser germer de nouvelles intuitions.",
+    "dailyPrice": 46,
+    "nbPlace": 4
+  },
+  {
+    "title": "Alcôve inspirante pour optimistes",
+    "description": "Ici, l'élan positif se diffuse comme un parfum. La chambre accueille les réveils enthousiastes et les soirées contemplatives avec la même douceur. Les colivers aiment célébrer les petites victoires : un projet avancé, une peur dépassée, une nouvelle idée fraîche. L'entraide fait partie du paysage ; un simple mot ou un regard bienveillant suffit souvent à ranimer la motivation. Cet endroit saura séduire celles et ceux qui aiment croire que chaque journée porte en elle une promesse.",
+    "dailyPrice": 25,
+    "nbPlace": 2
+  },
+  {
+    "title": "Suite poétique pour âmes libres",
+    "description": "Cette chambre évoque un carnet vierge prêt à accueillir vos pensées. On y cultive la spontanéité : un slam improvisé, un dessin partagé, une histoire racontée sous la lueur d'une bougie. Le respect silencieux des moments de retrait équilibre la ferveur créative des instants d'expression. L'atmosphère globale nourrit la confiance, cette clé qui ouvre grand les portes de l'imagination. On repart souvent d'ici avec une vision élargie du possible et un cœur un peu plus léger.",
+    "dailyPrice": 32,
+    "nbPlace": 1
+  },
+  {
+    "title": "Chambre cosy pleine de charme",
+    "description": "Je propose un espace baigné de lumière naturelle où les teintes douces côtoient un parquet ancien parfaitement entretenu. Vous profiterez d'une atmosphère paisible propice à la lecture ou à la réflexion, tout en sentant la chaleureuse dynamique du coliving juste à côté. Chaque détail a été choisi pour offrir un sentiment de douceur, du linge de lit moelleux aux touches décoratives artisanales. Idéale pour ceux qui recherchent une parenthèse reposante sans se couper des échanges conviviaux avec les autres résidents.",
+    "dailyPrice": 45,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite mansardée à l'esprit bohème",
+    "description": "Nichée sous de jolies poutres apparentes, cette chambre invite à la créativité grâce à une décoration inspirée des voyages et des grands espaces. Le volume généreux laisse circuler l'air et la lumière, créant un cocon propice aux longues soirées d'inspiration ou aux grasses matinées revigorantes. Vous apprécierez l'atmosphère feutrée construite autour de textiles naturels et de rangements ingénieux. Parfait pour les esprits curieux qui aiment partager un repas puis se retirer dans un nid accueillant.",
+    "dailyPrice": 41,
+    "nbPlace": 2
+  },
+  {
+    "title": "Espace zen pour esprit tranquille",
+    "description": "Dans cette chambre épurée, les teintes sable et les matières brutes instaurent une sensation immédiate d'apaisement. Le mobilier minimaliste libère la pièce et permet à chacun de s'approprier l'endroit selon son humeur : méditation, écriture ou simple détente. Les éclairages indirects diffusent une lueur douce en soirée, parfaite pour préparer une nuit réparatrice. Idéal pour les voyageurs en quête d'une ambiance sereine au cœur d'une maison tournée vers l'échange respectueux.",
+    "dailyPrice": 24,
+    "nbPlace": 1
+  },
+  {
+    "title": "Grande chambre modulable pour duo",
+    "description": "Avec ses murs clairs et son plancher en bois clair, cette pièce spacieuse se réorganise facilement : lits côte à côte ou séparés, coin lecture ou espace yoga selon vos envies du moment. Les rangements coulissants dissimulés derrière des rideaux de lin libèrent véritablement la surface, donnant une sensation de loft épuré. Au crépuscule, la lumière tamisée souligne les détails textiles pour une ambiance intimiste. Un choix idéal pour deux amis ou un couple souhaitant allier confort et liberté.",
+    "dailyPrice": 36,
+    "nbPlace": 2
+  },
+  {
+    "title": "Alcôve vintage aux notes douces",
+    "description": "Le charme d'une commode art déco se marie ici à des affiches rétro soigneusement encadrées, créant un univers délicatement nostalgique. La literie neuve contraste avec le mobilier chiné, pour offrir un confort moderne enveloppé de souvenirs d'antan. Les larges rideaux occultants garantissent de belles grasses matinées, tandis qu'un coin bureau se tient prêt pour vos projets personnels. Un bel écrin pour les amateurs d'authenticité et de convivialité.",
+    "dailyPrice": 20,
+    "nbPlace": 1
+  },
+  {
+    "title": "Studio privatif au cœur du coliving",
+    "description": "Profitez de l'indépendance d'un petit duplex intérieur : couchage en mezzanine et espace salon en contrebas, séparés par une rambarde bois et acier du plus bel effet. Les volumes intelligemment agencés permettent de travailler, se détendre et dormir sans compromis. Les tons chauds des textiles invitent à se lover dans le canapé après une journée riche en découvertes. Une option idéale pour celles et ceux qui souhaitent savourer l'ambiance collective tout en gardant un espace personnel bien défini.",
+    "dailyPrice": 44,
+    "nbPlace": 2
+  },
+  {
+    "title": "Chambre lumineuse esprit atelier",
+    "description": "De hautes fenêtres inondent la pièce d'une clarté rafraîchissante, tandis que le mur principal peint en blanc mat sert de toile à vos inspirations. Un large bureau en bois brut attend vos carnets ou votre ordinateur, et des étagères aériennes accueillent plantes vertes et objets qui vous ressemblent. Le soir, les guirlandes LED révèlent une atmosphère douce, parfaite pour un moment de lecture ou de partage. Idéal pour digital nomads ou artistes en herbe en quête d'un repaire stimulant.",
+    "dailyPrice": 24,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite cosy avec balconnet discret",
+    "description": "Une porte-fenêtre s'ouvre sur un petit balcon où savourer le premier café au calme, bercé par la douceur de l'air du matin. À l'intérieur, un lit queen-size, des rideaux épais et un tapis moelleux créent une atmosphère enveloppante. Un coin fauteuil près de la baie vitrée invite à la contemplation ou aux discussions intimes. Parfait pour ceux qui aiment respirer dehors avant de retrouver l'énergie chaleureuse du coliving.",
+    "dailyPrice": 42,
+    "nbPlace": 2
+  },
+  {
+    "title": "Nid sous les toits au charme scandinave",
+    "description": "Velux panoramique, bois clair et textiles pastel confèrent à cette chambre mansardée une douceur nordique très appréciable. L'isolation soignée garantit un silence complice pendant vos nuits, tandis qu'une petite bibliothèque intégrée attend vos romans préférés. Des rangements astucieux exploitent la moindre pente du toit pour libérer l'espace central. Un refuge intimiste pour célibataire ou couple aimant les atmosphères douces et épurées.",
+    "dailyPrice": 33,
+    "nbPlace": 1
+  },
+  {
+    "title": "Chambre épurée idéale télétravail",
+    "description": "Conçue pour les travailleurs nomades, cette pièce propose un bureau ergonomique, une chaise réglable et un éclairage orientable qui ménage vos yeux lors des longues sessions. Les teintes neutres favorisent la concentration sans sacrifier le côté chaleureux grâce à quelques touches végétales. La literie de qualité attend la fin de journée pour vous offrir un sommeil réparateur. L'endroit rêvé pour concilier productivité et moments de partage enrichissants.",
+    "dailyPrice": 44,
+    "nbPlace": 1
+  },
+  {
+    "title": "Espace généreux pour petit groupe",
+    "description": "Deux lits superposés robustes, un lit double escamotable et une zone détente centrale : cette grande chambre réinvente la convivialité en version ergonomique. Le mobilier modulable libère un terrain de jeu pour vos séances de yoga, parties de cartes ou brainstormings nocturnes. Des rangements spacieux garantissent l'ordre malgré les multiples occupants. Parfaite pour équipe de projet, fratrie ou bande d'amis en quête d'aventures urbaines.",
+    "dailyPrice": 47,
+    "nbPlace": 4
+  },
+  {
+    "title": "Suite contemporaine grand confort",
+    "description": "Un design épuré, ponctué de pièces de créateur, compose une atmosphère résolument élégante. Le lit king-size accompagné de linge en coton biologique promet des nuits de qualité supérieure. Un fauteuil lounge orienté vers une grande fenêtre vous accueille pour de longues discussions philosophiques ou un moment de lecture. Idéal pour les amateurs de lignes nettes et d'expériences haut de gamme partagées.",
+    "dailyPrice": 50,
+    "nbPlace": 2
+  },
+  {
+    "title": "Chambre artistique haute en couleur",
+    "description": "Les murs arborent des aplats vibrants assortis à un triptyque abstrait, invitant votre imagination à vagabonder. Un coin table à dessin et un chevalet pliable restent à disposition pour vos projets créatifs du moment. Le soir venu, un éclairage réglable passe d'une clarté vive à une lueur tamisée pour laisser place aux idées les plus audacieuses. Une chambre pensée comme un atelier, prête à accueillir vos élans d'inspiration.",
+    "dailyPrice": 26,
+    "nbPlace": 2
+  },
+  {
+    "title": "Refuge calme à l'ambiance nature",
+    "description": "L'association de lambris clairs, de rotin et de plantes suspendues crée une bulle végétale apaisante dès le seuil franchi. Des fragrances délicates d'huiles essentielles se diffusent en fond pour favoriser la relaxation. Un tapis en jute offre un coin méditation ou étirements matinaux. Un lieu idéal pour les amoureux de simplicité et d'authenticité à la recherche de douceur au quotidien.",
+    "dailyPrice": 17,
+    "nbPlace": 2
+  },
+  {
+    "title": "Grande pièce avec coin salon",
+    "description": "Cette chambre spacieuse offre non seulement un large couchage mais aussi un véritable petit salon équipé d'un canapé deux places et d'une table basse inspirée du design mid-century. L'éclairage d'ambiance modulable permet de passer d'une atmosphère studieuse à un cocon tamisé pour échanger jusqu'au bout de la nuit. Les matières nobles comme le chêne et le cuir apportent un sentiment de qualité et de durabilité. Pensée pour ceux qui aiment recevoir leurs amis tout en profitant du cadre convivial du coliving.",
+    "dailyPrice": 23,
+    "nbPlace": 4
+  },
+  {
+    "title": "Chambre minimaliste et inspirante",
+    "description": "Avec ses murs blancs rehaussés de cadres noirs et d'une étagère en métal épuré, cette chambre cultive une esthétique sobre invitant à la concentration. Un bureau en frêne massif occupe le coin lumière, parfait pour vos sessions d'écriture ou de code. Un fauteuil à bascule design attend vos moments de détente, tandis qu'un grand placard coulissant garde vos effets personnels parfaitement organisés. Idéal pour adepte de minimalisme souhaitant un environnement calme et ordonné.",
+    "dailyPrice": 19,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite douce pour esprit curieux",
+    "description": "Bibliothèque partagée, canapé méridienne et tapis épais structurent cette chambre pensée comme un petit salon littéraire. Les rayonnages ajourés laissent filtrer la lumière d'une fenêtre orientée ouest, offrant des couchers de soleil chaleureux. Entre découverte d'auteurs inspirants et conversations passionnantes, l'atmosphère favorise la créativité et l'ouverture d'esprit. Un havre idéal pour lecteur invétéré ou mélomane souhaitant un espace riche en inspiration.",
+    "dailyPrice": 39,
+    "nbPlace": 2
+  },
+  {
+    "title": "Chambre pleine d'ondes positives",
+    "description": "Couleurs pastel, rideaux légers et coussins moelleux créent une atmosphère tout en douceur. Une guirlande de photos et cartes postales vous invite à accrocher vos souvenirs pour personnaliser l'espace. La lumière du matin glisse délicatement sur le parquet clair, réveillant la pièce d'une énergie douce. Parfaite pour ceux qui aiment démarrer la journée avec le sourire et partager des moments chaleureux le soir venu.",
+    "dailyPrice": 17,
+    "nbPlace": 1
+  },
+  {
+    "title": "Espace lumineux pour duo dynamique",
+    "description": "Deux lits jumeaux modulables peuvent se rapprocher ou s'écarter selon votre configuration idéale. De grands voilages laissent entrer le soleil tout en préservant l'intimité, et un tapis central crée une zone yoga ou séance brainstorming improvisée. Les coloris vitaminés stimulent la bonne humeur et incitent à la collaboration. Une offre parfaite pour binôme d'amis, freelances ou frères et sœurs en voyage.",
+    "dailyPrice": 31,
+    "nbPlace": 2
+  },
+  {
+    "title": "Nid douillet sous les poutres",
+    "description": "À la tombée de la nuit, le jeu d'ombres des poutres apparentes se mêle au scintillement d'une guirlande lumineuse pour composer une ambiance féerique. Le lit cozy, niché sous la partie la plus basse du toit, procure une sensation de cocon rassurant. Un petit secrétaire ancien, parfait pour écrire cartes ou journaux, complète le décor. Idéal pour rêveurs amoureux d'authenticité.",
+    "dailyPrice": 49,
+    "nbPlace": 2
+  },
+  {
+    "title": "Chambre sobre et studieuse",
+    "description": "Murs clairs, grandes étagères modulables et fauteuil ergonomique composent un environnement optimisé pour le travail concentré. Les luminaires orientables offrent un confort visuel de premier plan, tandis qu'un lit double aux lignes nettes promet un repos mérité. Quelques touches de couleur viennent réveiller l'ensemble pour ne jamais tomber dans la monotonie. Adaptée aux étudiants exigeants ou aux professionnels en mission prolongée.",
+    "dailyPrice": 39,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite élégante style rétro-chic",
+    "description": "Une tête de lit capitonnée, des rideaux velours et un lampadaire sur pied inspiré des années 50 créent un décor digne d'un film d'époque. Le parquet chevron confère une identité forte, tandis qu'un canapé deux places en velours côtelé accueille vos moments de lecture ou de discussion. Les teintes profondes et la lumière d'appoint douce composent une atmosphère feutrée incomparable. Pour amateur de style assumé et de confort raffiné.",
+    "dailyPrice": 44,
+    "nbPlace": 2
+  },
+  {
+    "title": "Grande chambre modulable esprit loft",
+    "description": "Cette pièce aux volumes généreux offre une hauteur sous plafond remarquable et une grande verrière intérieure qui diffuse la lumière comme dans un atelier d'artiste. Le mobilier est monté sur roulettes pour reconfigurer facilement l'environnement selon vos envies : espace sport, coin cinéma ou salle de brainstorming. Les matériaux bruts, métal et bois, se mêlent à des textiles doux pour un équilibre parfait. Un terrain d'expression sans limite pour les esprits inventifs.",
+    "dailyPrice": 15,
+    "nbPlace": 4
+  },
+  {
+    "title": "Petit refuge plein de caractère",
+    "description": "Pierres apparentes, niche murale éclairée et table de chevet en bois flotté confèrent à cette chambre une personnalité unique. La fenêtre haute protège de l'agitation extérieure tout en laissant filtrer une douce clarté. Un tapis tissé main réchauffe l'ambiance et invite à la détente pieds nus. Un lieu authentique où revenir se ressourcer après une journée riche de rencontres.",
+    "dailyPrice": 48,
+    "nbPlace": 1
+  },
+  {
+    "title": "Chambre artistique à l'esprit galerie",
+    "description": "Trois cimaises accueillent des œuvres originales renouvelées au fil des saisons, transformant la pièce en mini-exposition permanente. Le lit plateforme, discret, met en valeur la hauteur des murs et crée un sentiment d'espace surprenant. Un projecteur discret permet de diffuser vos créations ou un film pour une soirée cosy. Parfaite pour ceux qui aiment vivre entourés d'art et partager leur passion.",
+    "dailyPrice": 50,
+    "nbPlace": 2
+  },
+  {
+    "title": "Suite calme pour travailleur nomade",
+    "description": "Un grand plan de travail, une chaise ergonomique et un éclairage indirect soigneusement positionné composent un environnement de productivité optimale. Les rideaux occultants assurent des nuits vraiment reposantes après vos visioconférences. Un fauteuil relax vous attend pour décompresser en musique ou avec un bon livre. Une bulle de sérénité et d'efficacité au sein d'une communauté bienveillante.",
+    "dailyPrice": 18,
+    "nbPlace": 1
+  },
+  {
+    "title": "Alcôve chaleureuse aux tons terracotta",
+    "description": "Les murs peints dans une palette d'argile douce sont sublimés par des coussins ethniques et un tapis berbère authentique. Le soir, la lumière chaude des lampes d'appoint met en valeur les textures et invite aux échanges spontanés. Un grand placard à portes coulissantes permet de garder vos affaires ordonnées, libérant plus d'espace de vie. Un choix idéal pour épicuriens en quête d'ambiances enveloppantes.",
+    "dailyPrice": 22,
+    "nbPlace": 3
+  },
+  {
+    "title": "Chambre mansardée esprit chalet",
+    "description": "Plafond habillé de lambris, couverture en laine épaisse et guirlande lumineuse créent une sensation de refuge montagnard. Le parquet massif respire la solidité et diffuse une chaleur naturelle sous vos pas. Un petit banc coffre accueille vos plaids et livres préférés à portée de main. Parfait pour se sentir en vacances d'hiver toute l'année tout en profitant de la convivialité d'une grande maison.",
+    "dailyPrice": 16,
+    "nbPlace": 1
+  },
+  {
+    "title": "Espace généreux pour les esprits libres",
+    "description": "Cette grande chambre, baignée de lumière, dispose de deux immenses fenêtres qui ouvrent la vue sur le ciel et laissent filer les idées. Les murs blancs servent de toile à vos inspirations, tandis qu'un grand tapis invite aux activités créatives au sol. La disposition modulable des lits simples ou doubles permet d'accueillir selon les besoins voyageurs solitaires, duo d'amis ou famille de passage. Un écrin de liberté et d'expérimentation au sein d'un coliving vivant.",
+    "dailyPrice": 29,
+    "nbPlace": 4
+  },
+  {
+    "title": "Suite élégante avec coin lecture",
+    "description": "Un fauteuil cabriolet, une lampe liseuse orientable et une bibliothèque intégrée transforment un angle de la chambre en véritable havre littéraire. Le reste de l'espace se décline dans un style raffiné : tête de lit matelassée, tables d'appoint en laiton brossé et rideaux en lin lavé. Chaque objet contribue à une atmosphère à la fois sophistiquée et accueillante. Idéale pour les amoureux des beaux livres et des ambiances feutrées.",
+    "dailyPrice": 23,
+    "nbPlace": 2
+  },
+  {
+    "title": "Spacieuse alcôve propice aux idées",
+    "description": "Ici, la lumière douce glisse sur des murs apaisants et semble encourager chaque pensée nouvelle. Les résidents aiment s'y retrouver pour partager une anecdote savoureuse ou tester un concept tout juste esquissé. Puis, quand le silence s'invite, la pièce redevient un cocon intime où l'inspiration se déploie sans pression. Vous y découvrirez la joie subtile d'avancer entouré d'oreilles attentives, tout en conservant un espace mental parfaitement dégagé pour vos propres explorations créatives.",
+    "dailyPrice": 47,
+    "nbPlace": 2
+  },
+  {
+    "title": "Chambre cocoon pour visionnaires",
+    "description": "Immédiatement, l'ambiance feutrée vous enveloppe et semble murmurer que tout est possible. Les soirées se transforment souvent en laboratoires d'idées où l'on confronte projets, intuitions et éclats de rire. Le matin, chacun profite d'un calme régénérant avant de partager un regard complice ou une citation motivante. Ce lieu conviendra à celles et ceux qui ont des songes ambitieux et qui apprécient la douceur d'un cercle bienveillant pour les faire germer.",
+    "dailyPrice": 46,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite lumineuse pour âme créative",
+    "description": "Des rayons obliques dessinent sur le parquet une invitation naturelle à sortir pinceaux, clavier ou carnet de croquis. On respecte ici le rythme interne de chacun : silence concentré quand l'élan l'exige, effervescence bienveillante dès qu'une nouvelle trouvaille mérite d'être célébrée. Les micro-rituels du groupe - partage d'une mélodie, lecture d'un poème, posture de stretching collectif - nourrissent une complicité douce qui stimule autant qu'elle apaise.",
+    "dailyPrice": 25,
+    "nbPlace": 2
+  },
+  {
+    "title": "Retraite apaisante au quotidien",
+    "description": "Cette chambre invite à se poser vraiment : respiration plus profonde, pensées plus claires. Les résidents cultivent l'art de l'écoute active ; un simple échange de regards suffit souvent pour sentir l'élan collectif. On y célèbre les petites victoires - une page écrite, une peur traversée - par un encouragement spontané ou un sourire complice. Vous repartirez peut-être avec de nouvelles routines bien-être, mais surtout avec la certitude d'avoir été compris sans masque.",
+    "dailyPrice": 16,
+    "nbPlace": 1
+  },
+  {
+    "title": "Cocon minimaliste pour pensées claires",
+    "description": "Mobilier épuré, teintes douces : tout ici favorise la décantation mentale. On alterne moments d'introspection et brainstormings sans ego où chaque voix a la même valeur. Un tableau commun accueille citations inspirantes et esquisses de projets qui évoluent à vue d'œil. La sensation dominante ? Celle d'un terrain neutre et fertile, où il suffit d'un pas pour transformer une intuition en démarche concrète, porté par la bienveillance collective.",
+    "dailyPrice": 43,
+    "nbPlace": 2
+  },
+  {
+    "title": "Espace généreux pour partage authentique",
+    "description": "Les volumes confortables laissent place aux conversations qui s'étirent, aux impros musicales et aux silences respectueux quand vient l'heure de se recentrer. Une dynamique d'entraide spontané crée un sentiment de sécurité : on sait pouvoir compter sur un regard extérieur constructif ou sur une tasse de thé salvatrice. Cet équilibre délicat entre soutien et liberté rend l'aventure humaine aussi enrichissante que vos propres projets personnels.",
+    "dailyPrice": 46,
+    "nbPlace": 4
+  },
+  {
+    "title": "Nid serein pour explorateurs urbains",
+    "description": "Après l'effervescence de la ville, cette chambre agit comme un sas de décompression. Le groupe pratique volontiers la gratitude partagée : en fin de journée, chacun évoque une découverte, un apprentissage ou une anecdote drôle, propageant une énergie légère. Quand l'aube se lève, le calme règne, propice à la planification des défis du jour. Ici, la curiosité est un moteur collectif qui ne s'épuise jamais.",
+    "dailyPrice": 48,
+    "nbPlace": 2
+  },
+  {
+    "title": "Suite conviviale et ressourçante",
+    "description": "Large espace, lumière pleine : un terrain d'expression et de détente. On improvise parfois un cercle de paroles ou un atelier origami selon les envies du moment. Chacun peut disparaître derrière un casque pour travailler, puis réapparaître avec une idée à tester. Les petites attentions - mot doux, playlist dédiée, fruit découpé - font battre le cœur de ce micro-communauté où il fait bon ralentir sans renoncer à ses ambitions.",
+    "dailyPrice": 38,
+    "nbPlace": 3
+  },
+  {
+    "title": "Alcôve chaleureuse pour optimistes",
+    "description": "Un éclairage tamisé met en valeur des textures naturelles qui invitent au lâcher-prise. Les colivers ont pour habitude de célébrer les succès, même minuscules, par un high-five ou une citation motivante affichée sur le mur d'inspiration. La bienveillance n'empêche pas l'exigence : on se pousse doucement vers le haut, on propose un feedback honnête, on applaudit les progrès. Un écrin parfait pour qui veut conjuguer enthousiasme et profondeur.",
+    "dailyPrice": 17,
+    "nbPlace": 2
+  },
+  {
+    "title": "Grande chambre modulable et zen",
+    "description": "Étagères légères sur roulettes, tapis confortables et coin méditation mobile : l'espace se réinvente au gré de vos besoins, session yoga à l'aube ou studio photo l'après-midi. Le soir, on rallume quelques guirlandes pour un échange de savoirs ou une chronique humoristique improvisée. La règle d'or reste la fluidité : chacun ajuste son implication selon son énergie, certain d'être accueilli sans jugement.",
+    "dailyPrice": 35,
+    "nbPlace": 4
+  },
+  {
+    "title": "Refuge artistique pour rêveurs",
+    "description": "Toiles punaisées, carnets qui s'empilent : les idées s'échangent ici comme des éclats de couleur. On adore les défis créa en 10 minutes : un thème tiré au sort, chacun livre un croquis, un haïku ou un riff de guitare. Puis vient le temps du calme, lorsque la pièce se transforme en atelier silencieux où la concentration est palpable. L'endroit idéal pour donner vie à l'imaginaire en bonne compagnie.",
+    "dailyPrice": 43,
+    "nbPlace": 3
+  },
+  {
+    "title": "Suite élégante pour aventuriers calmes",
+    "description": "Mélange subtil de lignes modernes et de souvenirs de voyage posés sur une étagère partagée. On s'y raconte volontiers le dernier rêve marquant ou la prochaine escapade envisagée. Le cadre encourage la lenteur choisie : un café préparé avec soin, une playlist soul en fond, un regard par la fenêtre avant de replonger dans un livre. Les esprits nomades y trouvent un port d'attache pour recharger curiosité et sérénité.",
+    "dailyPrice": 18,
+    "nbPlace": 2
+  },
+  {
+    "title": "Chambre paisible pour esprit collectif",
+    "description": "Sous un plafond légèrement voûté, les voix prennent un timbre doux qui favorise l'écoute. On y pratique la « minute d'admiration » : chacun souligne un talent ou une qualité observée chez un autre résident. Le climat ainsi créé nourrit la confiance, et la collaboration devient un réflexe naturel. Chaque départ en exploration extérieure se fait avec le sentiment réconfortant d'avoir un repaire humain stable au retour.",
+    "dailyPrice": 26,
+    "nbPlace": 1
+  },
+  {
+    "title": "Havre lumineux pour projets audacieux",
+    "description": "Grandes baies vitrées, bureau pliable, tableau effaçable : tout invite à esquisser plans et prototypes. Parfois, un simple regard sur le mur d'objectifs partagés déclenche un brain-storm épique autour d'un mug fumant. Quand vient l'heure du recul, la lumière dorée du soir baigne l'espace, rappelant qu'il est sain de lever la tête pour savourer le chemin parcouru ensemble.",
+    "dailyPrice": 37,
+    "nbPlace": 2
+  },
+  {
+    "title": "Alcôve poétique pour conteurs",
+    "description": "Ici, la parole circule comme un souffle doux : confidences murmurées, récits inventés, souvenirs enjolivés. On se passe le « bâton de parole » décoré de rubans, garantissant un temps d'écoute total pour chacune des voix. Entre ces parenthèses, le lieu se fait cocon silencieux propice à la rédaction ou à la simple rêverie. Une invitation à redonner toute sa place à l'imaginaire partagé.",
+    "dailyPrice": 26,
+    "nbPlace": 1
+  },
+  {
+    "title": "Suite tranquille pour énergies douces",
+    "description": "Tons pastel, plantes qui respirent, diffuseur d'huiles essentielles : tout ici soutient un tempo intérieur ralenti. Les résidents aiment proposer un étirement matinal, un cercle de respiration ou un mini concert acoustique. Chaque présence est reçue comme un cadeau, chaque absence respectée comme une nécessité. Dans ce micro-cosme attentif, on apprend à écouter son rythme autant que la musique subtile du collectif.",
+    "dailyPrice": 46,
+    "nbPlace": 2
+  },
+  {
+    "title": "Cocon vibrant pour synergies",
+    "description": "L'énergie circule ici comme un courant d'air frais : dès qu'une idée surgit, elle trouve aussitôt un écho enthousiaste. Les murs ponctués de post-its colorés témoignent des brainstormings ; les coins cosy rappellent l'importance de l'ancrage. On a coutume de clôturer la semaine par un rituel d'appréciation mutuelle, histoire de prendre conscience de la richesse semée ensemble. Un nid idéal pour transformer l'étincelle individuelle en feu d'artifice collectif.",
+    "dailyPrice": 50,
+    "nbPlace": 3
+  }
+]
