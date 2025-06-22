@@ -8,7 +8,6 @@
     "longitude": "2.3471859",
     "latitude": "48.8504852",
     "surface": 441,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-1.jpg"
@@ -22,7 +21,6 @@
     "longitude": "2.3609465",
     "latitude": "48.8536553",
     "surface": 329,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-2.jpg"
@@ -36,7 +34,6 @@
     "longitude": "2.3586294",
     "latitude": "48.8617246",
     "surface": 259,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-3.jpg"
@@ -50,7 +47,6 @@
     "longitude": "2.3616404",
     "latitude": "48.8563165",
     "surface": 426,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-4.jpg"
@@ -64,7 +60,6 @@
     "longitude": "2.3695854",
     "latitude": "48.8621545",
     "surface": 210,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-5.jpg"
@@ -78,7 +73,6 @@
     "longitude": "2.3609533",
     "latitude": "48.8487560",
     "surface": 313,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-6.jpg"
@@ -92,7 +86,6 @@
     "longitude": "2.3672502",
     "latitude": "48.8596300",
     "surface": 231,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-7.jpg"
@@ -106,7 +99,6 @@
     "longitude": "2.3479883",
     "latitude": "48.8625381",
     "surface": 428,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-8.jpg"
@@ -120,7 +112,6 @@
     "longitude": "2.3419648",
     "latitude": "48.8619416",
     "surface": 399,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-9.jpg"
@@ -134,7 +125,6 @@
     "longitude": "2.3498408",
     "latitude": "48.8675584",
     "surface": 318,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-10.jpg"
@@ -148,7 +138,6 @@
     "longitude": "2.3596682",
     "latitude": "48.8634558",
     "surface": 299,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-11.jpg"
@@ -162,7 +151,6 @@
     "longitude": "2.3613719",
     "latitude": "48.8478786",
     "surface": 408,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-12.jpg"
@@ -176,7 +164,6 @@
     "longitude": "2.3516776",
     "latitude": "48.8398150",
     "surface": 423,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-13.jpg"
@@ -190,7 +177,6 @@
     "longitude": "2.3362379",
     "latitude": "48.8319187",
     "surface": 437,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-14.jpg"
@@ -204,7 +190,6 @@
     "longitude": "2.3017312",
     "latitude": "48.8414715",
     "surface": 341,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-paris-15.jpg"
@@ -218,7 +203,6 @@
     "longitude": "5.3650335",
     "latitude": "43.3002444",
     "surface": 290,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-marseille-1.jpg"
@@ -232,7 +216,6 @@
     "longitude": "5.3764956",
     "latitude": "43.2910435",
     "surface": 351,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-marseille-2.jpg"
@@ -246,7 +229,6 @@
     "longitude": "5.3726050",
     "latitude": "43.2786476",
     "surface": 235,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-marseille-3.jpg"
@@ -260,7 +242,6 @@
     "longitude": "5.3702578",
     "latitude": "43.2996930",
     "surface": 434,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-marseille-4.jpg"
@@ -274,7 +255,6 @@
     "longitude": "5.3637176",
     "latitude": "43.3476785",
     "surface": 302,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-marseille-5.jpg"
@@ -288,7 +268,6 @@
     "longitude": "5.3821459",
     "latitude": "43.2662364",
     "surface": 390,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-marseille-6.jpg"
@@ -302,7 +281,6 @@
     "longitude": "5.4206686",
     "latitude": "43.3032760",
     "surface": 407,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-marseille-7.jpg"
@@ -316,7 +294,6 @@
     "longitude": "4.8315659",
     "latitude": "45.7513519",
     "surface": 426,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-lyon-1.jpg"
@@ -330,7 +307,6 @@
     "longitude": "4.8692407",
     "latitude": "45.7560181",
     "surface": 215,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-lyon-2.jpg"
@@ -344,7 +320,6 @@
     "longitude": "4.8739415",
     "latitude": "45.7723340",
     "surface": 242,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-lyon-3.jpg"
@@ -358,7 +333,6 @@
     "longitude": "4.8330879",
     "latitude": "45.7707268",
     "surface": 440,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-lyon-4.jpg"
@@ -372,7 +346,6 @@
     "longitude": "4.8201634",
     "latitude": "45.7826716",
     "surface": 283,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-lyon-5.jpg"
@@ -386,7 +359,6 @@
     "longitude": "4.8142380",
     "latitude": "45.7600955",
     "surface": 307,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-lyon-6.jpg"
@@ -400,7 +372,6 @@
     "longitude": "4.8781472",
     "latitude": "45.7318714",
     "surface": 331,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-lyon-7.jpg"
@@ -414,7 +385,6 @@
     "longitude": "4.8361050",
     "latitude": "45.7497609",
     "surface": 391,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-lyon-8.jpg"
@@ -428,7 +398,6 @@
     "longitude": "4.8024504",
     "latitude": "45.7778250",
     "surface": 315,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-lyon-9.jpg"
@@ -442,7 +411,6 @@
     "longitude": "4.8737280",
     "latitude": "45.7594682",
     "surface": 419,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-lyon-10.jpg"
@@ -456,7 +424,6 @@
     "longitude": "1.4365897",
     "latitude": "43.6054604",
     "surface": 411,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-toulouse-1.jpg"
@@ -470,7 +437,6 @@
     "longitude": "7.2600869",
     "latitude": "43.7082659",
     "surface": 265,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-nice-1.jpg"
@@ -484,7 +450,6 @@
     "longitude": "-1.5599371",
     "latitude": "47.2180444",
     "surface": 288,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-nantes-1.jpg"
@@ -498,7 +463,6 @@
     "longitude": "7.7413395",
     "latitude": "48.5823633",
     "surface": 447,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-strasbourg-1.jpg"
@@ -512,7 +476,6 @@
     "longitude": "3.8761101",
     "latitude": "43.6154044",
     "surface": 279,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-montpellier-1.jpg"
@@ -526,7 +489,6 @@
     "longitude": "-0.5917429",
     "latitude": "44.8305564",
     "surface": 283,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-bordeaux-1.jpg"
@@ -540,7 +502,6 @@
     "longitude": "3.0519859",
     "latitude": "50.6311748",
     "surface": 344,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-lille-1.jpg"
@@ -554,7 +515,6 @@
     "longitude": "-1.6872155",
     "latitude": "48.1192382",
     "surface": 256,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-rennes-1.jpg"
@@ -568,7 +528,6 @@
     "longitude": "4.3933845",
     "latitude": "45.4398850",
     "surface": 441,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-saint-etienne-1.jpg"
@@ -582,7 +541,6 @@
     "longitude": "5.7317780",
     "latitude": "45.1886690",
     "surface": 193,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-grenoble-1.jpg"
@@ -596,7 +554,6 @@
     "longitude": "4.0357275",
     "latitude": "49.2586768",
     "surface": 352,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-reims-1.jpg"
@@ -610,7 +567,6 @@
     "longitude": "5.9303838",
     "latitude": "43.1195357",
     "surface": 337,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-toulon-1.jpg"
@@ -624,7 +580,6 @@
     "longitude": "5.0384512",
     "latitude": "47.3211535",
     "surface": 275,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-dijon-1.jpg"
@@ -638,7 +593,6 @@
     "longitude": "-0.5566339",
     "latitude": "47.4759853",
     "surface": 416,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-angers-1.jpg"
@@ -652,7 +606,6 @@
     "longitude": "4.3688229",
     "latitude": "43.8406191",
     "surface": 340,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-nimes-1.jpg"
@@ -666,7 +619,6 @@
     "longitude": "0.1023072",
     "latitude": "49.4937749",
     "surface": 214,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-le-havre-1.jpg"
@@ -680,7 +632,6 @@
     "longitude": "3.0941375",
     "latitude": "45.7810939",
     "surface": 407,
-    "mixedGender": false,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-clermont-ferrand-1.jpg"
@@ -694,7 +645,6 @@
     "longitude": "6.1902575",
     "latitude": "48.6966852",
     "surface": 356,
-    "mixedGender": true,
     "ownershipDeedPath": "generic-ownership-deed.pdf",
     "insuranceCertificatePath": "generic-insurance-certificate.pdf",
     "coverPicture": "generic-nancy-1.jpg"

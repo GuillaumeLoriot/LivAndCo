@@ -1,54 +1,54 @@
 [
     {
-        "service": "Ménage chambre express",
+        "name": "Ménage chambre express",
         "description": "Nettoyage complet de la chambre (sols, poussière, sanitaires privés) sous 24 h sur simple demande."
     },
     {
-        "service": "Changement de linge premium",
+        "name": "Changement de linge premium",
         "description": "Draps et serviettes remplacés deux fois par semaine."
     },
     {
-        "service": "Formule repas équilibrés",
+        "name": "Formule repas équilibrés",
         "description": "Déjeuner + dîner préparés par un traiteur local, livrés chaque jour en portions individuelles."
     },
     {
-        "service": "Navette aéroport",
+        "name": "Navette aéroport",
         "description": "Transfert privé aller ou retour vers l'aéroport le plus proche, réservation 24 h à l'avance."
     },
     {
-        "service": "Abonnement salle de sport avancé",
+        "name": "Abonnement salle de sport avancé",
         "description": "Cours collectifs (yoga, HIIT) encadrés trois soirs par semaine + programme personnalisé."
     },
     {
-        "service": "Location vélo électrique",
+        "name": "Location vélo électrique",
         "description": "Vélo à assistance électrique avec casque et antivol, forfait mensuel tout-compris."
     },
     {
-        "service": "Forfait impression 3D",
+        "name": "Forfait impression 3D",
         "description": "Accès prioritaire à l'imprimante 3D de l'atelier + 200 g de filament inclus par mois."
     },
     {
-        "service": "Massage",
+        "name": "Massage",
         "description": "Séance de massage relaxant de 30 min sur place."
     },
     {
-        "service": "Chef à domicile",
+        "name": "Chef à domicile",
         "description": "Un chef vient réaliser un dîner gastronomique privé pour vous et vos invités directement dans la cuisine commune."
     },
     {
-        "service": "Pressing & repassage",
+        "name": "Pressing & repassage",
         "description": "Collecte de vos vêtements deux fois par semaine ; lavage, repassage et retour plié ou sur cintre dans 48 h."
     },
     {
-        "service": "Cours privés de yoga / coaching sportif",
+        "name": "Cours privés de yoga / coaching sportif",
         "description": "Séance individuelle d'une heure avec un coach certifié, adaptable à tous niveaux et objectifs."
     },
     {
-        "service": "Location trottinette électrique",
+        "name": "Location trottinette électrique",
         "description": "Trottinette pliable avec batterie pleine, assurance incluse ; idéale pour les trajets urbains rapides."
     },
     {
-        "service": "Conciergerie administrative",
+        "name": "Conciergerie administrative",
         "description": "Aide personnalisée pour démarches locales : ouverture de compte bancaire, assurances, inscription aux services municipaux."
     }
 ]
