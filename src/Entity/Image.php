@@ -16,6 +16,9 @@ class Image
     #[ORM\Column(length: 255)]
     private ?string $path = null;
 
+    #[ORM\ManyToOne(inversedBy: 'images')]
+    private ?Accomodation $accomodation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Image
     public function setPath(string $path): static
     {
         $this->path = $path;
+
+        return $this;
+    }
+
+    public function getAccomodation(): ?Accomodation
+    {
+        return $this->accomodation;
+    }
+
+    public function setAccomodation(?Accomodation $accomodation): static
+    {
+        $this->accomodation = $accomodation;
 
         return $this;
     }
