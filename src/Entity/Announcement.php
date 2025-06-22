@@ -40,9 +40,16 @@ class Announcement
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'announcement')]
     private Collection $reservations;
 
+    /**
+     * @var Collection<int, Unavailability>
+     */
+    #[ORM\OneToMany(targetEntity: Unavailability::class, mappedBy: 'announcement')]
+    private Collection $unavailabilities;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
+        $this->unavailabilities = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,6 +153,36 @@ class Announcement
             // set the owning side to null (unless already changed)
             if ($reservation->getAnnouncement() === $this) {
                 $reservation->setAnnouncement(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Unavailability>
+     */
+    public function getUnavailabilities(): Collection
+    {
+        return $this->unavailabilities;
+    }
+
+    public function addUnavailability(Unavailability $unavailability): static
+    {
+        if (!$this->unavailabilities->contains($unavailability)) {
+            $this->unavailabilities->add($unavailability);
+            $unavailability->setAnnouncement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUnavailability(Unavailability $unavailability): static
+    {
+        if ($this->unavailabilities->removeElement($unavailability)) {
+            // set the owning side to null (unless already changed)
+            if ($unavailability->getAnnouncement() === $this) {
+                $unavailability->setAnnouncement(null);
             }
         }
 
