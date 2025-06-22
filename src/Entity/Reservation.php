@@ -29,6 +29,12 @@ class Reservation
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    private ?User $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    private ?Announcement $announcement = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +96,30 @@ class Reservation
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getAnnouncement(): ?Announcement
+    {
+        return $this->announcement;
+    }
+
+    public function setAnnouncement(?Announcement $announcement): static
+    {
+        $this->announcement = $announcement;
 
         return $this;
     }
