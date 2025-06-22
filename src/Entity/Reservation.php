@@ -35,6 +35,9 @@ class Reservation
     #[ORM\ManyToOne(inversedBy: 'reservations')]
     private ?Announcement $announcement = null;
 
+    #[ORM\OneToOne(mappedBy: 'reservation', cascade: ['persist', 'remove'])]
+    private ?Review $review = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +123,28 @@ class Reservation
     public function setAnnouncement(?Announcement $announcement): static
     {
         $this->announcement = $announcement;
+
+        return $this;
+    }
+
+    public function getReview(): ?Review
+    {
+        return $this->review;
+    }
+
+    public function setReview(?Review $review): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($review === null && $this->review !== null) {
+            $this->review->setReservation(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($review !== null && $review->getReservation() !== $this) {
+            $review->setReservation($this);
+        }
+
+        $this->review = $review;
 
         return $this;
     }
