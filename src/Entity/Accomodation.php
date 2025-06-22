@@ -61,9 +61,16 @@ class Accomodation
     #[ORM\ManyToOne(inversedBy: 'accomodations')]
     private ?User $owner = null;
 
+    /**
+     * @var Collection<int, Announcement>
+     */
+    #[ORM\OneToMany(targetEntity: Announcement::class, mappedBy: 'accomodation')]
+    private Collection $announcements;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->announcements = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -253,6 +260,36 @@ class Accomodation
     public function setOwner(?User $owner): static
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Announcement>
+     */
+    public function getAnnouncements(): Collection
+    {
+        return $this->announcements;
+    }
+
+    public function addAnnouncement(Announcement $announcement): static
+    {
+        if (!$this->announcements->contains($announcement)) {
+            $this->announcements->add($announcement);
+            $announcement->setAccomodation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnouncement(Announcement $announcement): static
+    {
+        if ($this->announcements->removeElement($announcement)) {
+            // set the owning side to null (unless already changed)
+            if ($announcement->getAccomodation() === $this) {
+                $announcement->setAccomodation(null);
+            }
+        }
 
         return $this;
     }

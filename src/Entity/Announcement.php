@@ -26,6 +26,12 @@ class Announcement
     #[ORM\Column]
     private ?int $nbPlace = null;
 
+    #[ORM\ManyToOne(inversedBy: 'announcements')]
+    private ?User $owner = null;
+
+    #[ORM\ManyToOne(inversedBy: 'announcements')]
+    private ?Accomodation $accomodation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +81,30 @@ class Announcement
     public function setNbPlace(int $nbPlace): static
     {
         $this->nbPlace = $nbPlace;
+
+        return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): static
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function getAccomodation(): ?Accomodation
+    {
+        return $this->accomodation;
+    }
+
+    public function setAccomodation(?Accomodation $accomodation): static
+    {
+        $this->accomodation = $accomodation;
 
         return $this;
     }
