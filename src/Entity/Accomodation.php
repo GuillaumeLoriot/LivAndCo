@@ -2,45 +2,73 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\AccomodationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: AccomodationRepository::class)]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: [
+                'groups' => ['accommodation:read']
+            ]
+        ),
+        new Get(
+            normalizationContext: [
+                'groups' => ['accommodation:read']
+            ]
+        ),
+    ]
+)]
 class Accomodation
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('accommodation:read')]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('accommodation:read')]
     private ?string $addressLine1 = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups('accommodation:read')]
     private ?string $addressLine2 = null;
 
     #[ORM\Column(length: 70)]
+    #[Groups('accommodation:read')]
     private ?string $city = null;
 
     #[ORM\Column(length: 20)]
+    #[Groups('accommodation:read')]
     private ?string $zipCode = null;
 
     #[ORM\Column(length: 70)]
+    #[Groups('accommodation:read')]
     private ?string $country = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 7)]
+    #[Groups('accommodation:read')]
     private ?string $longitude = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 7)]
+    #[Groups('accommodation:read')]
     private ?string $latitude = null;
 
     #[ORM\Column]
+    #[Groups('accommodation:read')]
     private ?int $surface = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups('accommodation:read')]
     private ?bool $mixedGender = null;
 
     #[ORM\Column(length: 255)]
@@ -50,21 +78,25 @@ class Accomodation
     private ?string $insuranceCertificatePath = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('accommodation:read')]
     private ?string $coverPicture = null;
 
     /**
      * @var Collection<int, Image>
      */
     #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'accomodation')]
+    #[Groups('accommodation:read')]
     private Collection $images;
 
     #[ORM\ManyToOne(inversedBy: 'accomodations')]
+    #[Groups('accommodation:read')]
     private ?User $owner = null;
 
     /**
      * @var Collection<int, Announcement>
      */
     #[ORM\OneToMany(targetEntity: Announcement::class, mappedBy: 'accomodation')]
+    #[Groups('accommodation:read')]
     private Collection $announcements;
 
     public function __construct()

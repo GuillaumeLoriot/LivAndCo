@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -9,14 +10,20 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[ApiResource(normalizationContext: [
+    'groups' => ['user:read','accommodation:read'],
+    'enable_max_depth' => true
+])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+     #[Groups(['user:read','accommodation:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
@@ -35,6 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
+     #[Groups(['user:read','accommodation:read'])]
     private ?string $username = null;
 
     #[ORM\Column(length: 60)]
@@ -53,12 +61,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $billingAddress = null;
 
     #[ORM\Column]
+     #[Groups(['user:read','accommodation:read'])]
     private ?bool $isVerified = null;
 
     #[ORM\Column(length: 255)]
+     #[Groups(['user:read','accommodation:read'])]
     private ?string $profilePicture = null;
 
     #[ORM\Column]
+     #[Groups(['user:read','accommodation:read'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
