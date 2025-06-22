@@ -58,6 +58,9 @@ class Accomodation
     #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'accomodation')]
     private Collection $images;
 
+    #[ORM\ManyToOne(inversedBy: 'accomodations')]
+    private ?User $owner = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -238,6 +241,18 @@ class Accomodation
                 $image->setAccomodation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): static
+    {
+        $this->owner = $owner;
 
         return $this;
     }

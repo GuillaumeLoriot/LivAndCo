@@ -73,10 +73,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'receiver')]
     private Collection $receivedMessages;
 
+    /**
+     * @var Collection<int, Accomodation>
+     */
+    #[ORM\OneToMany(targetEntity: Accomodation::class, mappedBy: 'owner')]
+    private Collection $accomodations;
+
     public function __construct()
     {
         $this->sentMessages = new ArrayCollection();
         $this->receivedMessages = new ArrayCollection();
+        $this->accomodations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -314,6 +321,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($receivedMessage->getReceiver() === $this) {
                 $receivedMessage->setReceiver(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Accomodation>
+     */
+    public function getAccomodations(): Collection
+    {
+        return $this->accomodations;
+    }
+
+    public function addAccomodation(Accomodation $accomodation): static
+    {
+        if (!$this->accomodations->contains($accomodation)) {
+            $this->accomodations->add($accomodation);
+            $accomodation->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAccomodation(Accomodation $accomodation): static
+    {
+        if ($this->accomodations->removeElement($accomodation)) {
+            // set the owning side to null (unless already changed)
+            if ($accomodation->getOwner() === $this) {
+                $accomodation->setOwner(null);
             }
         }
 
