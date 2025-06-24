@@ -3,32 +3,55 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\ReviewRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: [
+                'groups' => ['review:read']
+            ]
+        ),
+        new Get(
+            normalizationContext: [
+                'groups' => ['review:read:item']
+            ]
+        ),
+    ]
+)]
+
 class Review
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['review:read', 'review:read:item'])]
+
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Groups(['review:read', 'review:read:item'])]
     private ?int $rating = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['review:read', 'review:read:item'])]
     private ?string $comment = null;
 
     #[ORM\Column]
+    #[Groups(['review:read', 'review:read:item'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\OneToOne(inversedBy: 'review', cascade: ['persist', 'remove'])]
     private ?Reservation $reservation = null;
 
     #[ORM\ManyToOne(inversedBy: 'reviews')]
+    #[Groups(['review:read', 'review:read:item'])]
     private ?User $user = null;
 
     public function getId(): ?int

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -14,25 +16,40 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-#[ApiResource(normalizationContext: [
-    'groups' => ['user:read','accommodation:read'],
-    'enable_max_depth' => true
-])]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: [
+                'groups' => ['user:read']
+            ]
+        ),
+        new Get(
+            normalizationContext: [
+                'groups' => ['user:read:item']
+            ]
+        ),
+    ]
+)]
+
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-     #[Groups(['user:read','accommodation:read'])]
+    #[Groups(['user:read', 'user:read:item', 'accommodation:read:item', 'announcement:read:item','review:read', 'review:read:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
+    #[Groups(['user:read:item'])]
+
     private ?string $email = null;
 
     /**
      * @var list<string> The user roles
      */
     #[ORM\Column]
+        #[Groups(['user:read:item'])]
+
     private array $roles = [];
 
     /**
@@ -42,70 +59,88 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
-     #[Groups(['user:read','accommodation:read'])]
+    #[Groups(['user:read', 'user:read:item', 'accommodation:read:item', 'announcement:read:item','review:read', 'review:read:item'])]
     private ?string $username = null;
 
     #[ORM\Column(length: 60)]
+    #[Groups(['user:read:item'])]
+
     private ?string $lastName = null;
 
     #[ORM\Column(length: 60)]
+    #[Groups(['user:read:item'])]
+
     private ?string $firstName = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[Groups(['user:read:item'])]
+
     private ?\DateTimeImmutable $birthDate = null;
 
     #[ORM\Column(length: 10)]
+    #[Groups(['user:read:item'])]
+
     private ?string $gender = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['user:read:item'])]
+
     private ?string $billingAddress = null;
 
     #[ORM\Column]
-     #[Groups(['user:read','accommodation:read'])]
+    #[Groups(['user:read', 'user:read:item', 'accommodation:read:item'])]
     private ?bool $isVerified = null;
 
     #[ORM\Column(length: 255)]
-     #[Groups(['user:read','accommodation:read'])]
+    #[Groups(['user:read', 'user:read:item', 'accommodation:read:item', 'announcement:read:item','review:read', 'review:read:item'])]
     private ?string $profilePicture = null;
 
     #[ORM\Column]
-     #[Groups(['user:read','accommodation:read'])]
+    #[Groups(['user:read', 'user:read:item', 'accommodation:read:item', 'announcement:read:item'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
      * @var Collection<int, Message>
      */
     #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'sender')]
+    #[Groups(['user:read:item'])]
+
     private Collection $sentMessages;
 
     /**
      * @var Collection<int, Message>
      */
     #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'receiver')]
+    #[Groups(['user:read:item'])]
     private Collection $receivedMessages;
 
     /**
      * @var Collection<int, Accomodation>
      */
     #[ORM\OneToMany(targetEntity: Accomodation::class, mappedBy: 'owner')]
+    #[Groups(['user:read:item'])]
+
     private Collection $accomodations;
 
     /**
      * @var Collection<int, Announcement>
      */
     #[ORM\OneToMany(targetEntity: Announcement::class, mappedBy: 'owner')]
+    #[Groups(['user:read:item'])]
     private Collection $announcements;
 
     /**
      * @var Collection<int, Reservation>
      */
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'user')]
+    #[Groups(['user:read:item'])]
     private Collection $reservations;
 
     /**
      * @var Collection<int, Review>
      */
     #[ORM\OneToMany(targetEntity: Review::class, mappedBy: 'user')]
+    #[Groups(['user:read:item'])]
     private Collection $reviews;
 
     public function __construct()

@@ -7,9 +7,11 @@ use App\Entity\Announcement;
 use App\Entity\Convenience;
 use App\Entity\Image;
 use App\Entity\Message;
+use App\Entity\Reservation;
 use App\Entity\Review;
 use App\Entity\Service;
 use App\Entity\User;
+use DateTime;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -32,6 +34,7 @@ class AppFixtures extends Fixture
         $reviews = json_decode(file_get_contents(__DIR__ . '/data/reviews.json'), true);
         $conveniences = json_decode(file_get_contents(__DIR__ . '/data/conveniences.json'), true);
         $services = json_decode(file_get_contents(__DIR__ . '/data/services.json'), true);
+        $reservations = json_decode(file_get_contents(__DIR__ . '/data/reservations.json'), true);
 
 
         // --------- USERS ----------------------------------------------------------
@@ -105,6 +108,8 @@ class AppFixtures extends Fixture
         // --------- ACCOMODATIONS ----------------------------------------------------------
 
         $persistedAccomodations = [];
+        $persistedAnnouncements = [];
+
 
         foreach ($accomodations as $accomodationItem) {
 
@@ -128,10 +133,9 @@ class AppFixtures extends Fixture
             $manager->persist($accomodation);
             $persistedAccomodations[] = $accomodation;
 
-
             // --------- ANNOUNCEMENTS ----------------------------------------------------------
 
-            for ($i = 0; $i < $faker->randomNumber() - 3; $i++) {
+            for ($i = 0; $i < $faker->numberBetween(2, 7); $i++) {
 
                 $announcementItem = $faker->randomElement($announcements);
                 $announcement = new Announcement();
@@ -144,7 +148,40 @@ class AppFixtures extends Fixture
                     ->setOwner($user);
 
                 $manager->persist($announcement);
+                $persistedAnnouncements[] = $announcement;
             }
+        }
+
+
+        // --------- RESERVATIONS ----------------------------------------------------------
+
+        foreach ($persistedAnnouncements as $persistedAnnouncement) {
+            $announcementDailyPrice = $persistedAnnouncement->getDailyPrice();
+            $owner = $persistedAnnouncement->getOwner();
+            $randomNb = $faker->numberBetween(2, 8);
+            $randomReservations = $faker->randomElements($reservations, $randomNb);
+            foreach ($randomReservations as $randomReservation) {
+                $dateStart = new DateTime($randomReservation['startDate']);
+                $endDate = new DateTime($randomReservation['endDate']);
+                $interval = $dateStart->diff($endDate);
+                do {
+                    $randomUser = $faker->randomElement($users);
+                } while ($randomUser === $owner);
+
+
+                $reservation = new Reservation();
+                $reservation
+                    ->setStartDate($dateStart)
+                    ->setEndDate($endDate)
+                    ->setStatus('confirmed')
+                    ->setTotalPrice(($interval->days + 1) * $announcementDailyPrice)
+                    ->setCreatedAt(new DateTimeImmutable())
+                    ->setAnnouncement($persistedAnnouncement)
+                    ->setUser($randomUser);
+
+                $manager->persist($reservation);
+            }
+
         }
 
         // --------- IMAGES ----------------------------------------------------------
@@ -181,9 +218,8 @@ class AppFixtures extends Fixture
             }
             // --------- REVIEWS ----------------------------------------------------------
 
-            $randomNb2 = $faker->numberBetween(0, 7);
-
-            for ($i = 1; $i < $randomNb2; $i++) {
+            
+            for ($i = 1; $i <$faker->numberBetween(0, 7); $i++) {
 
                 $reviewItem = $faker->randomElement($reviews);
                 $review = new Review();

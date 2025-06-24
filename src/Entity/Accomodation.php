@@ -22,7 +22,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
         new Get(
             normalizationContext: [
-                'groups' => ['accommodation:read']
+                'groups' => ['accommodation:read:item']
             ]
         ),
     ]
@@ -32,43 +32,43 @@ class Accomodation
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item','accommodation:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item'])]
     private ?string $addressLine1 = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item'])]
     private ?string $addressLine2 = null;
 
     #[ORM\Column(length: 70)]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item','accommodation:read'])]
     private ?string $city = null;
 
     #[ORM\Column(length: 20)]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item','accommodation:read'])]
     private ?string $zipCode = null;
 
     #[ORM\Column(length: 70)]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item','accommodation:read'])]
     private ?string $country = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 7)]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item','accommodation:read'])]
     private ?string $longitude = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 7)]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item','accommodation:read'])]
     private ?string $latitude = null;
 
     #[ORM\Column]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item','accommodation:read'])]
     private ?int $surface = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item'])]
     private ?bool $mixedGender = null;
 
     #[ORM\Column(length: 255)]
@@ -78,25 +78,25 @@ class Accomodation
     private ?string $insuranceCertificatePath = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item','accommodation:read'])]
     private ?string $coverPicture = null;
 
     /**
      * @var Collection<int, Image>
      */
     #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'accomodation')]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item','accommodation:read'])]
     private Collection $images;
 
     #[ORM\ManyToOne(inversedBy: 'accomodations')]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item'])]
     private ?User $owner = null;
 
     /**
      * @var Collection<int, Announcement>
      */
     #[ORM\OneToMany(targetEntity: Announcement::class, mappedBy: 'accomodation')]
-    #[Groups('accommodation:read')]
+    #[Groups(['accommodation:read:item'])]
     private Collection $announcements;
 
     public function __construct()

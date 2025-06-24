@@ -3,41 +3,75 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: [
+                'groups' => ['reservation:read']
+            ]
+        ),
+        new Get(
+            normalizationContext: [
+                'groups' => ['reservation:read:item']
+            ]
+        ),
+    ]
+)]
 class Reservation
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['reservation:read:item','announcement:read:item'])]
+
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+        #[Groups(['reservation:read:item','announcement:read:item'])]
+
     private ?\DateTime $startDate = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+        #[Groups(['reservation:read:item','announcement:read:item'])]
+
     private ?\DateTime $endDate = null;
 
     #[ORM\Column(length: 100)]
+        #[Groups(['reservation:read:item'])]
+
     private ?string $status = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+        #[Groups(['reservation:read:item'])]
+
     private ?string $totalPrice = null;
 
     #[ORM\Column]
+        #[Groups(['reservation:read:item'])]
+
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
+        #[Groups(['reservation:read:item'])]
+
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
+        #[Groups(['reservation:read:item'])]
+
     private ?Announcement $announcement = null;
 
     #[ORM\OneToOne(mappedBy: 'reservation', cascade: ['persist', 'remove'])]
+        #[Groups(['reservation:read:item','announcement:read:item'])]
+
     private ?Review $review = null;
 
     public function getId(): ?int

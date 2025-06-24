@@ -3,19 +3,38 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: [
+                'groups' => ['image:read']
+            ]
+        ),
+        new Get(
+            normalizationContext: [
+                'groups' => ['image:read:item']
+            ]
+        ),
+    ]
+)]
+
 class Image
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['accommodation:read:item', 'accommodation:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['accommodation:read:item', 'accommodation:read'])]
     private ?string $path = null;
 
     #[ORM\ManyToOne(inversedBy: 'images')]

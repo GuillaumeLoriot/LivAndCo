@@ -3,49 +3,75 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\AnnouncementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: AnnouncementRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: [
+                'groups' => ['announcement:read']
+            ]
+        ),
+        new Get(
+            normalizationContext: [
+                'groups' => ['announcement:read:item']
+            ]
+        ),
+    ]
+)]
+
 class Announcement
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['announcement:read:item','announcement:read','accommodation:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['announcement:read:item','announcement:read','accommodation:read'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['announcement:read:item','announcement:read','accommodation:read'])]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[Groups(['announcement:read:item','announcement:read','accommodation:read'])]
     private ?int $dailyPrice = null;
 
     #[ORM\Column]
+    #[Groups(['announcement:read:item','announcement:read','accommodation:read'])]
     private ?int $nbPlace = null;
 
     #[ORM\ManyToOne(inversedBy: 'announcements')]
+    #[Groups(['announcement:read:item'])]
     private ?User $owner = null;
 
     #[ORM\ManyToOne(inversedBy: 'announcements')]
+    #[Groups(['announcement:read:item'])]
     private ?Accomodation $accomodation = null;
 
     /**
      * @var Collection<int, Reservation>
      */
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'announcement')]
+    #[Groups(['announcement:read:item'])]
     private Collection $reservations;
 
     /**
      * @var Collection<int, Unavailability>
      */
     #[ORM\OneToMany(targetEntity: Unavailability::class, mappedBy: 'announcement')]
+    #[Groups(['announcement:read:item'])]
     private Collection $unavailabilities;
 
     public function __construct()
