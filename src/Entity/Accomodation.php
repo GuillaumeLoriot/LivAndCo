@@ -99,10 +99,17 @@ class Accomodation
     #[Groups(['accommodation:read:item'])]
     private Collection $announcements;
 
+    /**
+     * @var Collection<int, Convenience>
+     */
+    #[ORM\ManyToMany(targetEntity: Convenience::class, inversedBy: 'accomodations')]
+    private Collection $conveniences;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->announcements = new ArrayCollection();
+        $this->conveniences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -322,6 +329,30 @@ class Accomodation
                 $announcement->setAccomodation(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Convenience>
+     */
+    public function getConveniences(): Collection
+    {
+        return $this->conveniences;
+    }
+
+    public function addConvenience(Convenience $convenience): static
+    {
+        if (!$this->conveniences->contains($convenience)) {
+            $this->conveniences->add($convenience);
+        }
+
+        return $this;
+    }
+
+    public function removeConvenience(Convenience $convenience): static
+    {
+        $this->conveniences->removeElement($convenience);
 
         return $this;
     }

@@ -180,9 +180,25 @@ class AppFixtures extends Fixture
                     ->setUser($randomUser);
 
                 $manager->persist($reservation);
-            }
 
+
+                // --------- REVIEW ----------------------------------------------------------
+        
+        
+                $reviewItem = $faker->randomElement($reviews);
+                $review = new Review();
+                $review
+                    ->setRating($reviewItem['rating'])
+                    ->setComment($reviewItem['comment'])
+                    ->setCreatedAt(new DateTimeImmutable())
+                    ->setUser($randomUser)
+                    ->setReservation($reservation);
+
+                $manager->persist($review);     
+                
+            }
         }
+
 
         // --------- IMAGES ----------------------------------------------------------
 
@@ -197,10 +213,9 @@ class AppFixtures extends Fixture
             }
         }
 
-
+        // --------- MESSAGES ----------------------------------------------------------
 
         foreach ($users as $user) {
-            // --------- MESSAGES ----------------------------------------------------------
             $randomNb = $faker->numberBetween(4, 12);
 
             do {
@@ -215,20 +230,6 @@ class AppFixtures extends Fixture
                     ->setSender($user)
                     ->setReceiver($receiver);
                 $manager->persist($message);
-            }
-            // --------- REVIEWS ----------------------------------------------------------
-
-            
-            for ($i = 1; $i <$faker->numberBetween(0, 7); $i++) {
-
-                $reviewItem = $faker->randomElement($reviews);
-                $review = new Review();
-                $review
-                    ->setRating($reviewItem['rating'])
-                    ->setComment($reviewItem['comment'])
-                    ->setCreatedAt(new DateTimeImmutable())
-                    ->setUser($user);
-                $manager->persist($review);
             }
 
         }

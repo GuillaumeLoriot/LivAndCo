@@ -74,10 +74,24 @@ class Announcement
     #[Groups(['announcement:read:item'])]
     private Collection $unavailabilities;
 
+    /**
+     * @var Collection<int, Convenience>
+     */
+    #[ORM\ManyToMany(targetEntity: Convenience::class, inversedBy: 'announcements')]
+    private Collection $conveniences;
+
+    /**
+     * @var Collection<int, Service>
+     */
+    #[ORM\ManyToMany(targetEntity: Service::class, inversedBy: 'announcements')]
+    private Collection $services;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
         $this->unavailabilities = new ArrayCollection();
+        $this->conveniences = new ArrayCollection();
+        $this->services = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -213,6 +227,54 @@ class Announcement
                 $unavailability->setAnnouncement(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Convenience>
+     */
+    public function getConveniences(): Collection
+    {
+        return $this->conveniences;
+    }
+
+    public function addConvenience(Convenience $convenience): static
+    {
+        if (!$this->conveniences->contains($convenience)) {
+            $this->conveniences->add($convenience);
+        }
+
+        return $this;
+    }
+
+    public function removeConvenience(Convenience $convenience): static
+    {
+        $this->conveniences->removeElement($convenience);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Service>
+     */
+    public function getServices(): Collection
+    {
+        return $this->services;
+    }
+
+    public function addService(Service $service): static
+    {
+        if (!$this->services->contains($service)) {
+            $this->services->add($service);
+        }
+
+        return $this;
+    }
+
+    public function removeService(Service $service): static
+    {
+        $this->services->removeElement($service);
 
         return $this;
     }
