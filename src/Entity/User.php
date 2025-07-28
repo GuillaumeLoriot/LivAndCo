@@ -5,11 +5,13 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\State\UserPasswordHasherProcessor;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -28,6 +30,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'groups' => ['user:read:item']
             ]
         ),
+        new Post(
+            normalizationContext: ['groups' => ['user:read']],
+            denormalizationContext: ['groups' => ['user:write']],
+            processor: UserPasswordHasherProcessor::class,
+
+        )
     ]
 )]
 
@@ -36,11 +44,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['user:read', 'user:read:item', 'accommodation:read:item', 'announcement:read:item','review:read', 'review:read:item'])]
+    #[Groups(['user:read', 'user:read:item', 'accommodation:read:item', 'announcement:read:item', 'review:read', 'review:read:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
-    #[Groups(['user:read:item'])]
+    #[Groups(['user:read:item', 'user:write'])]
 
     private ?string $email = null;
 
@@ -48,7 +56,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var list<string> The user roles
      */
     #[ORM\Column]
-        #[Groups(['user:read:item'])]
+    #[Groups(['user:read:item'])]
 
     private array $roles = [];
 
@@ -56,34 +64,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Groups(['user:write'])]
+
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['user:read', 'user:read:item', 'accommodation:read:item', 'announcement:read:item','review:read', 'review:read:item'])]
+    #[Groups(['user:read', 'user:write', 'user:read:item', 'accommodation:read:item', 'announcement:read:item', 'review:read', 'review:read:item'])]
     private ?string $username = null;
 
     #[ORM\Column(length: 60)]
-    #[Groups(['user:read:item'])]
+    #[Groups(['user:read:item', 'user:write'])]
 
     private ?string $lastName = null;
 
     #[ORM\Column(length: 60)]
-    #[Groups(['user:read:item'])]
+    #[Groups(['user:read:item', 'user:write'])]
 
     private ?string $firstName = null;
 
-    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
-    #[Groups(['user:read:item'])]
+    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
+    #[Groups(['user:read:item', 'user:write'])]
 
     private ?\DateTimeImmutable $birthDate = null;
 
-    #[ORM\Column(length: 10)]
-    #[Groups(['user:read:item'])]
+    #[ORM\Column(length: 10, nullable: true)]
+    #[Groups(['user:read:item', 'user:write'])]
 
     private ?string $gender = null;
 
-    #[ORM\Column(length: 255)]
-    #[Groups(['user:read:item'])]
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['user:read:item', 'user:write'])]
 
     private ?string $billingAddress = null;
 
@@ -92,7 +102,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?bool $isVerified = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['user:read', 'user:read:item', 'accommodation:read:item', 'announcement:read:item','review:read', 'review:read:item'])]
+    #[Groups(['user:read', 'user:write', 'user:read:item', 'accommodation:read:item', 'announcement:read:item', 'review:read', 'review:read:item'])]
     private ?string $profilePicture = null;
 
     #[ORM\Column]
@@ -142,6 +152,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Review::class, mappedBy: 'user')]
     #[Groups(['user:read:item'])]
     private Collection $reviews;
+
+    #[ORM\Column(length: 30, nullable: true)]
+    private ?string $phoneNumber = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $occupation = null;
 
     public function __construct()
     {
@@ -510,6 +526,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $review->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(?string $phoneNumber): static
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    public function getOccupation(): ?string
+    {
+        return $this->occupation;
+    }
+
+    public function setOccupation(?string $occupation): static
+    {
+        $this->occupation = $occupation;
 
         return $this;
     }

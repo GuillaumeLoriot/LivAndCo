@@ -3,37 +3,64 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\ConvenienceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ConvenienceRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: [
+                'groups' => ['convenience:read']
+            ]
+        ),
+        new Get(
+            normalizationContext: [
+                'groups' => ['convenience:read:item']
+            ]
+        ),
+    ]
+)]
 class Convenience
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['convenience:read', 'convenience:read:item'])]
+
     private ?int $id = null;
 
     #[ORM\Column(length: 120)]
+    #[Groups(['convenience:read', 'convenience:read:item'])]
+
     private ?string $name = null;
 
+
     #[ORM\Column(length: 50)]
+    #[Groups(['convenience:read', 'convenience:read:item'])]
+
     private ?string $icon = null;
 
     /**
      * @var Collection<int, Accomodation>
      */
     #[ORM\ManyToMany(targetEntity: Accomodation::class, mappedBy: 'conveniences')]
+    #[Groups(['convenience:read:item'])]
+
     private Collection $accomodations;
 
     /**
      * @var Collection<int, Announcement>
      */
     #[ORM\ManyToMany(targetEntity: Announcement::class, mappedBy: 'conveniences')]
+    #[Groups(['convenience:read:item'])]
+
     private Collection $announcements;
 
     public function __construct()

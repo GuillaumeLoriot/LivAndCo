@@ -33,23 +33,23 @@ class Announcement
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['announcement:read:item','announcement:read','accommodation:read'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['announcement:read:item','announcement:read','accommodation:read'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['announcement:read:item','announcement:read','accommodation:read'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
     private ?string $description = null;
 
     #[ORM\Column]
-    #[Groups(['announcement:read:item','announcement:read','accommodation:read'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
     private ?int $dailyPrice = null;
 
     #[ORM\Column]
-    #[Groups(['announcement:read:item','announcement:read','accommodation:read'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
     private ?int $nbPlace = null;
 
     #[ORM\ManyToOne(inversedBy: 'announcements')]
@@ -78,13 +78,22 @@ class Announcement
      * @var Collection<int, Convenience>
      */
     #[ORM\ManyToMany(targetEntity: Convenience::class, inversedBy: 'announcements')]
+    #[Groups(['announcement:read:item'])]
+
     private Collection $conveniences;
 
     /**
      * @var Collection<int, Service>
      */
     #[ORM\ManyToMany(targetEntity: Service::class, inversedBy: 'announcements')]
+    #[Groups(['announcement:read:item'])]
+
     private Collection $services;
+
+    #[ORM\Column(length: 100)]
+        #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
+
+    private ?string $coverPicture = null;
 
     public function __construct()
     {
@@ -275,6 +284,18 @@ class Announcement
     public function removeService(Service $service): static
     {
         $this->services->removeElement($service);
+
+        return $this;
+    }
+
+    public function getCoverPicture(): ?string
+    {
+        return $this->coverPicture;
+    }
+
+    public function setCoverPicture(string $coverPicture): static
+    {
+        $this->coverPicture = $coverPicture;
 
         return $this;
     }

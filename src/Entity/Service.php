@@ -3,31 +3,56 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: [
+                'groups' => ['service:read']
+            ]
+        ),
+        new Get(
+            normalizationContext: [
+                'groups' => ['service:read:item']
+            ]
+        ),
+    ]
+)]
+
 class Service
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['service:read', 'service:read:item'])]
+
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['service:read', 'service:read:item'])]
+
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['service:read', 'service:read:item'])]
+
     private ?string $description = null;
 
     /**
      * @var Collection<int, Announcement>
      */
     #[ORM\ManyToMany(targetEntity: Announcement::class, mappedBy: 'services')]
+    #[Groups(['service:read:item'])]
+
     private Collection $announcements;
 
     public function __construct()

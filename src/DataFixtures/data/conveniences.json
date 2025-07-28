@@ -29,20 +29,8 @@
             "icon": "dining-room.svg"
         },
         {
-            "name": "Ventilateur",
-            "icon": "fan.svg"
-        },
-        {
-            "name": "WiFi ",
-            "icon": "wifi.svg"
-        },
-        {
             "name": "Salle de sport",
             "icon": "sport-room.svg"
-        },
-        {
-            "name": "Climatisation",
-            "icon": "clim.svg"
         },
         {
             "name": "BBQ",
@@ -57,32 +45,12 @@
             "icon": "billiard.svg"
         },
         {
-            "name": "Télévision",
-            "icon": "tv.svg"
-        },
-        {
-            "name": "Fer/table à repasser",
-            "icon": "iron.svg"
-        },
-        {
             "name": "Jardin",
             "icon": "garden.svg"
         },
         {
-            "name": "Projecteur",
-            "icon": "projector.svg"
-        },
-        {
             "name": "Piscine",
             "icon": "pool.svg"
-        },
-        {
-            "name": "Balcon",
-            "icon": "balcony.svg"
-        },
-        {
-            "name": "Adapté PMR",
-            "icon": "disabled.svg"
         },
         {
             "name": "Salle de réunion",
@@ -95,10 +63,6 @@
         {
             "name": "Parking ",
             "icon": "parking.svg"
-        },
-        {
-            "name": "Cuisine équipée",
-            "icon": "kitchen.svg"
         },
         {
             "name": "Lave-vaisselle",
@@ -137,10 +101,6 @@
             "icon": "fence.svg"
         },
         {
-            "name": "Coffre-fort",
-            "icon": "safe.svg"
-        },
-        {
             "name": "Studio de musique",
             "icon": "music-room.svg"
         },
@@ -161,20 +121,8 @@
             "icon": "piano.svg"
         },
         {
-            "name": "Terrasse",
-            "icon": "deck.svg"
-        },
-        {
             "name": "Local vélo",
             "icon": "bike-room.svg"
-        },
-        {
-            "name": "Salle de bain",
-            "icon": "bathroom.svg"
-        },
-        {
-            "name": "Baignoire",
-            "icon": "bathtub.svg"
         }
     ],
 

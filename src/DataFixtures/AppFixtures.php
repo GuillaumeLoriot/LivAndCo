@@ -16,12 +16,19 @@ use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
 
     private const STATUSES = ['pending', 'confirmed', 'cancelled'];
     private const GENDERS = ['male', 'female'];
+
+        public function __construct(
+        private UserPasswordHasherInterface $hasher,
+
+    ) {
+    }
 
     public function load(ObjectManager $manager): void
     {
@@ -35,6 +42,8 @@ class AppFixtures extends Fixture
         $conveniences = json_decode(file_get_contents(__DIR__ . '/data/conveniences.json'), true);
         $services = json_decode(file_get_contents(__DIR__ . '/data/services.json'), true);
         $reservations = json_decode(file_get_contents(__DIR__ . '/data/reservations.json'), true);
+        $announcementImages = json_decode(file_get_contents(__DIR__ . '/data/announcementImages.json'), true);
+        $accomodationImages = json_decode(file_get_contents(__DIR__ . '/data/accomodationImages.json'), true);
 
 
         // --------- USERS ----------------------------------------------------------
@@ -49,7 +58,7 @@ class AppFixtures extends Fixture
             $user
                 ->setEmail($faker->email())
                 ->setRoles(['ROLE_USER'])
-                ->setPassword('test')
+                ->setPassword($this->hasher->hashPassword($user, 'test'))
                 ->setFirstName($faker->firstName($gender))
                 ->setLastName($faker->lastName())
                 ->setUsername($faker->userName())
@@ -69,7 +78,7 @@ class AppFixtures extends Fixture
         $regularUser
             ->setEmail('regular@user.com')
             ->setRoles(['ROLE_USER'])
-            ->setPassword('test')
+            ->setPassword($this->hasher->hashPassword($regularUser, 'test'))
             ->setFirstName('john')
             ->setLastName('doe')
             ->setUsername('john.doe')
@@ -90,7 +99,7 @@ class AppFixtures extends Fixture
         $adminUser
             ->setEmail('admin@livandco.com')
             ->setRoles(['ROLE_ADMIN'])
-            ->setPassword('test')
+            ->setPassword($this->hasher->hashPassword($adminUser, 'admin'))
             ->setFirstName('eleanor')
             ->setLastName('green')
             ->setUsername('eleanor.green')
@@ -102,7 +111,59 @@ class AppFixtures extends Fixture
             ->setCreatedAt(new DateTimeImmutable);
 
         $manager->persist($adminUser);
-        $users[] = $adminUser;
+
+        // --------- SERVICES ----------------------------------------------------------
+
+        $persistedServices = [];
+
+        foreach ($services as $serviceItem) {
+
+            $service = new Service();
+            $service
+                ->setName($serviceItem['name'])
+                ->setDescription($serviceItem['description']);
+
+            $manager->persist($service);
+            $persistedServices[] = $service;
+
+        }
+
+        // --------- CONVENIENCES ----------------------------------------------------------
+
+        $privateConveniences = [];
+        $sharedConveniences = [];
+        $allConveniences = [];
+        $wifiConvenience = new Convenience();
+        $wifiConvenience
+            ->setName('wifi')
+            ->setIcon('wifi.svg');
+
+        $manager->persist($wifiConvenience);
+
+
+        foreach ($conveniences['private'] as $privateConvenienceItem) {
+
+            $privateConvenience = new Convenience();
+            $privateConvenience
+                ->setName($privateConvenienceItem['name'])
+                ->setIcon($privateConvenienceItem['icon']);
+
+            $manager->persist($privateConvenience);
+            $privateConveniences[] = $privateConvenience;
+
+        }
+        foreach ($conveniences['shared'] as $sharedConvenienceItem) {
+
+            $sharedConvenience = new Convenience();
+            $sharedConvenience
+                ->setName($sharedConvenienceItem['name'])
+                ->setIcon($sharedConvenienceItem['icon']);
+
+            $manager->persist($sharedConvenience);
+            $sharedConveniences[] = $sharedConvenience;
+
+        }
+        $allConveniences = array_merge($privateConveniences, $sharedConveniences);
 
 
         // --------- ACCOMODATIONS ----------------------------------------------------------
@@ -112,6 +173,8 @@ class AppFixtures extends Fixture
 
 
         foreach ($accomodations as $accomodationItem) {
+
+            $randomConveniences = $faker->randomElements($allConveniences, $faker->numberBetween(4, 9));
 
             $user = $faker->randomElement($users);
             $accomodation = new Accomodation();
@@ -128,24 +191,44 @@ class AppFixtures extends Fixture
                 ->setOwnershipDeedPath($accomodationItem['ownershipDeedPath'])
                 ->setInsuranceCertificatePath($accomodationItem['insuranceCertificatePath'])
                 ->setCoverPicture($accomodationItem['coverPicture'])
-                ->setOwner($user);
+                ->setOwner($user)
+                ->addConvenience($wifiConvenience);
+
+            foreach ($randomConveniences as $randomConvenience) {
+                $accomodation->addConvenience($randomConvenience);
+            }
 
             $manager->persist($accomodation);
             $persistedAccomodations[] = $accomodation;
 
             // --------- ANNOUNCEMENTS ----------------------------------------------------------
 
+            $randomPrivateConveniences = $faker->randomElements($privateConveniences, $faker->numberBetween(2, 4));
+            $randomServices = $faker->randomElements($persistedServices, $faker->numberBetween(2, 4));
+
             for ($i = 0; $i < $faker->numberBetween(2, 7); $i++) {
 
                 $announcementItem = $faker->randomElement($announcements);
+                $randomAnnouncementImage = $faker->randomElement($announcementImages);
                 $announcement = new Announcement();
                 $announcement
                     ->setTitle($announcementItem['title'])
                     ->setDescription($announcementItem['description'])
                     ->setDailyPrice($announcementItem['dailyPrice'])
                     ->setNbPlace($announcementItem['nbPlace'])
+                    ->setCoverPicture( $randomAnnouncementImage['coverPicture'])
                     ->setAccomodation($accomodation)
-                    ->setOwner($user);
+                    ->setOwner($user)
+                    ->addConvenience($wifiConvenience);
+
+
+                foreach ($randomPrivateConveniences as $randomPrivateConvenience) {
+                    $announcement->addConvenience($randomPrivateConvenience);
+                }
+
+                foreach ($randomServices as $randomService) {
+                    $announcement->addService($randomService);
+                }
 
                 $manager->persist($announcement);
                 $persistedAnnouncements[] = $announcement;
@@ -183,8 +266,8 @@ class AppFixtures extends Fixture
 
 
                 // --------- REVIEW ----------------------------------------------------------
-        
-        
+
+
                 $reviewItem = $faker->randomElement($reviews);
                 $review = new Review();
                 $review
@@ -194,8 +277,8 @@ class AppFixtures extends Fixture
                     ->setUser($randomUser)
                     ->setReservation($reservation);
 
-                $manager->persist($review);     
-                
+                $manager->persist($review);
+
             }
         }
 
@@ -203,26 +286,25 @@ class AppFixtures extends Fixture
         // --------- IMAGES ----------------------------------------------------------
 
         foreach ($persistedAccomodations as $persistedAccomodation) {
-            $randomNb = $faker->numberBetween(4, 8);
-            for ($i = 1; $i < $randomNb; $i++) {
+            $randomImages = $faker->randomElements($accomodationImages, $faker->numberBetween(4, 8));
+            foreach ($randomImages as $randomImage) {
                 $image = new Image();
                 $image
-                    ->setPath("generic-accomodation-$i.jpg")
+                    ->setPath($randomImage['path'])
                     ->setAccomodation($persistedAccomodation);
                 $manager->persist($image);
             }
         }
 
-        // --------- MESSAGES ----------------------------------------------------------
 
+        // --------- MESSAGES ----------------------------------------------------------
         foreach ($users as $user) {
-            $randomNb = $faker->numberBetween(4, 12);
 
             do {
                 $receiver = $faker->randomElement($users);
             } while ($receiver === $user);
 
-            for ($i = 1; $i < $randomNb; $i++) {
+            for ($i = 1; $i < $faker->numberBetween(4, 12); $i++) {
                 $message = new Message();
                 $message
                     ->setContent($faker->realTextBetween(80, 500))
@@ -233,33 +315,6 @@ class AppFixtures extends Fixture
             }
 
         }
-
-        // --------- CONVENIENCES ----------------------------------------------------------
-
-        foreach ($conveniences['shared'] as $convenienceItem) {
-
-            $convenience = new Convenience();
-            $convenience
-                ->setName($convenienceItem['name'])
-                ->setIcon($convenienceItem['icon']);
-
-            $manager->persist($convenience);
-
-        }
-
-        // --------- SERVICES ----------------------------------------------------------
-
-        foreach ($services as $serviceItem) {
-
-            $service = new Service();
-            $service
-                ->setName($serviceItem['name'])
-                ->setDescription($serviceItem['description']);
-
-            $manager->persist($service);
-
-        }
-
 
         $manager->flush();
     }
