@@ -44,6 +44,7 @@ class AppFixtures extends Fixture
         $reservations = json_decode(file_get_contents(__DIR__ . '/data/reservations.json'), true);
         $announcementImages = json_decode(file_get_contents(__DIR__ . '/data/announcementImages.json'), true);
         $accomodationImages = json_decode(file_get_contents(__DIR__ . '/data/accomodationImages.json'), true);
+        $occupations = json_decode(file_get_contents(__DIR__ . '/data/occupations.json'), true);
 
 
         // --------- USERS ----------------------------------------------------------
@@ -67,6 +68,8 @@ class AppFixtures extends Fixture
                 ->setBillingAddress($faker->address())
                 ->setIsVerified($faker->boolean(70))
                 ->setProfilePicture('generic-user.jpg')
+                ->setPhoneNumber($faker->phoneNumber())
+                ->setOccupation($faker->randomElement($occupations))
                 ->setCreatedAt(new DateTimeImmutable);
 
             $manager->persist($user);
@@ -87,6 +90,8 @@ class AppFixtures extends Fixture
             ->setBillingAddress($faker->address())
             ->setIsVerified(true)
             ->setProfilePicture('generic-user.jpg')
+            ->setPhoneNumber($faker->phoneNumber())
+            ->setOccupation($faker->randomElement($occupations))
             ->setCreatedAt(new DateTimeImmutable);
 
 
@@ -108,6 +113,8 @@ class AppFixtures extends Fixture
             ->setBillingAddress($faker->address())
             ->setIsVerified(true)
             ->setProfilePicture('admin-user.jpg')
+            ->setPhoneNumber('0123456706')
+            ->setOccupation('Liv&Co Administrator')
             ->setCreatedAt(new DateTimeImmutable);
 
         $manager->persist($adminUser);
