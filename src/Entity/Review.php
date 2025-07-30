@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use App\Repository\ReviewRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,6 +24,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'groups' => ['review:read:item']
             ]
         ),
+        new Post(
+            normalizationContext: ['groups' => ['review:read:item']],
+            denormalizationContext: ['groups' => ['review:write']]
+        )
     ]
 )]
 
@@ -36,11 +41,11 @@ class Review
     private ?int $id = null;
 
     #[ORM\Column]
-    #[Groups(['review:read', 'review:read:item'])]
+    #[Groups(['review:read', 'review:read:item', 'review:write'])]
     private ?int $rating = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['review:read', 'review:read:item'])]
+    #[Groups(['review:read', 'review:read:item', 'review:write'])]
     private ?string $comment = null;
 
     #[ORM\Column]
@@ -48,6 +53,7 @@ class Review
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\OneToOne(inversedBy: 'review', cascade: ['persist', 'remove'])]
+    #[Groups(['review:read', 'review:read:item', 'review:write'])]
     private ?Reservation $reservation = null;
 
     #[ORM\ManyToOne(inversedBy: 'reviews')]

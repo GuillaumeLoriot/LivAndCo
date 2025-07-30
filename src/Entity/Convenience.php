@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use App\Repository\ConvenienceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -25,6 +26,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'groups' => ['convenience:read:item']
             ]
         ),
+        new Post(
+            normalizationContext: ['groups' => ['convenience:read:item']],
+            denormalizationContext: ['groups' => ['convenience:admin:write']]
+        )
     ]
 )]
 class Convenience
@@ -37,13 +42,13 @@ class Convenience
     private ?int $id = null;
 
     #[ORM\Column(length: 120)]
-    #[Groups(['convenience:read', 'convenience:read:item'])]
+    #[Groups(['convenience:read', 'convenience:read:item', 'convenience:admin:write'])]
 
     private ?string $name = null;
 
 
     #[ORM\Column(length: 50)]
-    #[Groups(['convenience:read', 'convenience:read:item'])]
+    #[Groups(['convenience:read', 'convenience:read:item', 'convenience:admin:write'])]
 
     private ?string $icon = null;
 

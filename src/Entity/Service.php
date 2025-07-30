@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -25,6 +26,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'groups' => ['service:read:item']
             ]
         ),
+        new Post(
+            normalizationContext: ['groups' => ['service:read:item']],
+            denormalizationContext: ['groups' => ['service:write']]
+        )
     ]
 )]
 
@@ -38,12 +43,12 @@ class Service
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['service:read', 'service:read:item'])]
+    #[Groups(['service:read', 'service:read:item', 'service:write'])]
 
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['service:read', 'service:read:item'])]
+    #[Groups(['service:read', 'service:read:item', 'service:write'])]
 
     private ?string $description = null;
 
