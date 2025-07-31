@@ -28,7 +28,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
         new Post(
             normalizationContext: ['groups' => ['service:read:item']],
-            denormalizationContext: ['groups' => ['service:write']]
+            denormalizationContext: ['groups' => ['service:admin:write']]
         )
     ]
 )]
@@ -43,12 +43,12 @@ class Service
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['service:read', 'service:read:item', 'service:write'])]
+    #[Groups(['service:read', 'service:read:item', 'service:admin:write'])]
 
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['service:read', 'service:read:item', 'service:write'])]
+    #[Groups(['service:read', 'service:read:item', 'service:admin:write'])]
 
     private ?string $description = null;
 

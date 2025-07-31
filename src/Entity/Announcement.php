@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use App\Repository\AnnouncementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -25,6 +26,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'groups' => ['announcement:read:item']
             ]
         ),
+        new Post(
+            normalizationContext: ['groups' => ['announcement:read:item']],
+            denormalizationContext: ['groups' => ['announcement:write']]
+        )
     ]
 )]
 
@@ -37,19 +42,19 @@ class Announcement
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item', 'announcement:write'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item', 'announcement:write'])]
     private ?string $description = null;
 
     #[ORM\Column]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item', 'announcement:write'])]
     private ?int $dailyPrice = null;
 
     #[ORM\Column]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item', 'announcement:write'])]
     private ?int $nbPlace = null;
 
     #[ORM\ManyToOne(inversedBy: 'announcements')]
@@ -57,7 +62,7 @@ class Announcement
     private ?User $owner = null;
 
     #[ORM\ManyToOne(inversedBy: 'announcements')]
-    #[Groups(['announcement:read:item'])]
+    #[Groups(['announcement:read:item', 'announcement:write'])]
     private ?Accomodation $accomodation = null;
 
     /**
@@ -78,7 +83,7 @@ class Announcement
      * @var Collection<int, Convenience>
      */
     #[ORM\ManyToMany(targetEntity: Convenience::class, inversedBy: 'announcements')]
-    #[Groups(['announcement:read:item'])]
+    #[Groups(['announcement:read:item', 'announcement:write'])]
 
     private Collection $conveniences;
 
@@ -91,7 +96,7 @@ class Announcement
     private Collection $services;
 
     #[ORM\Column(length: 100)]
-        #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item', 'announcement:write'])]
 
     private ?string $coverPicture = null;
 

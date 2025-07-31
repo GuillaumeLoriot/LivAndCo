@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,6 +24,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'groups' => ['reservation:read:item']
             ]
         ),
+        new Post(
+            normalizationContext: ['groups' => ['reservation:read:item']],
+            denormalizationContext: ['groups' => ['reservation:write']]
+        )
     ]
 )]
 class Reservation
@@ -30,47 +35,47 @@ class Reservation
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['reservation:read:item','announcement:read:item'])]
+    #[Groups(['reservation:read:item', 'announcement:read:item'])]
 
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-        #[Groups(['reservation:read:item','announcement:read:item'])]
+    #[Groups(['reservation:read:item', 'announcement:read:item', 'reservation:write'])]
 
     private ?\DateTime $startDate = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-        #[Groups(['reservation:read:item','announcement:read:item'])]
+    #[Groups(['reservation:read:item', 'announcement:read:item', 'reservation:write'])]
 
     private ?\DateTime $endDate = null;
 
     #[ORM\Column(length: 100)]
-        #[Groups(['reservation:read:item'])]
+    #[Groups(['reservation:read:item'])]
 
     private ?string $status = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-        #[Groups(['reservation:read:item'])]
+    #[Groups(['reservation:read:item'])]
 
     private ?string $totalPrice = null;
 
     #[ORM\Column]
-        #[Groups(['reservation:read:item'])]
+    #[Groups(['reservation:read:item'])]
 
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
-        #[Groups(['reservation:read:item'])]
+    #[Groups(['reservation:read:item'])]
 
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
-        #[Groups(['reservation:read:item'])]
+    #[Groups(['reservation:read:item'])]
 
     private ?Announcement $announcement = null;
 
     #[ORM\OneToOne(mappedBy: 'reservation', cascade: ['persist', 'remove'])]
-        #[Groups(['reservation:read:item','announcement:read:item'])]
+    #[Groups(['reservation:read:item', 'announcement:read:item'])]
 
     private ?Review $review = null;
 

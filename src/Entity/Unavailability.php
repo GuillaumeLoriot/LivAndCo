@@ -3,12 +3,33 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use App\Repository\UnavailabilityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: UnavailabilityRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            normalizationContext: [
+                'groups' => ['unavailability:read']
+            ]
+        ),
+        new Get(
+            normalizationContext: [
+                'groups' => ['unavailability:read:item']
+            ]
+        ),
+        new Post(
+            normalizationContext: ['groups' => ['unavailability:read:item']],
+            denormalizationContext: ['groups' => ['unavailability:write']]
+        )
+    ]
+)]
 class Unavailability
 {
     #[ORM\Id]
@@ -17,15 +38,19 @@ class Unavailability
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+      #[Groups(['unavailability:read', 'unavailability:read:item', 'unavailability:write'])]
     private ?\DateTime $startDate = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+          #[Groups(['unavailability:read', 'unavailability:read:item', 'unavailability:write'])]
     private ?\DateTime $endDate = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+          #[Groups(['unavailability:read:item', 'unavailability:write'])]
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'unavailabilities')]
+          #[Groups(['unavailability:read', 'unavailability:read:item', 'unavailability:write'])]
     private ?Announcement $announcement = null;
 
     public function getId(): ?int
