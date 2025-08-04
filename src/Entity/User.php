@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
+use App\Controller\UserController;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -28,6 +29,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
             ]
         ),
         new Get(
+             name: 'Me',
+            uriTemplate: '/me',
+            controller: UserController::class,
+	        security: "isGranted('IS_AUTHENTICATED_FULLY')",
             normalizationContext: [
                 'groups' => ['user:read:item']
             ]
