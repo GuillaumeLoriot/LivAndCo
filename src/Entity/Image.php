@@ -5,7 +5,9 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -26,7 +28,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Post(
             normalizationContext: ['groups' => ['image:read:item']],
             denormalizationContext: ['groups' => ['image:write']]
-        )
+        ),
+        new Put(
+            normalizationContext: ['groups' => ['image:read:item']],
+            denormalizationContext: ['groups' => ['image:write']]
+        ),
+        new Patch(
+            normalizationContext: ['groups' => ['image:read:item']],
+            denormalizationContext: ['groups' => ['image:write']]
+        ),
     ]
 )]
 
@@ -43,7 +53,7 @@ class Image
     private ?string $path = null;
 
     #[ORM\ManyToOne(inversedBy: 'images')]
-    #[Groups(['image:write'])]
+    #[Groups(['image:read:item', 'image:write'])]
 
     private ?Accomodation $accomodation = null;
 

@@ -5,7 +5,9 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -29,7 +31,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Post(
             normalizationContext: ['groups' => ['service:read:item']],
             denormalizationContext: ['groups' => ['service:admin:write']]
-        )
+        ),
+        new Put(
+            normalizationContext: ['groups' => ['service:read:item']],
+            denormalizationContext: ['groups' => ['service:write']]
+        ),
+        new Patch(
+            normalizationContext: ['groups' => ['service:read:item']],
+            denormalizationContext: ['groups' => ['service:write']]
+        ),
     ]
 )]
 

@@ -5,7 +5,9 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\AnnouncementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -29,7 +31,16 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Post(
             normalizationContext: ['groups' => ['announcement:read:item']],
             denormalizationContext: ['groups' => ['announcement:write']]
-        )
+        ),
+        new Put(
+            normalizationContext: ['groups' => ['announcement:read:item']],
+            denormalizationContext: ['groups' => ['announcement:write']]
+        ),
+        new Patch(
+            normalizationContext: ['groups' => ['announcement:read:item']],
+            denormalizationContext: ['groups' => ['announcement:write']]
+        ),
+
     ]
 )]
 

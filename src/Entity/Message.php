@@ -5,7 +5,9 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\MessageRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -27,7 +29,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Post(
             normalizationContext: ['groups' => ['message:read:item']],
             denormalizationContext: ['groups' => ['message:write']]
-        )
+        ),
+        new Put(
+            normalizationContext: ['groups' => ['message:read:item']],
+            denormalizationContext: ['groups' => ['message:write']]
+        ),
+        new Patch(
+            normalizationContext: ['groups' => ['message:read:item']],
+            denormalizationContext: ['groups' => ['message:write']]
+        ),
     ]
 )]
 

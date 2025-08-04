@@ -5,7 +5,9 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\UnavailabilityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -27,7 +29,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Post(
             normalizationContext: ['groups' => ['unavailability:read:item']],
             denormalizationContext: ['groups' => ['unavailability:write']]
-        )
+        ),
+         new Put(
+            denormalizationContext: ['groups' => ['unavailability:write']],
+            normalizationContext: ['groups' => ['unavailability:read:item']],
+        ),
+        new Patch(
+            denormalizationContext: ['groups' => ['unavailability:write']],
+            normalizationContext: ['groups' => ['unavailability:read:item']],
+        ),
     ]
 )]
 class Unavailability
