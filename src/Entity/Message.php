@@ -18,9 +18,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     operations: [
         new GetCollection(
-            normalizationContext: [
-                'groups' => ['message:read']
-            ]
+            normalizationContext: ['groups' => ['message:read']],
+            security: "is_granted('ROLE_USER')"
         ),
         new Get(
             normalizationContext: [
@@ -34,15 +33,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Put(
             normalizationContext: ['groups' => ['message:read:item']],
             denormalizationContext: ['groups' => ['message:write']],
-            security: "object.getSender() == user"
+            // security: "object.getSender() == user"
         ),
         new Patch(
             normalizationContext: ['groups' => ['message:read:item']],
             denormalizationContext: ['groups' => ['message:write']],
-            security: "object.getSender() == user"
+            // security: "object.getSender() == user"
         ),
         new Delete(
-            security: "object.getSender() == user"
+            // security: "object.getSender() == user"
         )
     ]
 )]
