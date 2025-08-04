@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
@@ -32,12 +33,17 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
         new Put(
             normalizationContext: ['groups' => ['message:read:item']],
-            denormalizationContext: ['groups' => ['message:write']]
+            denormalizationContext: ['groups' => ['message:write']],
+            security: "object.getSender() == user"
         ),
         new Patch(
             normalizationContext: ['groups' => ['message:read:item']],
-            denormalizationContext: ['groups' => ['message:write']]
+            denormalizationContext: ['groups' => ['message:write']],
+            security: "object.getSender() == user"
         ),
+        new Delete(
+            security: "object.getSender() == user"
+        )
     ]
 )]
 

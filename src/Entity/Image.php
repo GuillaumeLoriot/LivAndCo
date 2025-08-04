@@ -37,6 +37,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
             normalizationContext: ['groups' => ['image:read:item']],
             denormalizationContext: ['groups' => ['image:write']]
         ),
+                new Delete()
     ]
 )]
 

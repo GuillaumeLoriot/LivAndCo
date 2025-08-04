@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
@@ -30,16 +31,22 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
         new Post(
             normalizationContext: ['groups' => ['service:read:item']],
-            denormalizationContext: ['groups' => ['service:admin:write']]
+            denormalizationContext: ['groups' => ['service:admin:write']],
+            security: "is_granted('ROLE_ADMIN')"
         ),
         new Put(
             normalizationContext: ['groups' => ['service:read:item']],
-            denormalizationContext: ['groups' => ['service:write']]
+            denormalizationContext: ['groups' => ['service:write']],
+            security: "is_granted('ROLE_ADMIN')"
         ),
         new Patch(
             normalizationContext: ['groups' => ['service:read:item']],
-            denormalizationContext: ['groups' => ['service:write']]
+            denormalizationContext: ['groups' => ['service:write']],
+            security: "is_granted('ROLE_ADMIN')"
         ),
+        new Delete(
+            security: "is_granted('ROLE_ADMIN')"
+        )
     ]
 )]
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
@@ -28,16 +29,22 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
         new Post(
             normalizationContext: ['groups' => ['unavailability:read:item']],
-            denormalizationContext: ['groups' => ['unavailability:write']]
+            denormalizationContext: ['groups' => ['unavailability:write']],
+            security: "object.getAnnouncement().getOwner() == user"
         ),
-         new Put(
+        new Put(
             denormalizationContext: ['groups' => ['unavailability:write']],
             normalizationContext: ['groups' => ['unavailability:read:item']],
+            security: "object.getAnnouncement().getOwner() == user"
         ),
         new Patch(
             denormalizationContext: ['groups' => ['unavailability:write']],
             normalizationContext: ['groups' => ['unavailability:read:item']],
+            security: "object.getAnnouncement().getOwner() == user"
         ),
+        new Delete(
+            security: "object.getAnnouncement().getOwner() == user"
+        )
     ]
 )]
 class Unavailability
@@ -48,19 +55,19 @@ class Unavailability
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-      #[Groups(['unavailability:read', 'unavailability:read:item', 'unavailability:write'])]
+    #[Groups(['unavailability:read', 'unavailability:read:item', 'unavailability:write'])]
     private ?\DateTime $startDate = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-          #[Groups(['unavailability:read', 'unavailability:read:item', 'unavailability:write'])]
+    #[Groups(['unavailability:read', 'unavailability:read:item', 'unavailability:write'])]
     private ?\DateTime $endDate = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-          #[Groups(['unavailability:read:item', 'unavailability:write'])]
+    #[Groups(['unavailability:read:item', 'unavailability:write'])]
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'unavailabilities')]
-          #[Groups(['unavailability:read', 'unavailability:read:item', 'unavailability:write'])]
+    #[Groups(['unavailability:read', 'unavailability:read:item', 'unavailability:write'])]
     private ?Announcement $announcement = null;
 
     public function getId(): ?int
