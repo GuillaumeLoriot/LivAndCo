@@ -42,7 +42,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
             denormalizationContext: ['groups' => ['accomodation:write']]
         ),
         new Delete(
-            // security: "object.getOwner() == user"
+            security: "object.getOwner() == user"
         )
     ]
 )]

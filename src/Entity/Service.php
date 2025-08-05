@@ -32,20 +32,20 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Post(
             normalizationContext: ['groups' => ['service:read:item']],
             denormalizationContext: ['groups' => ['service:admin:write']],
-            // security: "is_granted('ROLE_ADMIN')"
+            security: "is_granted('ROLE_ADMIN')"
         ),
         new Put(
             normalizationContext: ['groups' => ['service:read:item']],
             denormalizationContext: ['groups' => ['service:write']],
-            // security: "is_granted('ROLE_ADMIN')"
+            security: "is_granted('ROLE_ADMIN')"
         ),
         new Patch(
             normalizationContext: ['groups' => ['service:read:item']],
             denormalizationContext: ['groups' => ['service:write']],
-            // security: "is_granted('ROLE_ADMIN')"
+            security: "is_granted('ROLE_ADMIN')"
         ),
         new Delete(
-            // security: "is_granted('ROLE_ADMIN')"
+            security: "is_granted('ROLE_ADMIN')"
         )
     ]
 )]

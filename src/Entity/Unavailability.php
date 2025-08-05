@@ -30,20 +30,20 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Post(
             normalizationContext: ['groups' => ['unavailability:read:item']],
             denormalizationContext: ['groups' => ['unavailability:write']],
-            // security: "object.getAnnouncement().getOwner() == user"
+            security: "object.getAnnouncement().getOwner() == user"
         ),
         new Put(
             denormalizationContext: ['groups' => ['unavailability:write']],
             normalizationContext: ['groups' => ['unavailability:read:item']],
-            // security: "object.getAnnouncement().getOwner() == user"
+            security: "object.getAnnouncement().getOwner() == user"
         ),
         new Patch(
             denormalizationContext: ['groups' => ['unavailability:write']],
             normalizationContext: ['groups' => ['unavailability:read:item']],
-            // security: "object.getAnnouncement().getOwner() == user"
+            security: "object.getAnnouncement().getOwner() == user"
         ),
         new Delete(
-            // security: "object.getAnnouncement().getOwner() == user"
+            security: "object.getAnnouncement().getOwner() == user"
         )
     ]
 )]

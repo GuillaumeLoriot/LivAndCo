@@ -40,19 +40,19 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Post(
             normalizationContext: ['groups' => ['user:read']],
             denormalizationContext: ['groups' => ['user:write']],
-            // processor: UserPasswordHasherProcessor::class,
+            processor: UserPasswordHasherProcessor::class,
         ),
          new Put(
             denormalizationContext: ['groups' => ['user:write']],
             normalizationContext: ['groups' => ['user:read:item']],
-            // processor: UserPasswordHasherProcessor::class,
-            // security: "object.getOwner() == user"
+            processor: UserPasswordHasherProcessor::class,
+            security: "object.getOwner() == user"
         ),
         new Patch(
             denormalizationContext: ['groups' => ['user:write']],
             normalizationContext: ['groups' => ['user:read:item']],
-            // processor: UserPasswordHasherProcessor::class,
-            // security: "object.getOwner() == user"
+            processor: UserPasswordHasherProcessor::class,
+            security: "object.getOwner() == user"
         ),
     ]
 )]
@@ -85,10 +85,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(['user:write'])]
 
     private ?string $password = null;
-
-    #[ORM\Column(length: 255)]
-    #[Groups(['user:read', 'user:write', 'user:read:item', 'accommodation:read:item', 'announcement:read:item', 'review:read', 'review:read:item'])]
-    private ?string $username = null;
 
     #[ORM\Column(length: 60)]
     #[Groups(['user:read:item', 'user:write'])]
@@ -258,18 +254,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(string $username): static
-    {
-        $this->username = $username;
-
-        return $this;
     }
 
     public function getLastName(): ?string
