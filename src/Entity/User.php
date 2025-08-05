@@ -40,19 +40,19 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Post(
             normalizationContext: ['groups' => ['user:read']],
             denormalizationContext: ['groups' => ['user:write']],
-            processor: UserPasswordHasherProcessor::class,
+            // processor: UserPasswordHasherProcessor::class,
         ),
          new Put(
             denormalizationContext: ['groups' => ['user:write']],
             normalizationContext: ['groups' => ['user:read:item']],
-            processor: UserPasswordHasherProcessor::class,
-            security: "object.getOwner() == user"
+            // processor: UserPasswordHasherProcessor::class,
+            // security: "object.getOwner() == user"
         ),
         new Patch(
             denormalizationContext: ['groups' => ['user:write']],
             normalizationContext: ['groups' => ['user:read:item']],
-            processor: UserPasswordHasherProcessor::class,
-            security: "object.getOwner() == user"
+            // processor: UserPasswordHasherProcessor::class,
+            // security: "object.getOwner() == user"
         ),
     ]
 )]
