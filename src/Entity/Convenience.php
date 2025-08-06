@@ -31,17 +31,22 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
         new Post(
             normalizationContext: ['groups' => ['convenience:read:item']],
-            denormalizationContext: ['groups' => ['convenience:admin:write']]
+            denormalizationContext: ['groups' => ['convenience:admin:write']],
+            security: "is_granted('ROLE_ADMIN')"
         ),
         new Put(
             normalizationContext: ['groups' => ['convenience:read:item']],
-            denormalizationContext: ['groups' => ['convenience:write']]
+            denormalizationContext: ['groups' => ['convenience:write']],
+            security: "is_granted('ROLE_ADMIN')"
         ),
         new Patch(
             normalizationContext: ['groups' => ['convenience:read:item']],
-            denormalizationContext: ['groups' => ['convenience:write']]
+            denormalizationContext: ['groups' => ['convenience:write']],
+            security: "is_granted('ROLE_ADMIN')"
         ),
-        new Delete()
+        new Delete(
+            security: "is_granted('ROLE_ADMIN')"
+        )
     ]
 )]
 class Convenience

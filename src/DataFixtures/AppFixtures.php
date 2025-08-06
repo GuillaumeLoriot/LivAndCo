@@ -24,7 +24,7 @@ class AppFixtures extends Fixture
     private const STATUSES = ['pending', 'confirmed', 'cancelled'];
     private const GENDERS = ['male', 'female'];
 
-        public function __construct(
+    public function __construct(
         private UserPasswordHasherInterface $hasher,
 
     ) {
@@ -92,10 +92,28 @@ class AppFixtures extends Fixture
             ->setOccupation($faker->randomElement($occupations))
             ->setCreatedAt(new DateTimeImmutable);
 
-
-
         $manager->persist($regularUser);
         $users[] = $regularUser;
+
+
+        $owner = new User();
+        $owner
+            ->setEmail('owner@user.com')
+            ->setRoles(['ROLE_OWNER'])
+            ->setPassword($this->hasher->hashPassword($owner, 'test'))
+            ->setFirstName('jane')
+            ->setLastName('doe')
+            ->setBirthDate(DateTimeImmutable::createFromMutable($faker->dateTimeBetween('1980-01-01', '-20 years', 'Europe/Paris')))
+            ->setGender('female')
+            ->setBillingAddress($faker->address())
+            ->setIsVerified(true)
+            ->setProfilePicture('generic-user.jpg')
+            ->setPhoneNumber($faker->phoneNumber())
+            ->setOccupation($faker->randomElement($occupations))
+            ->setCreatedAt(new DateTimeImmutable);
+
+        $manager->persist($owner);
+        $users[] = $owner;
 
 
         $adminUser = new User();
@@ -220,7 +238,7 @@ class AppFixtures extends Fixture
                     ->setDescription($announcementItem['description'])
                     ->setDailyPrice($announcementItem['dailyPrice'])
                     ->setNbPlace($announcementItem['nbPlace'])
-                    ->setCoverPicture( $randomAnnouncementImage['coverPicture'])
+                    ->setCoverPicture($randomAnnouncementImage['coverPicture'])
                     ->setAccomodation($accomodation)
                     ->setOwner($user)
                     ->addConvenience($wifiConvenience);

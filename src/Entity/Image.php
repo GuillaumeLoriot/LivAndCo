@@ -28,17 +28,22 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
         new Post(
             normalizationContext: ['groups' => ['image:read:item']],
-            denormalizationContext: ['groups' => ['image:write']]
+            denormalizationContext: ['groups' => ['image:write']],
+            security: "is_granted('ROLE_OWNER')"
         ),
         new Put(
             normalizationContext: ['groups' => ['image:read:item']],
-            denormalizationContext: ['groups' => ['image:write']]
+            denormalizationContext: ['groups' => ['image:write']],
+            security: "is_granted('ROLE_OWNER')"
         ),
         new Patch(
             normalizationContext: ['groups' => ['image:read:item']],
-            denormalizationContext: ['groups' => ['image:write']]
+            denormalizationContext: ['groups' => ['image:write']],
+            security: "is_granted('ROLE_OWNER')"
         ),
-        new Delete()
+        new Delete(
+            security: "is_granted('ROLE_OWNER')"
+        )
     ]
 )]
 

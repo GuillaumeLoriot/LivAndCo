@@ -10,6 +10,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Repository\AccomodationRepository;
+use App\State\AccomodationProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -31,15 +32,19 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
         new Post(
             normalizationContext: ['groups' => ['accomodation:read:item']],
-            denormalizationContext: ['groups' => ['accomodation:write']]
+            denormalizationContext: ['groups' => ['accomodation:write']],
+            processor: AccomodationProcessor::class,
+            security: "is_granted('ROLE_USER')"
         ),
         new Put(
             normalizationContext: ['groups' => ['accomodation:read:item']],
-            denormalizationContext: ['groups' => ['accomodation:write']]
+            denormalizationContext: ['groups' => ['accomodation:write']],
+            security: "object.getOwner() == user"
         ),
         new Patch(
             normalizationContext: ['groups' => ['accomodation:read:item']],
-            denormalizationContext: ['groups' => ['accomodation:write']]
+            denormalizationContext: ['groups' => ['accomodation:write']],
+            security: "object.getOwner() == user"
         ),
         new Delete(
             security: "object.getOwner() == user"

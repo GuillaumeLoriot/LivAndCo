@@ -15,6 +15,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Repository\AnnouncementRepository;
+use App\State\AnnouncementProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -36,15 +37,19 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ),
         new Post(
             normalizationContext: ['groups' => ['announcement:read:item']],
-            denormalizationContext: ['groups' => ['announcement:write']]
+            denormalizationContext: ['groups' => ['announcement:write']],
+            processor: AnnouncementProcessor::class,
+            security: "is_granted('ROLE_OWNER')"
         ),
         new Put(
             normalizationContext: ['groups' => ['announcement:read:item']],
-            denormalizationContext: ['groups' => ['announcement:write']]
+            denormalizationContext: ['groups' => ['announcement:write']],
+            security: "object.getOwner() == user"
         ),
         new Patch(
             normalizationContext: ['groups' => ['announcement:read:item']],
-            denormalizationContext: ['groups' => ['announcement:write']]
+            denormalizationContext: ['groups' => ['announcement:write']],
+            security: "object.getOwner() == user"
         ),
         new Delete(
             security: "object.getOwner() == user"

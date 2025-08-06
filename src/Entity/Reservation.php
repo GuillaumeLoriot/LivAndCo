@@ -28,24 +28,26 @@ use Symfony\Component\Serializer\Annotation\Groups;
             ]
         ),
         new Get(
-            normalizationContext: [
-                'groups' => ['reservation:read:item']
-            ]
+            normalizationContext: ['groups' => ['reservation:read:item']],
+            security: "object.getUser() == user || object.getAnnouncement().getOwner() == user"
         ),
         new Post(
             normalizationContext: ['groups' => ['reservation:read:item']],
-            denormalizationContext: ['groups' => ['reservation:write']]
+            denormalizationContext: ['groups' => ['reservation:write']],
+            security: "is_granted('ROLE_USER')"
         ),
         new Put(
             normalizationContext: ['groups' => ['reservation:read:item']],
-            denormalizationContext: ['groups' => ['reservation:write']]
+            denormalizationContext: ['groups' => ['reservation:write']],
+            security: "object.getUser() == user"
         ),
         new Patch(
             normalizationContext: ['groups' => ['reservation:read:item']],
-            denormalizationContext: ['groups' => ['reservation:write']]
+            denormalizationContext: ['groups' => ['reservation:write']],
+            security: "object.getUser() == user"
         ),
         new Delete(
-            security: "object.getUser() == user"
+            security: "object.getUser() == user || object.getAnnouncement().getOwner() == user"
         )
     ]
 )]

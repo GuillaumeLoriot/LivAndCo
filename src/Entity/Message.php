@@ -19,26 +19,17 @@ use Symfony\Component\Serializer\Annotation\Groups;
     operations: [
         new GetCollection(
             normalizationContext: ['groups' => ['message:read']],
-            security: "is_granted('ROLE_USER')"
+            security: "object.getSender() == user || object.getReceiver == user"
         ),
         new Get(
             normalizationContext: [
-                'groups' => ['message:read:item']
-            ]
+                'groups' => ['message:read:item']],
+                security: "object.getSender() == user || object.getReceiver == user"
         ),
         new Post(
             normalizationContext: ['groups' => ['message:read:item']],
-            denormalizationContext: ['groups' => ['message:write']]
-        ),
-        new Put(
-            normalizationContext: ['groups' => ['message:read:item']],
             denormalizationContext: ['groups' => ['message:write']],
-            security: "object.getSender() == user"
-        ),
-        new Patch(
-            normalizationContext: ['groups' => ['message:read:item']],
-            denormalizationContext: ['groups' => ['message:write']],
-            security: "object.getSender() == user"
+            security: "is_granted('ROLE_USER')"
         ),
         new Delete(
             security: "object.getSender() == user"
