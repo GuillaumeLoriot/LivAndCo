@@ -2,6 +2,10 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -47,6 +51,17 @@ use Symfony\Component\Serializer\Annotation\Groups;
         )
     ]
 )]
+#[ApiFilter(SearchFilter::class, properties: [
+    'announcement.id' => 'exact'
+])]
+#[ApiFilter(RangeFilter::class, properties: [
+    'startDate',
+    'endDate',
+])]
+#[ApiFilter(OrderFilter::class, properties: [
+    'startDate',
+    'endDate',
+])]
 class Unavailability
 {
     #[ORM\Id]
