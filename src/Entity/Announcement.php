@@ -61,6 +61,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     'accommodation.address' => 'partial',
     'accommodation.city' => 'partial',
     'accommodation.zipcode' => 'exact',
+    'accomodation.id' => 'exact',
     'owner.id' => 'exact',
     'services.id' => 'exact',
     'equipment.id' => 'exact',

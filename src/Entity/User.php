@@ -25,16 +25,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new GetCollection(
             normalizationContext: [
                 'groups' => ['user:read']
-            ]
+            ],
+            security: "is_granted('ROLE_ADMIN')",
         ),
         new Get(
             name: 'Me',
             uriTemplate: '/me',
             controller: UserController::class,
-	        security: "isGranted('IS_AUTHENTICATED_FULLY')",
-            normalizationContext: [
-                'groups' => ['user:read:item']
-            ]
+            normalizationContext: ['groups' => ['user:read:item']],
+            security: "is_granted('IS_AUTHENTICATED_FULLY')",
         ),
         new Post(
             name: 'create_user',
