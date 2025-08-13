@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
@@ -47,6 +48,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
             processor: UserPasswordHasherProcessor::class,
             security: "object.getOwner() == user"
         ),
+        new Delete(
+            security: "object == user"
+        )
     ]
 )]
 

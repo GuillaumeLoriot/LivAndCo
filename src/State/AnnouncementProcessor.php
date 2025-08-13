@@ -9,6 +9,7 @@ use App\Entity\Announcement;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class AnnouncementProcessor implements ProcessorInterface
 {
@@ -29,7 +30,7 @@ class AnnouncementProcessor implements ProcessorInterface
         $accomodationOwner = $data->getAccomodation()->getOwner();
 
         if ($user !== $accomodationOwner) {
-            return $data;
+            throw new AccessDeniedHttpException;
         }
 
         $data->setOwner($user);
