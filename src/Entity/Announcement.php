@@ -68,7 +68,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 ])]
 #[ApiFilter(RangeFilter::class, properties: [
     'dailyPrice',
-    'maxClient'
+    'nbPlace'
 ])]
 #[ApiFilter(OrderFilter::class, properties: [
     'dailyPrice',
