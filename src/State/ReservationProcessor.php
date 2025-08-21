@@ -79,7 +79,7 @@ class ReservationProcessor implements ProcessorInterface
         // je défini les données après toutes les vérifications
         $data->setUser($user)
             ->setAnnouncement($announcement)
-            ->setTotalPrice(floor(($announcement->getDailyPrice() * 365) / 12))
+            ->setTotalPrice(((int) floor(($announcement->getDailyPrice() * 365) / 12)) * $duration)
             ->setCreatedAt(new \DateTimeImmutable())
             ->setStatus('pending')
             ->setStartDate($startDate)
