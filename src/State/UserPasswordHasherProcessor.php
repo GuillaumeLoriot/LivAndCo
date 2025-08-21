@@ -31,11 +31,11 @@ class UserPasswordHasherProcessor implements ProcessorInterface
         }
 
         if ($operationName === 'create_user') {
-            $data->setPassword($this->hasher->hashPassword($data, $plainPassword));
-            $data->setRoles(['ROLE_USER']);
-            $data->setIsVerified(false);
-            $data->setCreatedAt(new \DateTimeImmutable());
-    
+            $data->setPassword($this->hasher->hashPassword($data, $plainPassword))
+                ->setRoles(['ROLE_USER'])
+                ->setIsVerified(false)
+                ->setCreatedAt(new \DateTimeImmutable());
+
             $this->em->persist($data);
         }
         

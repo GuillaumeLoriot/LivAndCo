@@ -69,13 +69,13 @@ class Unavailability
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Groups(['unavailability:read', 'unavailability:read:item', 'unavailability:write'])]
-    private ?\DateTime $startDate = null;
+    private ?\DateTimeImmutable $startDate = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Groups(['unavailability:read', 'unavailability:read:item', 'unavailability:write'])]
-    private ?\DateTime $endDate = null;
+    private ?\DateTimeImmutable $endDate = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Groups(['unavailability:read:item', 'unavailability:write'])]
@@ -90,24 +90,24 @@ class Unavailability
         return $this->id;
     }
 
-    public function getStartDate(): ?\DateTime
+    public function getStartDate(): ?\DateTimeImmutable
     {
         return $this->startDate;
     }
 
-    public function setStartDate(\DateTime $startDate): static
+    public function setStartDate(\DateTimeImmutable $startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    public function getEndDate(): ?\DateTime
+    public function getEndDate(): ?\DateTimeImmutable
     {
         return $this->endDate;
     }
 
-    public function setEndDate(\DateTime $endDate): static
+    public function setEndDate(\DateTimeImmutable $endDate): static
     {
         $this->endDate = $endDate;
 

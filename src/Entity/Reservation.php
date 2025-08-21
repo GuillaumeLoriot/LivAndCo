@@ -15,6 +15,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Repository\ReservationRepository;
+use App\State\ReservationProcessor;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -34,7 +35,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Post(
             normalizationContext: ['groups' => ['reservation:read:item']],
             denormalizationContext: ['groups' => ['reservation:write']],
+            processor: ReservationProcessor::class,
             security: "is_granted('ROLE_USER')"
+            
         ),
         new Put(
             normalizationContext: ['groups' => ['reservation:read:item']],
@@ -76,47 +79,42 @@ class Reservation
     #[ORM\GeneratedValue]
     #[ORM\Column]
     #[Groups(['reservation:read:item', 'announcement:read:item'])]
-
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Groups(['reservation:read:item', 'announcement:read:item', 'reservation:write'])]
+    private ?\DateTimeImmutable $startDate = null;
 
-    private ?\DateTime $startDate = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Groups(['reservation:read:item', 'announcement:read:item', 'reservation:write'])]
-
-    private ?\DateTime $endDate = null;
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[Groups(['reservation:read:item', 'announcement:read:item'])]
+    private ?\DateTimeImmutable $endDate = null;
 
     #[ORM\Column(length: 100)]
     #[Groups(['reservation:read:item'])]
-
     private ?string $status = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     #[Groups(['reservation:read:item'])]
-
     private ?string $totalPrice = null;
 
     #[ORM\Column]
     #[Groups(['reservation:read:item'])]
-
     private ?\DateTimeImmutable $createdAt = null;
+
+    // donnée pour calculé la date de fin, exprimée en mois, non stockée en bdd
+    #[Groups(['reservation:write'])]
+    private ?int $duration = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
     #[Groups(['reservation:read:item'])]
-
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
-    #[Groups(['reservation:read:item'])]
-
+    #[Groups(['reservation:read:item', 'reservation:write'])]
     private ?Announcement $announcement = null;
 
     #[ORM\OneToOne(mappedBy: 'reservation', cascade: ['persist', 'remove'])]
     #[Groups(['reservation:read:item', 'announcement:read:item'])]
-
     private ?Review $review = null;
 
     public function getId(): ?int
@@ -124,24 +122,24 @@ class Reservation
         return $this->id;
     }
 
-    public function getStartDate(): ?\DateTime
+    public function getStartDate(): ?\DateTimeImmutable
     {
         return $this->startDate;
     }
 
-    public function setStartDate(\DateTime $startDate): static
+    public function setStartDate(\DateTimeImmutable $startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    public function getEndDate(): ?\DateTime
+    public function getEndDate(): ?\DateTimeImmutable
     {
         return $this->endDate;
     }
 
-    public function setEndDate(\DateTime $endDate): static
+    public function setEndDate(\DateTimeImmutable $endDate): static
     {
         $this->endDate = $endDate;
 
@@ -180,6 +178,18 @@ class Reservation
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getDuration(): ?int
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(int $duration): static
+    {
+        $this->duration = $duration;
 
         return $this;
     }

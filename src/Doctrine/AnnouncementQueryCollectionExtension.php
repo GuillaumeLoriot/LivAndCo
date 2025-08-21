@@ -35,28 +35,47 @@ final class AnnouncementQueryCollectionExtension implements QueryCollectionExten
 
         try {
             $startDate = new \DateTimeImmutable($filters['startDate']);
-
-            // Si endDate est fourni par l'utilisateur dans les filtres, je l’utilise, sinon j'ajoute 1 mois car c'est le minimum de réservation
-            $endDate = isset($filters['endDate']) ? new \DateTimeImmutable($filters['endDate']) : $startDate->modify('+1 month');
-            // Si endDate est fourni mais non logique car plus petit que startDate, j'ajoute par défaut 1 mois à starDate pour avoir un interval valide
-            if ($endDate <= $startDate) {
-                $endDate = $startDate->modify('+1 month');
-            }
         } catch (\Exception $e) {
-            return; // j'arrète si une des deux dates est invalide
+            return; // j'arrète si la date est invalide
         }
 
+        // par défault, la recherche sera de 1 mois si l'utilisateur ne rempli pas le champ months
+        $months = 1;
+        // si le paramètre months est présent je défini qu'il doit être supérieur à 0 et inférieur à 24 mois
+        if (isset($filters['months'])) {
+            $months = intval($filters['months']);
+            if ($months < 1) {
+                $months = 1;
+            }
+            if ($months >= 24) {
+                $months = 24;
+            }
+        }
+
+        $endDate = $startDate->modify("+{$months} month");
+
+        // rootAllias corespond à l'alias principale généré par doctrine pour la requète et enregistrer à l'indice 0
         $rootAlias = $queryBuilder->getRootAliases()[0];
 
-        // query qui cherche les announcements sans reservation ou libre au date recherchées et qui sera ajoutée à la suite au filtres standarts api platform
+        // query qui cherche les announcements sans reservation ou indisponibilités
+        // au dates recherchées et qui sera ajoutée à la suite des filtres standards api platform
         $queryBuilder
-            ->leftJoin("$rootAlias.reservations", 'r')
-            ->leftJoin("$rootAlias.unavailabilities", 'u')
-            ->andWhere('(r.id IS NULL OR r.endDate < :start OR r.startDate > :end)')
-            ->andWhere('(u.id IS NULL OR u.endDate < :start OR u.startDate > :end)')
+            ->distinct()
+            ->leftJoin(
+                "$rootAlias.reservations",
+                'r',
+                'WITH',
+                'r.startDate <= :end AND r.endDate >= :start'
+            )
+            ->leftJoin(
+                "$rootAlias.unavailabilities",
+                'u',
+                'WITH',
+                'u.startDate <= :end AND u.endDate >= :start'
+            )
+            ->andWhere('r.id IS NULL')
+            ->andWhere('u.id IS NULL')
             ->setParameter('start', $startDate)
-            ->setParameter('end', $endDate)
-            ->groupBy("$rootAlias.id");
-
+            ->setParameter('end', $endDate);
     }
 }

@@ -33,8 +33,6 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-
-
         // j'importe mes données en json et les décode pour travailler avec un tableau associatif
         $accomodations = json_decode(file_get_contents(__DIR__ . '/data/accomodations.json'), true);
         $announcements = json_decode(file_get_contents(__DIR__ . '/data/announcements.json'), true);
@@ -266,8 +264,8 @@ class AppFixtures extends Fixture
             $randomNb = $faker->numberBetween(2, 8);
             $randomReservations = $faker->randomElements($reservations, $randomNb);
             foreach ($randomReservations as $randomReservation) {
-                $dateStart = new DateTime($randomReservation['startDate']);
-                $endDate = new DateTime($randomReservation['endDate']);
+                $dateStart = new DateTimeImmutable($randomReservation['startDate']);
+                $endDate = new DateTimeImmutable($randomReservation['endDate']);
                 $interval = $dateStart->diff($endDate);
                 do {
                     $randomUser = $faker->randomElement($users);

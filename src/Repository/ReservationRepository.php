@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Announcement;
 use App\Entity\Reservation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -14,6 +15,22 @@ class ReservationRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Reservation::class);
+    }
+
+    public function hasReservation(Announcement $announcement, \DateTimeInterface $startDate, \DateTimeInterface $endDate): bool
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        $count = (int) $qb->select('COUNT(r.id)')
+            ->where('r.announcement = :announcement')
+            ->andWhere('r.startDate < :newEndDate')
+            ->andWhere('r.endDate > :newStartDate')
+            ->setParameter('announcement', $announcement)
+            ->setParameter('newStartDate', $startDate)
+            ->setParameter('newEndDate', $endDate)
+            ->getQuery()
+            ->getSingleScalarResult();
+        return $count > 0;
     }
 
 //    /**
