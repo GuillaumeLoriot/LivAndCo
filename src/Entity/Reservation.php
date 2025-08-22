@@ -19,6 +19,7 @@ use App\State\ReservationProcessor;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 #[ApiResource(
@@ -36,8 +37,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
             normalizationContext: ['groups' => ['reservation:read:item']],
             denormalizationContext: ['groups' => ['reservation:write']],
             processor: ReservationProcessor::class,
-            security: "is_granted('ROLE_USER')"
-            
+            security: "is_granted('ROLE_USER')"      
         ),
         new Put(
             normalizationContext: ['groups' => ['reservation:read:item']],
@@ -82,6 +82,8 @@ class Reservation
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[Assert\NotNull(message: 'La date de début est obligatoire.')]
+    #[Assert\GreaterThan('today', message: "La date de début doit être postérieure à aujourd'hui.")]
     #[Groups(['reservation:read:item', 'announcement:read:item', 'reservation:write'])]
     private ?\DateTimeImmutable $startDate = null;
 
@@ -102,6 +104,9 @@ class Reservation
     private ?\DateTimeImmutable $createdAt = null;
 
     // donnée pour calculé la date de fin, exprimée en mois, non stockée en bdd
+    #[Assert\NotNull(message: 'La durée est obligatoire.')]
+    #[Assert\Type('integer', message: 'La durée doit être un entier (mois).')]
+    #[Assert\Range(min: 1, max: 24, notInRangeMessage: 'La durée doit être comprise entre {{ min }} et {{ max }} mois.')]
     #[Groups(['reservation:write'])]
     private ?int $duration = null;
 

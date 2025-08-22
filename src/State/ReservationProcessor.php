@@ -33,8 +33,6 @@ class ReservationProcessor implements ProcessorInterface
             return $data;
         }
         $announcement = $data->getAnnouncement();
-
-
         $startDate = $data->getStartDate();
         $duration = $data->getDuration();
 
@@ -44,8 +42,8 @@ class ReservationProcessor implements ProcessorInterface
         }
 
         // si la durée n'est pas renseigné ou inférieur à 1 mois, je renvoi une erreur 422
-        if ($duration === null || $duration < 1) {
-            throw new UnprocessableEntityHttpException('la durée de la réservation est requise et doit être de 1 mois minimum.');
+        if ($duration === null || $duration < 1 || $duration > 36) {
+            throw new UnprocessableEntityHttpException('la durée de la réservation est requise, doit être de 1 mois minimum et 36 mois maximum');
         }
 
         // si la date de début est plus ancienne que le jour en cours, je renvoi une erreur 422
@@ -91,5 +89,3 @@ class ReservationProcessor implements ProcessorInterface
         return $data;
     }
 }
-
-// voir si vraiment besoin de verifier tout ça ici car api platform le gère peut etre de base
