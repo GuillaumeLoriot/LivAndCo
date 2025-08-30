@@ -25,11 +25,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AnnouncementRepository::class)]
 #[ApiResource(
+    paginationEnabled: true,
     operations: [
         new GetCollection(
             normalizationContext: [
                 'groups' => ['announcement:read']
-            ]
+            ],
+            paginationClientEnabled: true,
+            paginationClientItemsPerPage: true,
         ),
         new Get(
             normalizationContext: [
@@ -59,9 +62,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 #[ApiFilter(SearchFilter::class, properties: [
     'title' => 'partial',
-    'accommodation.address' => 'partial',
-    'accommodation.city' => 'partial',
-    'accommodation.zipcode' => 'exact',
+    'accomodation.address' => 'partial',
+    'accomodation.city' => 'partial',
+    'accomodation.zipcode' => 'exact',
     'accomodation.id' => 'exact',
     'owner.id' => 'exact',
     'services.id' => 'exact',
@@ -85,27 +88,27 @@ class Announcement
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item', 'announcement:write'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['announcement:read:item', 'accommodation:read:item', 'announcement:write'])]
+    #[Groups(['announcement:read:item', 'accomodation:read:item', 'announcement:write'])]
     private ?string $description = null;
 
     #[ORM\Column]
     #[Assert\Type('integer')]
     #[Assert\Positive]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item', 'announcement:write'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write'])]
     private ?int $dailyPrice = null;
 
     #[ORM\Column]
     #[Assert\Type('integer')]
     #[Assert\Positive]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item', 'announcement:write'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write'])]
     private ?int $nbPlace = null;
 
     #[ORM\ManyToOne(inversedBy: 'announcements')]
@@ -113,14 +116,14 @@ class Announcement
     private ?User $owner = null;
 
     #[ORM\ManyToOne(inversedBy: 'announcements')]
-    #[Groups(['announcement:read:item', 'announcement:write'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'announcement:write'])]
     private ?Accomodation $accomodation = null;
 
     /**
      * @var Collection<int, Reservation>
      */
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'announcement')]
-    #[Groups(['announcement:read:item'])]
+    #[Groups(['announcement:read:item', 'announcement:read'])]
     private Collection $reservations;
 
     /**
@@ -134,7 +137,7 @@ class Announcement
      * @var Collection<int, Convenience>
      */
     #[ORM\ManyToMany(targetEntity: Convenience::class, inversedBy: 'announcements')]
-    #[Groups(['announcement:read:item', 'announcement:write'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'announcement:write'])]
 
     private Collection $conveniences;
 
@@ -147,7 +150,7 @@ class Announcement
     private Collection $services;
 
     #[ORM\Column(length: 100)]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accommodation:read:item', 'announcement:write'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write'])]
 
     private ?string $coverPicture = null;
 

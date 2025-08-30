@@ -223,8 +223,8 @@ class AppFixtures extends Fixture
 
             // --------- ANNOUNCEMENTS ----------------------------------------------------------
 
-            $randomPrivateConveniences = $faker->randomElements($privateConveniences, $faker->numberBetween(2, 4));
-            $randomServices = $faker->randomElements($persistedServices, $faker->numberBetween(2, 4));
+            $randomPrivateConveniences = $faker->randomElements($privateConveniences, 3);
+            $randomServices = $faker->randomElements($persistedServices, 3);
 
             for ($i = 0; $i < $faker->numberBetween(2, 7); $i++) {
 
@@ -238,10 +238,8 @@ class AppFixtures extends Fixture
                     ->setNbPlace($announcementItem['nbPlace'])
                     ->setCoverPicture($randomAnnouncementImage['coverPicture'])
                     ->setAccomodation($accomodation)
-                    ->setOwner($user)
-                    ->addConvenience($wifiConvenience);
-
-
+                    ->setOwner($user);
+                    
                 foreach ($randomPrivateConveniences as $randomPrivateConvenience) {
                     $announcement->addConvenience($randomPrivateConvenience);
                 }

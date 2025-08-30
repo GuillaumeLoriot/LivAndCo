@@ -52,11 +52,11 @@ class Image
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['accommodation:read:item', 'accommodation:read', 'image:read', 'image:read:item'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'image:read', 'image:read:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['accommodation:read:item', 'accommodation:read', 'image:read', 'image:read:item', 'image:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'image:read', 'image:read:item', 'image:write'])]
     private ?string $path = null;
 
     #[ORM\ManyToOne(inversedBy: 'images')]

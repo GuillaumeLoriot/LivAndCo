@@ -1,4 +1,7 @@
 api_platform:
+    formats:
+        jsonld: ['application/ld+json']
+        json: ['application/json']
     title: Hello API Platform
     version: 1.0.0
     defaults:
@@ -10,3 +13,6 @@ api_platform:
             JWT:
                 name: Authorization
                 type: header
+
+
+                

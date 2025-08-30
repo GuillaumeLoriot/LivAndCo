@@ -48,7 +48,7 @@ class Review
     private ?int $id = null;
 
     #[ORM\Column]
-    #[Groups(['review:read', 'review:read:item', 'review:write'])]
+    #[Groups(['review:read', 'review:read:item', 'review:write', 'announcement:read', 'announcement:read:item'])]
     private ?int $rating = null;
 
     #[ORM\Column(type: Types::TEXT)]

@@ -23,8 +23,8 @@ class UnavailabilityRepository extends ServiceEntityRepository
 
         $count = (int) $qb->select('COUNT(u.id)')
             ->where('u.announcement = :announcement')
-            ->andWhere('u.startDate < :newEndDate')
-            ->andWhere('u.endDate > :newStartDate')
+            ->andWhere('u.startDate <= :newEndDate')
+            ->andWhere('u.endDate >= :newStartDate')
             ->setParameter('announcement', $announcement)
             ->setParameter('newStartDate', $startDate)
             ->setParameter('newEndDate', $endDate)

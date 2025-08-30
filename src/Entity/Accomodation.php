@@ -22,12 +22,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
     operations: [
         new GetCollection(
             normalizationContext: [
-                'groups' => ['accommodation:read']
+                'groups' => ['accomodation:read']
             ]
         ),
         new Get(
             normalizationContext: [
-                'groups' => ['accommodation:read:item']
+                'groups' => ['accomodation:read:item']
             ]
         ),
         new Post(
@@ -56,43 +56,43 @@ class Accomodation
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['accommodation:read:item', 'accommodation:read'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['accommodation:read:item', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:write'])]
     private ?string $addressLine1 = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['accommodation:read:item', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:write'])]
     private ?string $addressLine2 = null;
 
     #[ORM\Column(length: 70)]
-    #[Groups(['accommodation:read:item', 'accommodation:read', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
     private ?string $city = null;
 
     #[ORM\Column(length: 20)]
-    #[Groups(['accommodation:read:item', 'accommodation:read', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
     private ?string $zipCode = null;
 
     #[ORM\Column(length: 70)]
-    #[Groups(['accommodation:read:item', 'accommodation:read', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write'])]
     private ?string $country = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 7)]
-    #[Groups(['accommodation:read:item', 'accommodation:read', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
     private ?string $longitude = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 7)]
-    #[Groups(['accommodation:read:item', 'accommodation:read', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
     private ?string $latitude = null;
 
     #[ORM\Column]
-    #[Groups(['accommodation:read:item', 'accommodation:read', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
     private ?int $surface = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(['accommodation:read:item', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
     private ?bool $mixedGender = null;
 
     #[ORM\Column(length: 255)]
@@ -104,32 +104,32 @@ class Accomodation
     private ?string $insuranceCertificatePath = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['accommodation:read:item', 'accommodation:read', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item'])]
     private ?string $coverPicture = null;
 
     /**
      * @var Collection<int, Image>
      */
     #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'accomodation')]
-    #[Groups(['accommodation:read:item', 'accommodation:read', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write'])]
     private Collection $images;
 
     #[ORM\ManyToOne(inversedBy: 'accomodations')]
-    #[Groups(['accommodation:read:item'])]
+    #[Groups(['accomodation:read:item'])]
     private ?User $owner = null;
 
     /**
      * @var Collection<int, Announcement>
      */
     #[ORM\OneToMany(targetEntity: Announcement::class, mappedBy: 'accomodation')]
-    #[Groups(['accommodation:read:item'])]
+    #[Groups(['accomodation:read:item'])]
     private Collection $announcements;
 
     /**
      * @var Collection<int, Convenience>
      */
     #[ORM\ManyToMany(targetEntity: Convenience::class, inversedBy: 'accomodations')]
-    #[Groups(['accommodation:read:item', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
     private Collection $conveniences;
 
     public function __construct()

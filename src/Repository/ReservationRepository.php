@@ -23,8 +23,8 @@ class ReservationRepository extends ServiceEntityRepository
 
         $count = (int) $qb->select('COUNT(r.id)')
             ->where('r.announcement = :announcement')
-            ->andWhere('r.startDate < :newEndDate')
-            ->andWhere('r.endDate > :newStartDate')
+            ->andWhere('r.startDate <= :newEndDate')
+            ->andWhere('r.endDate >= :newStartDate')
             ->setParameter('announcement', $announcement)
             ->setParameter('newStartDate', $startDate)
             ->setParameter('newEndDate', $endDate)

@@ -119,7 +119,7 @@ class Reservation
     private ?Announcement $announcement = null;
 
     #[ORM\OneToOne(mappedBy: 'reservation', cascade: ['persist', 'remove'])]
-    #[Groups(['reservation:read:item', 'announcement:read:item'])]
+    #[Groups(['reservation:read:item', 'announcement:read:item', 'announcement:read'])]
     private ?Review $review = null;
 
     public function getId(): ?int

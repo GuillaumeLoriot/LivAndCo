@@ -59,13 +59,13 @@ class Convenience
     private ?int $id = null;
 
     #[ORM\Column(length: 120)]
-    #[Groups(['convenience:read', 'convenience:read:item', 'convenience:admin:write'])]
+    #[Groups(['convenience:read', 'convenience:read:item', 'convenience:admin:write', 'announcement:read'])]
 
     private ?string $name = null;
 
 
     #[ORM\Column(length: 50)]
-    #[Groups(['convenience:read', 'convenience:read:item', 'convenience:admin:write'])]
+    #[Groups(['convenience:read', 'convenience:read:item', 'convenience:admin:write', 'announcement:read'])]
 
     private ?string $icon = null;
 
