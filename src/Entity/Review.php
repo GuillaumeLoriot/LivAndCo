@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -38,13 +39,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
     ]
 )]
 
+
 class Review
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['review:read', 'review:read:item'])]
-
+    #[Groups(['review:read', 'review:read:item', 'announcement:read:item'])]
     private ?int $id = null;
 
     #[ORM\Column]
@@ -52,7 +53,7 @@ class Review
     private ?int $rating = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['review:read', 'review:read:item', 'review:write'])]
+    #[Groups(['review:read', 'review:read:item', 'review:write', 'announcement:read:item'])]
     private ?string $comment = null;
 
     #[ORM\Column]
@@ -64,7 +65,7 @@ class Review
     private ?Reservation $reservation = null;
 
     #[ORM\ManyToOne(inversedBy: 'reviews')]
-    #[Groups(['review:read', 'review:read:item'])]
+    #[Groups(['review:read', 'review:read:item', 'announcement:read:item'])]
     private ?User $user = null;
 
     public function getId(): ?int

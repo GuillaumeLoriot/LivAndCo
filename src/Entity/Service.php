@@ -55,17 +55,17 @@ class Service
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['service:read', 'service:read:item'])]
+    #[Groups(['service:read', 'service:read:item', 'announcement:read:item'])]
 
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['service:read', 'service:read:item', 'service:admin:write'])]
+    #[Groups(['service:read', 'service:read:item', 'service:admin:write', 'announcement:read:item'])]
 
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Groups(['service:read', 'service:read:item', 'service:admin:write'])]
+    #[Groups(['service:read', 'service:read:item', 'service:admin:write', 'announcement:read:item'])]
 
     private ?string $description = null;
 

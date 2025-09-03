@@ -89,7 +89,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $lastName = null;
 
     #[ORM\Column(length: 60)]
-    #[Groups(['user:read:item', 'user:write'])]
+    #[Groups(['user:read:item', 'user:write', 'announcement:read:item'])]
 
     private ?string $firstName = null;
 
@@ -165,9 +165,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $reviews;
 
     #[ORM\Column(length: 30, nullable: true)]
+    #[Groups(['user:write', 'user:read:item'])]
     private ?string $phoneNumber = null;
 
     #[ORM\Column(length: 50, nullable: true)]
+    #[Groups(['user:read', 'user:write', 'user:read:item', 'announcement:read:item', 'review:read', 'review:read:item'])]
     private ?string $occupation = null;
 
     public function __construct()

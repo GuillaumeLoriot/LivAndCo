@@ -51,11 +51,11 @@ class AppFixtures extends Fixture
         $users = [];
 
 
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 1; $i < 31; $i++) {
             $user = new User();
             $gender = $faker->randomElement(self::GENDERS);
             $user
-                ->setEmail($faker->email())
+                ->setEmail('regular'.$i.'@user.com')
                 ->setRoles(['ROLE_USER'])
                 ->setPassword($this->hasher->hashPassword($user, 'test'))
                 ->setFirstName($faker->firstName($gender))
@@ -64,7 +64,7 @@ class AppFixtures extends Fixture
                 ->setGender($gender)
                 ->setBillingAddress($faker->address())
                 ->setIsVerified($faker->boolean(70))
-                ->setProfilePicture('generic-user.jpg')
+                ->setProfilePicture('profile-'.$gender.'-'.$i.'.png')
                 ->setPhoneNumber($faker->phoneNumber())
                 ->setOccupation($faker->randomElement($occupations))
                 ->setCreatedAt(new DateTimeImmutable);
@@ -105,7 +105,7 @@ class AppFixtures extends Fixture
             ->setGender('female')
             ->setBillingAddress($faker->address())
             ->setIsVerified(true)
-            ->setProfilePicture('generic-user.jpg')
+            ->setProfilePicture('generic-owner.jpg')
             ->setPhoneNumber($faker->phoneNumber())
             ->setOccupation($faker->randomElement($occupations))
             ->setCreatedAt(new DateTimeImmutable);
@@ -125,7 +125,7 @@ class AppFixtures extends Fixture
             ->setGender('female')
             ->setBillingAddress($faker->address())
             ->setIsVerified(true)
-            ->setProfilePicture('admin-user.jpg')
+            ->setProfilePicture('generic-admin.jpg')
             ->setPhoneNumber('0123456706')
             ->setOccupation('Liv&Co Administrator')
             ->setCreatedAt(new DateTimeImmutable);

@@ -111,7 +111,7 @@ class Accomodation
      * @var Collection<int, Image>
      */
     #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'accomodation')]
-    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item'])]
     private Collection $images;
 
     #[ORM\ManyToOne(inversedBy: 'accomodations')]

@@ -54,18 +54,18 @@ class Convenience
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['convenience:read', 'convenience:read:item'])]
+    #[Groups(['convenience:read', 'convenience:read:item', 'announcement:read:item'])]
 
     private ?int $id = null;
 
     #[ORM\Column(length: 120)]
-    #[Groups(['convenience:read', 'convenience:read:item', 'convenience:admin:write', 'announcement:read'])]
+    #[Groups(['convenience:read', 'convenience:read:item', 'convenience:admin:write', 'announcement:read', 'announcement:read:item'])]
 
     private ?string $name = null;
 
 
     #[ORM\Column(length: 50)]
-    #[Groups(['convenience:read', 'convenience:read:item', 'convenience:admin:write', 'announcement:read'])]
+    #[Groups(['convenience:read', 'convenience:read:item', 'convenience:admin:write', 'announcement:read', 'announcement:read:item'])]
 
     private ?string $icon = null;
 

@@ -32,6 +32,7 @@ class UserPasswordHasherProcessor implements ProcessorInterface
 
         if ($operationName === 'create_user') {
             $data->setPassword($this->hasher->hashPassword($data, $plainPassword))
+                ->setProfilePicture('generic-user.jpg')
                 ->setRoles(['ROLE_USER'])
                 ->setIsVerified(false)
                 ->setCreatedAt(new \DateTimeImmutable());

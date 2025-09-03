@@ -129,10 +129,6 @@
     
     "private": [
         {
-            "name": "Ventilateur",
-            "icon": "fan.svg"
-        },
-        {
             "name": "Climatisation",
             "icon": "clim.svg"
         },
