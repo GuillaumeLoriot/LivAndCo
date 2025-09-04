@@ -53,10 +53,10 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Patch(
             normalizationContext: ['groups' => ['announcement:read:item']],
             denormalizationContext: ['groups' => ['announcement:write']],
-            security: "object.getOwner() == user"
+            security: "object.getAccomodation().getOwner() == user"
         ),
         new Delete(
-            security: "object.getOwner() == user"
+            security: "object.getAccomodation().getOwner() == user"
         )
     ]
 )]
@@ -66,7 +66,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     'accomodation.city' => 'partial',
     'accomodation.zipcode' => 'exact',
     'accomodation.id' => 'exact',
-    'owner.id' => 'exact',
+    'accomodation.owner.id' => 'exact',
     'services.id' => 'exact',
     'equipment.id' => 'exact',
 ])]
@@ -110,10 +110,6 @@ class Announcement
     #[Assert\Positive]
     #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write'])]
     private ?int $nbPlace = null;
-
-    #[ORM\ManyToOne(inversedBy: 'announcements')]
-    #[Groups(['announcement:read:item'])]
-    private ?User $owner = null;
 
     #[ORM\ManyToOne(inversedBy: 'announcements')]
     #[Groups(['announcement:read:item', 'announcement:read', 'announcement:write'])]
@@ -211,18 +207,6 @@ class Announcement
     public function setNbPlace(int $nbPlace): static
     {
         $this->nbPlace = $nbPlace;
-
-        return $this;
-    }
-
-    public function getOwner(): ?User
-    {
-        return $this->owner;
-    }
-
-    public function setOwner(?User $owner): static
-    {
-        $this->owner = $owner;
 
         return $this;
     }

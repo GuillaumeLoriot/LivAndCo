@@ -237,8 +237,7 @@ class AppFixtures extends Fixture
                     ->setDailyPrice($announcementItem['dailyPrice'])
                     ->setNbPlace($announcementItem['nbPlace'])
                     ->setCoverPicture($randomAnnouncementImage['coverPicture'])
-                    ->setAccomodation($accomodation)
-                    ->setOwner($user);
+                    ->setAccomodation($accomodation);
                     
                 foreach ($randomPrivateConveniences as $randomPrivateConvenience) {
                     $announcement->addConvenience($randomPrivateConvenience);
@@ -258,7 +257,7 @@ class AppFixtures extends Fixture
 
         foreach ($persistedAnnouncements as $persistedAnnouncement) {
             $announcementDailyPrice = $persistedAnnouncement->getDailyPrice();
-            $owner = $persistedAnnouncement->getOwner();
+            $owner = $persistedAnnouncement->getAccomodation()->getOwner();
             $randomNb = $faker->numberBetween(2, 8);
             $randomReservations = $faker->randomElements($reservations, $randomNb);
             foreach ($randomReservations as $randomReservation) {

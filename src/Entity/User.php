@@ -47,7 +47,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             denormalizationContext: ['groups' => ['user:write']],
             normalizationContext: ['groups' => ['user:read:item']],
             processor: UserPasswordHasherProcessor::class,
-            security: "object.getOwner() == user"
+            security: "object == user"
         ),
         new Delete(
             security: "object == user"
@@ -142,13 +142,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(['user:read:item'])]
 
     private Collection $accomodations;
-
-    /**
-     * @var Collection<int, Announcement>
-     */
-    #[ORM\OneToMany(targetEntity: Announcement::class, mappedBy: 'owner')]
-    #[Groups(['user:read:item'])]
-    private Collection $announcements;
 
     /**
      * @var Collection<int, Reservation>
@@ -435,36 +428,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($accomodation->getOwner() === $this) {
                 $accomodation->setOwner(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Announcement>
-     */
-    public function getAnnouncements(): Collection
-    {
-        return $this->announcements;
-    }
-
-    public function addAnnouncement(Announcement $announcement): static
-    {
-        if (!$this->announcements->contains($announcement)) {
-            $this->announcements->add($announcement);
-            $announcement->setOwner($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAnnouncement(Announcement $announcement): static
-    {
-        if ($this->announcements->removeElement($announcement)) {
-            // set the owning side to null (unless already changed)
-            if ($announcement->getOwner() === $this) {
-                $announcement->setOwner(null);
             }
         }
 

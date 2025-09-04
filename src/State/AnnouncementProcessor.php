@@ -32,9 +32,7 @@ class AnnouncementProcessor implements ProcessorInterface
         if ($user !== $accomodationOwner) {
             throw new AccessDeniedHttpException;
         }
-
-        $data->setOwner($user);
-
+      
         $this->em->persist($data);
         $this->em->flush();
 
