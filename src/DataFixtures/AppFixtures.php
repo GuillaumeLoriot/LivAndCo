@@ -55,7 +55,7 @@ class AppFixtures extends Fixture
             $user = new User();
             $gender = $faker->randomElement(self::GENDERS);
             $user
-                ->setEmail('regular'.$i.'@user.com')
+                ->setEmail('regular' . $i . '@user.com')
                 ->setRoles(['ROLE_USER'])
                 ->setPassword($this->hasher->hashPassword($user, 'test'))
                 ->setFirstName($faker->firstName($gender))
@@ -64,7 +64,7 @@ class AppFixtures extends Fixture
                 ->setGender($gender)
                 ->setBillingAddress($faker->address())
                 ->setIsVerified($faker->boolean(70))
-                ->setProfilePicture('profile-'.$gender.'-'.$i.'.png')
+                ->setProfilePicture('profile-' . $gender . '-' . $i . '.png')
                 ->setPhoneNumber($faker->phoneNumber())
                 ->setOccupation($faker->randomElement($occupations))
                 ->setCreatedAt(new DateTimeImmutable);
@@ -238,7 +238,7 @@ class AppFixtures extends Fixture
                     ->setNbPlace($announcementItem['nbPlace'])
                     ->setCoverPicture($randomAnnouncementImage['coverPicture'])
                     ->setAccomodation($accomodation);
-                    
+
                 foreach ($randomPrivateConveniences as $randomPrivateConvenience) {
                     $announcement->addConvenience($randomPrivateConvenience);
                 }
@@ -318,17 +318,29 @@ class AppFixtures extends Fixture
         foreach ($users as $user) {
 
             do {
-                $receiver = $faker->randomElement($users);
-            } while ($receiver === $user);
+                $peer = $faker->randomElement($users);
+            } while ($peer === $user);
 
-            for ($i = 1; $i < $faker->numberBetween(4, 12); $i++) {
+            $time = DateTimeImmutable::createFromMutable($faker->dateTimeBetween('-15 days', 'now'));
+            $turn = $faker->boolean(); // variable qui permettra d'alterner le sender et le receiver
+
+            for ($i = 1; $i < $faker->numberBetween(3, 9); $i++) {
+                // En fonction de turn je met le user en tant que sender ou receiver
+                $sender = $turn ? $user : $peer;
+                $receiver = $turn ? $peer : $user;
+
                 $message = new Message();
                 $message
                     ->setContent($faker->realTextBetween(80, 500))
-                    ->setCreatedAt(new DateTimeImmutable())
-                    ->setSender($user)
+                    ->setCreatedAt($time)
+                    ->setSender($sender)
                     ->setReceiver($receiver);
                 $manager->persist($message);
+
+                // je prépare le prochain tour de boucle en faisant avancer le temps et en inversant le turn
+                $time = $time->modify('+' . $faker->numberBetween(5, 240) . ' minutes');
+                $turn = !$turn;
+
             }
 
         }

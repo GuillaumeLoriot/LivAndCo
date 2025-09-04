@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
@@ -62,9 +63,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 ])]
 #[ApiFilter(RangeFilter::class, properties: [
     'totalPrice',
-    'startDate',
-    'endDate',
     'createdAt'
+])]
+#[ApiFilter(DateFilter::class, properties: [
+    'startDate', 
+    'endDate'
 ])]
 #[ApiFilter(OrderFilter::class, properties: [
     'startDate',
@@ -78,29 +81,29 @@ class Reservation
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['reservation:read:item', 'announcement:read:item'])]
+    #[Groups(['reservation:read:item', 'reservation:read', 'announcement:read:item'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Assert\NotNull(message: 'La date de début est obligatoire.')]
     #[Assert\GreaterThan('today', message: "La date de début doit être postérieure à aujourd'hui.")]
-    #[Groups(['reservation:read:item', 'announcement:read:item', 'reservation:write'])]
+    #[Groups(['reservation:read:item', 'reservation:read' , 'announcement:read:item', 'reservation:write'])]
     private ?\DateTimeImmutable $startDate = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
-    #[Groups(['reservation:read:item', 'announcement:read:item'])]
+    #[Groups(['reservation:read:item', 'reservation:read','announcement:read:item'])]
     private ?\DateTimeImmutable $endDate = null;
 
     #[ORM\Column(length: 100)]
-    #[Groups(['reservation:read:item'])]
+    #[Groups(['reservation:read:item', 'reservation:read'])]
     private ?string $status = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-    #[Groups(['reservation:read:item'])]
+    #[Groups(['reservation:read:item', 'reservation:read'])]
     private ?string $totalPrice = null;
 
     #[ORM\Column]
-    #[Groups(['reservation:read:item'])]
+    #[Groups(['reservation:read:item', 'reservation:read'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     // donnée pour calculé la date de fin, exprimée en mois, non stockée en bdd
@@ -111,11 +114,11 @@ class Reservation
     private ?int $duration = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
-    #[Groups(['reservation:read:item'])]
+    #[Groups(['reservation:read:item', 'reservation:read'])]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
-    #[Groups(['reservation:read:item', 'reservation:write'])]
+    #[Groups(['reservation:read:item', 'reservation:write', 'reservation:read'])]
     private ?Announcement $announcement = null;
 
     #[ORM\OneToOne(mappedBy: 'reservation', cascade: ['persist', 'remove'])]

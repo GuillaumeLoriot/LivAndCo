@@ -60,7 +60,7 @@ class Accomodation
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['accomodation:read:item', 'accomodation:write'])]
+    #[Groups(['accomodation:read:item', 'accomodation:write', 'reservation:read'])]
     private ?string $addressLine1 = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -68,11 +68,11 @@ class Accomodation
     private ?string $addressLine2 = null;
 
     #[ORM\Column(length: 70)]
-    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read', 'reservation:read'])]
     private ?string $city = null;
 
     #[ORM\Column(length: 20)]
-    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read', 'reservation:read'])]
     private ?string $zipCode = null;
 
     #[ORM\Column(length: 70)]
@@ -88,7 +88,7 @@ class Accomodation
     private ?string $latitude = null;
 
     #[ORM\Column]
-    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read', 'reservation:read'])]
     private ?int $surface = null;
 
     #[ORM\Column(nullable: true)]

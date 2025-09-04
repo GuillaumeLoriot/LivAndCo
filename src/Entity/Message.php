@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     operations: [
         new GetCollection(
             normalizationContext: ['groups' => ['message:read']],
-            security: "object.getSender() == user || object.getReceiver == user"
+            security: "is_granted('ROLE_USER')"
         ),
         new Get(
             normalizationContext: [
@@ -55,11 +55,11 @@ class Message
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'sentMessages')]
-    #[Groups(['message:read:item'])]
+    #[Groups(['message:read:item', 'message:read'])]
     private ?User $sender = null;
 
     #[ORM\ManyToOne(inversedBy: 'receivedMessages')]
-    #[Groups(['message:read:item'])]
+    #[Groups(['message:read:item', 'message:read'])]
     private ?User $receiver = null;
 
     public function getId(): ?int
