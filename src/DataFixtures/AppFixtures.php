@@ -33,22 +33,25 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
+        $path = "/data";
         // j'importe mes données en json et les décode pour travailler avec un tableau associatif
-        $accomodations = json_decode(file_get_contents(__DIR__ . '/data/accomodations.json'), true);
-        $announcements = json_decode(file_get_contents(__DIR__ . '/data/announcements.json'), true);
-        $reviews = json_decode(file_get_contents(__DIR__ . '/data/reviews.json'), true);
-        $conveniences = json_decode(file_get_contents(__DIR__ . '/data/conveniences.json'), true);
-        $services = json_decode(file_get_contents(__DIR__ . '/data/services.json'), true);
-        $reservations = json_decode(file_get_contents(__DIR__ . '/data/reservations.json'), true);
-        $announcementImages = json_decode(file_get_contents(__DIR__ . '/data/announcementImages.json'), true);
-        $accomodationImages = json_decode(file_get_contents(__DIR__ . '/data/accomodationImages.json'), true);
-        $occupations = json_decode(file_get_contents(__DIR__ . '/data/occupations.json'), true);
+        $accomodations = json_decode(file_get_contents(__DIR__ . $path .'/accomodations.json'), true);
+        $announcements = json_decode(file_get_contents(__DIR__ . $path .'/announcements.json'), true);
+        $reviews = json_decode(file_get_contents(__DIR__ . $path .'/reviews.json'), true);
+        $conveniences = json_decode(file_get_contents(__DIR__ . $path .'/conveniences.json'), true);
+        $services = json_decode(file_get_contents(__DIR__ . $path .'/services.json'), true);
+        $reservations = json_decode(file_get_contents(__DIR__ . $path .'/reservations.json'), true);
+        $announcementImages = json_decode(file_get_contents(__DIR__ . $path .'/announcementImages.json'), true);
+        $accomodationImages = json_decode(file_get_contents(__DIR__ . $path .'/accomodationImages.json'), true);
+        $occupations = json_decode(file_get_contents(__DIR__ . $path .'/occupations.json'), true);
 
 
         // --------- USERS ----------------------------------------------------------
 
         $faker = Factory::create('fr_FR');
         $users = [];
+        $owners = [];
+        $allUsers = [];
 
 
         for ($i = 1; $i < 31; $i++) {
@@ -71,6 +74,7 @@ class AppFixtures extends Fixture
 
             $manager->persist($user);
             $users[] = $user;
+            $allUsers[] = $user;
 
         }
 
@@ -92,26 +96,31 @@ class AppFixtures extends Fixture
 
         $manager->persist($regularUser);
         $users[] = $regularUser;
+        $allUsers[] = $regularUser;
 
 
-        $owner = new User();
-        $owner
-            ->setEmail('owner@user.com')
-            ->setRoles(['ROLE_OWNER'])
-            ->setPassword($this->hasher->hashPassword($owner, 'test'))
-            ->setFirstName('jane')
-            ->setLastName('doe')
-            ->setBirthDate(DateTimeImmutable::createFromMutable($faker->dateTimeBetween('1980-01-01', '-20 years', 'Europe/Paris')))
-            ->setGender('female')
-            ->setBillingAddress($faker->address())
-            ->setIsVerified(true)
-            ->setProfilePicture('generic-owner.jpg')
-            ->setPhoneNumber($faker->phoneNumber())
-            ->setOccupation($faker->randomElement($occupations))
-            ->setCreatedAt(new DateTimeImmutable);
+        for ($i = 1; $i < 11; $i++) {
+            $owner = new User();
+            $gender = $faker->randomElement(self::GENDERS);
+            $owner
+                ->setEmail('owner' . $i . '@user.com')
+                ->setRoles(['ROLE_USER','ROLE_OWNER'])
+                ->setPassword($this->hasher->hashPassword($user, 'test'))
+                ->setFirstName($faker->firstName($gender))
+                ->setLastName($faker->lastName())
+                ->setBirthDate(DateTimeImmutable::createFromMutable($faker->dateTimeBetween('1940-01-01', '-20 years', 'Europe/Paris')))
+                ->setGender($gender)
+                ->setBillingAddress($faker->address())
+                ->setIsVerified(true)
+                ->setProfilePicture('generic-owner.jpg')
+                ->setPhoneNumber($faker->phoneNumber())
+                ->setOccupation($faker->randomElement($occupations))
+                ->setCreatedAt(new DateTimeImmutable);
 
-        $manager->persist($owner);
-        $users[] = $owner;
+            $manager->persist($owner);
+            $owners[] = $owner;
+            $allUsers[] = $owner;
+        }
 
 
         $adminUser = new User();
@@ -196,7 +205,7 @@ class AppFixtures extends Fixture
 
             $randomConveniences = $faker->randomElements($allConveniences, $faker->numberBetween(4, 9));
 
-            $user = $faker->randomElement($users);
+            $owner = $faker->randomElement($owners);
             $accomodation = new Accomodation();
             $accomodation
                 ->setAddressLine1($accomodationItem['addressLine1'])
@@ -211,7 +220,7 @@ class AppFixtures extends Fixture
                 ->setOwnershipDeedPath($accomodationItem['ownershipDeedPath'])
                 ->setInsuranceCertificatePath($accomodationItem['insuranceCertificatePath'])
                 ->setCoverPicture($accomodationItem['coverPicture'])
-                ->setOwner($user)
+                ->setOwner($owner)
                 ->addConvenience($wifiConvenience);
 
             foreach ($randomConveniences as $randomConvenience) {
@@ -265,7 +274,7 @@ class AppFixtures extends Fixture
                 $endDate = new DateTimeImmutable($randomReservation['endDate']);
                 $interval = $dateStart->diff($endDate);
                 do {
-                    $randomUser = $faker->randomElement($users);
+                    $randomUser = $faker->randomElement($allUsers);
                 } while ($randomUser === $owner);
 
 
@@ -273,7 +282,7 @@ class AppFixtures extends Fixture
                 $reservation
                     ->setStartDate($dateStart)
                     ->setEndDate($endDate)
-                    ->setStatus('confirmed')
+                    ->setStatus($faker->randomElement(['confirmed', 'pending']))
                     ->setTotalPrice(($interval->days + 1) * $announcementDailyPrice)
                     ->setCreatedAt(new DateTimeImmutable())
                     ->setAnnouncement($persistedAnnouncement)
@@ -315,10 +324,10 @@ class AppFixtures extends Fixture
 
 
         // --------- MESSAGES ----------------------------------------------------------
-        foreach ($users as $user) {
+        foreach ($allUsers as $user) {
 
             do {
-                $peer = $faker->randomElement($users);
+                $peer = $faker->randomElement($owners);
             } while ($peer === $user);
 
             $time = DateTimeImmutable::createFromMutable($faker->dateTimeBetween('-15 days', 'now'));

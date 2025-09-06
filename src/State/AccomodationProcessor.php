@@ -29,7 +29,8 @@ class AccomodationProcessor implements ProcessorInterface
         if ($user->getAccomodations()->count() === 0) {
             $roles = $user->getRoles();
             if (!in_array('ROLE_OWNER', $roles, true)) {
-                $user->setRoles(array_unique([...$roles, 'ROLE_OWNER']));
+                
+                $user->addRole('ROLE_OWNER');
                 $this->em->persist($user);
             }
         }
