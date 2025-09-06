@@ -39,8 +39,6 @@ final class MessageQueryCollectionExtension implements QueryCollectionExtensionI
         // rootAllias corespond à l'alias principale généré par doctrine pour la requète et enregistrer à l'indice 0
         $rootAlias = $queryBuilder->getRootAliases()[0];
 
-        //  je vérifie que le filtre participant existe et n'est pas vide avant de continuer
-
 
         // la requête vas chercher tous les messages ou le participant est présent dans la propriété sender ou receiver
         $queryBuilder
@@ -49,7 +47,7 @@ final class MessageQueryCollectionExtension implements QueryCollectionExtensionI
 
 
 
-        // 2) si le filtre peer=ID est fourni, je récupère les messages ou user ou peer sont ensemble en tant que sender ou receiver
+        // si le filtre peer=ID est fourni, je récupère les messages ou user ou peer sont ensemble en tant que sender ou receiver
         $filters = $context['filters'] ?? [];
         if (!empty($filters['peer'])) {
             $peerId = (int) $filters['peer'];
@@ -59,36 +57,6 @@ final class MessageQueryCollectionExtension implements QueryCollectionExtensionI
                     ->setParameter('peer', $peerId);
             }
         }
-
-
-
-
-
-        // /messages?participants[]=123&participants[]=456 → thread entre ces 2 ids (sens indifférent)
-        // if (isset($filters['participants'])) {
-        //     $values = is_array($filters['participants'])
-        //         ? $filters['participants']
-        //         : explode(',', (string) $filters['participants']);
-
-        //     cast en int + nettoie + unique
-        //     $ids = array_values(array_unique(array_filter(array_map('intval', $values), fn($v) => $v > 0)));
-
-        //     if (count($ids) === 2) {
-        //         $param = $queryNameGenerator->generateParameterName('participants');
-        //         $queryBuilder->andWhere("IDENTITY($rootAlias.sender) IN (:$param)
-        //                        AND IDENTITY($rootAlias.receiver) IN (:$param)
-        //                        AND IDENTITY($rootAlias.sender) <> IDENTITY($rootAlias.receiver)")
-        //             ->setParameter($param, $ids);
-        //     }
-        // }
-
-
-
-
-
-
-
-
 
     }
 }
