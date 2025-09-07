@@ -286,7 +286,7 @@ class AppFixtures extends Fixture
                     ->setStartDate($dateStart)
                     ->setEndDate($endDate)
                     ->setStatus($faker->randomElement(['confirmed', 'pending']))
-                    ->setTotalPrice(floor(($announcement->getDailyPrice() * 365) / 12))
+                    ->setTotalPrice(floor(($announcementDailyPrice * 365) / 12))
                     ->setCreatedAt(new DateTimeImmutable())
                     ->setAnnouncement($persistedAnnouncement)
                     ->setUser($randomUser);

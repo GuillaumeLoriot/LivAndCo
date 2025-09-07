@@ -29,9 +29,14 @@ class ReservationProcessor implements ProcessorInterface
     {
 
         // je verifie que je reçois bien une réservation et que l'annonce asscocié est présente
-        if (!$data instanceof Reservation || $data->getAnnouncement() === null) {
+        if (!$data instanceof Reservation) {
             return $data;
         }
+
+        if ($data->getAnnouncement() === null) {
+            throw new UnprocessableEntityHttpException("L'annonce est requise.");
+        }
+
         $announcement = $data->getAnnouncement();
         $startDate = $data->getStartDate();
         $duration = $data->getDuration();

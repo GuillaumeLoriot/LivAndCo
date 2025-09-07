@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -51,6 +53,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
         )
     ]
 )]
+
+#[ApiFilter(SearchFilter::class, properties: [
+    'id' => 'exact',
+    'owner.id' => 'exact',
+])]
+
 class Accomodation
 {
     #[ORM\Id]
@@ -60,7 +68,7 @@ class Accomodation
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['accomodation:read:item', 'accomodation:write', 'reservation:read'])]
+    #[Groups(['accomodation:read','accomodation:read:item', 'accomodation:write', 'reservation:read'])]
     private ?string $addressLine1 = null;
 
     #[ORM\Column(length: 255, nullable: true)]

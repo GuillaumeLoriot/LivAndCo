@@ -37,6 +37,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Post(
             normalizationContext: ['groups' => ['reservation:read:item']],
             denormalizationContext: ['groups' => ['reservation:write']],
+            validationContext: ['groups' => ['Default', 'reservation:write']],
             processor: ReservationProcessor::class,
             security: "is_granted('ROLE_USER')"      
         ),
@@ -47,8 +48,9 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Patch(
             normalizationContext: ['groups' => ['reservation:read:item']],
-            denormalizationContext: ['groups' => ['reservation:write']],
-            security: "object.getUser() == user"
+            denormalizationContext: ['groups' => ['reservation:write:owner']],
+            validationContext: ['groups' => ['Default', 'reservation:write:owner']],
+            security: "object.getAnnouncement().getAccomodation().getOwner() == user"
         ),
         new Delete(
             security: "object.getUser() == user || object.getAnnouncement().getAccomodation().getOwner() == user"
@@ -86,8 +88,8 @@ class Reservation
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
-    #[Assert\NotNull(message: 'La date de début est obligatoire.')]
-    #[Assert\GreaterThan('today', message: "La date de début doit être postérieure à aujourd'hui.")]
+    #[Assert\NotNull(message: 'La date de début est obligatoire.', groups: ['reservation:write'])]
+    #[Assert\GreaterThan('today', message: "La date de début doit être postérieure à aujourd'hui.", groups: ['reservation:write'])]
     #[Groups(['reservation:read:item', 'reservation:read' , 'announcement:read:item', 'reservation:write'])]
     private ?\DateTimeImmutable $startDate = null;
 
@@ -96,7 +98,7 @@ class Reservation
     private ?\DateTimeImmutable $endDate = null;
 
     #[ORM\Column(length: 100)]
-    #[Groups(['reservation:read:item', 'reservation:read'])]
+    #[Groups(['reservation:read:item', 'reservation:read', 'reservation:write', 'reservation:write:owner'])]
     private ?string $status = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
@@ -108,7 +110,7 @@ class Reservation
     private ?\DateTimeImmutable $createdAt = null;
 
     // donnée pour calculé la date de fin, exprimée en mois, non stockée en bdd
-    #[Assert\NotNull(message: 'La durée est obligatoire.')]
+    #[Assert\NotNull(message: 'La durée est obligatoire.',  groups: ['reservation:write'])]
     #[Assert\Type('integer', message: 'La durée doit être un entier (mois).')]
     #[Assert\Range(min: 1, max: 24, notInRangeMessage: 'La durée doit être comprise entre {{ min }} et {{ max }} mois.')]
     #[Groups(['reservation:write'])]

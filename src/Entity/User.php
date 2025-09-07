@@ -37,6 +37,9 @@ use Symfony\Component\Validator\Constraints as Assert;
             normalizationContext: ['groups' => ['user:read:item']],
             security: "is_granted('IS_AUTHENTICATED_FULLY')",
         ),
+        new Get(
+            security: "object == user"
+        ),
         new Post(
             name: 'create_user',
             normalizationContext: ['groups' => ['user:read']],

@@ -10,6 +10,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Repository\MessageRepository;
+use App\State\MessageProcessor;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -27,9 +28,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 security: "object.getSender() == user || object.getReceiver == user"
         ),
         new Post(
-            normalizationContext: ['groups' => ['message:read:item']],
+            normalizationContext: ['groups' => ['message:read:item', 'message:read']],
             denormalizationContext: ['groups' => ['message:write']],
-            security: "is_granted('ROLE_USER')"
+            processor: MessageProcessor::class,
+            security: "is_granted('IS_AUTHENTICATED_FULLY')"
         ),
         new Delete(
             security: "object.getSender() == user"
@@ -59,7 +61,7 @@ class Message
     private ?User $sender = null;
 
     #[ORM\ManyToOne(inversedBy: 'receivedMessages')]
-    #[Groups(['message:read:item', 'message:read'])]
+    #[Groups(['message:read:item', 'message:read', 'message:write'])]
     private ?User $receiver = null;
 
     public function getId(): ?int
