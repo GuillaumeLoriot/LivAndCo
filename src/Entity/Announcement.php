@@ -92,7 +92,7 @@ class Announcement
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write', 'reservation:read'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write', 'reservation:read', 'reservation:read:item'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -102,13 +102,13 @@ class Announcement
     #[ORM\Column]
     #[Assert\Type('integer')]
     #[Assert\Positive]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write', 'reservation:read:item'])]
     private ?int $dailyPrice = null;
 
     #[ORM\Column]
     #[Assert\Type('integer')]
     #[Assert\Positive]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write', 'reservation:read'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write', 'reservation:read', 'reservation:read:item'])]
     private ?int $nbPlace = null;
 
     #[ORM\ManyToOne(inversedBy: 'announcements')]
@@ -146,7 +146,7 @@ class Announcement
     private Collection $services;
 
     #[ORM\Column(length: 100)]
-    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write', 'reservation:read'])]
+    #[Groups(['announcement:read:item', 'announcement:read', 'accomodation:read:item', 'announcement:write', 'reservation:read', 'reservation:read:item'])]
 
     private ?string $coverPicture = null;
 

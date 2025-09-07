@@ -60,11 +60,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['user:read', 'user:read:item', 'accomodation:read:item', 'announcement:read:item', 'review:read', 'review:read:item', 'message:read'])]
+    #[Groups(['user:read', 'user:read:item', 'accomodation:read:item', 'announcement:read:item', 'review:read', 'review:read:item', 'message:read', 'reservation:read:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
-    #[Groups(['user:read:item', 'user:write'])]
+    #[Groups(['user:read:item', 'user:write', 'reservation:read:item'])]
     #[Assert\Email()]
     private ?string $email = null;
 
@@ -84,12 +84,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 60)]
-    #[Groups(['user:read:item', 'user:write', 'message:read'])]
+    #[Groups(['user:read:item', 'user:write', 'message:read', 'reservation:read:item'])]
 
     private ?string $lastName = null;
 
     #[ORM\Column(length: 60)]
-    #[Groups(['user:read:item', 'user:write', 'announcement:read:item', 'message:read'])]
+    #[Groups(['user:read:item', 'user:write', 'announcement:read:item', 'message:read', 'reservation:read:item'])]
 
     private ?string $firstName = null;
 
@@ -109,15 +109,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $billingAddress = null;
 
     #[ORM\Column]
-    #[Groups(['user:read', 'user:read:item', 'accomodation:read:item', 'message:read'])]
+    #[Groups(['user:read', 'user:read:item', 'accomodation:read:item', 'message:read', 'reservation:read:item'])]
     private ?bool $isVerified = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['user:read', 'user:write', 'user:read:item', 'accomodation:read:item', 'announcement:read:item', 'review:read', 'review:read:item', 'message:read'])]
+    #[Groups(['user:read', 'user:write', 'user:read:item', 'accomodation:read:item', 'announcement:read:item', 'review:read', 'review:read:item', 'message:read', 'reservation:read:item'])]
     private ?string $profilePicture = null;
 
     #[ORM\Column]
-    #[Groups(['user:read', 'user:read:item', 'accomodation:read:item', 'announcement:read:item'])]
+    #[Groups(['user:read', 'user:read:item', 'accomodation:read:item', 'announcement:read:item', 'reservation:read:item'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
@@ -162,7 +162,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $phoneNumber = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['user:read', 'user:write', 'user:read:item', 'announcement:read:item', 'review:read', 'review:read:item'])]
+    #[Groups(['user:read', 'user:write', 'user:read:item', 'announcement:read:item', 'review:read', 'review:read:item', 'reservation:read:item'])]
     private ?string $occupation = null;
 
     public function __construct()

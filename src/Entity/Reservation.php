@@ -32,7 +32,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Get(
             normalizationContext: ['groups' => ['reservation:read:item']],
-            security: "object.getUser() == user || object.getAnnouncement().getOwner() == user"
+            security: "object.getUser() == user || object.getAnnouncement().getAccomodation().getOwner() == user"
         ),
         new Post(
             normalizationContext: ['groups' => ['reservation:read:item']],
@@ -51,7 +51,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             security: "object.getUser() == user"
         ),
         new Delete(
-            security: "object.getUser() == user || object.getAnnouncement().getOwner() == user"
+            security: "object.getUser() == user || object.getAnnouncement().getAccomodation().getOwner() == user"
         )
     ]
 )]
@@ -59,7 +59,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(SearchFilter::class, properties: [
     'status' => 'exact',
     'user.id' => 'exact',
-    'announcement.id' => 'exact'
+    'announcement.id' => 'exact',
+    'announcement.accomodation.owner.id' => 'exact'
 ])]
 #[ApiFilter(RangeFilter::class, properties: [
     'totalPrice',

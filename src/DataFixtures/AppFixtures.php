@@ -35,15 +35,15 @@ class AppFixtures extends Fixture
 
         $path = "/data";
         // j'importe mes données en json et les décode pour travailler avec un tableau associatif
-        $accomodations = json_decode(file_get_contents(__DIR__ . $path .'/accomodations.json'), true);
-        $announcements = json_decode(file_get_contents(__DIR__ . $path .'/announcements.json'), true);
-        $reviews = json_decode(file_get_contents(__DIR__ . $path .'/reviews.json'), true);
-        $conveniences = json_decode(file_get_contents(__DIR__ . $path .'/conveniences.json'), true);
-        $services = json_decode(file_get_contents(__DIR__ . $path .'/services.json'), true);
-        $reservations = json_decode(file_get_contents(__DIR__ . $path .'/reservations.json'), true);
-        $announcementImages = json_decode(file_get_contents(__DIR__ . $path .'/announcementImages.json'), true);
-        $accomodationImages = json_decode(file_get_contents(__DIR__ . $path .'/accomodationImages.json'), true);
-        $occupations = json_decode(file_get_contents(__DIR__ . $path .'/occupations.json'), true);
+        $accomodations = json_decode(file_get_contents(__DIR__ . $path . '/accomodations.json'), true);
+        $announcements = json_decode(file_get_contents(__DIR__ . $path . '/announcements.json'), true);
+        $reviews = json_decode(file_get_contents(__DIR__ . $path . '/reviews.json'), true);
+        $conveniences = json_decode(file_get_contents(__DIR__ . $path . '/conveniences.json'), true);
+        $services = json_decode(file_get_contents(__DIR__ . $path . '/services.json'), true);
+        $reservations = json_decode(file_get_contents(__DIR__ . $path . '/reservations.json'), true);
+        $announcementImages = json_decode(file_get_contents(__DIR__ . $path . '/announcementImages.json'), true);
+        $accomodationImages = json_decode(file_get_contents(__DIR__ . $path . '/accomodationImages.json'), true);
+        $occupations = json_decode(file_get_contents(__DIR__ . $path . '/occupations.json'), true);
 
 
         // --------- USERS ----------------------------------------------------------
@@ -98,13 +98,13 @@ class AppFixtures extends Fixture
         $users[] = $regularUser;
         $allUsers[] = $regularUser;
 
-
+        // Pour les owners, je n'ajouterai' le role OWNER que si ils sont sélectionnés par une accomodation plus loin dans le code
         for ($i = 1; $i < 11; $i++) {
             $owner = new User();
             $gender = $faker->randomElement(self::GENDERS);
             $owner
                 ->setEmail('owner' . $i . '@user.com')
-                ->setRoles(['ROLE_USER','ROLE_OWNER'])
+                ->setRoles(['ROLE_USER'])
                 ->setPassword($this->hasher->hashPassword($user, 'test'))
                 ->setFirstName($faker->firstName($gender))
                 ->setLastName($faker->lastName())
@@ -205,7 +205,10 @@ class AppFixtures extends Fixture
 
             $randomConveniences = $faker->randomElements($allConveniences, $faker->numberBetween(4, 9));
 
+            /** @var User $owner */
             $owner = $faker->randomElement($owners);
+            $owner->addRole('ROLE_OWNER');
+
             $accomodation = new Accomodation();
             $accomodation
                 ->setAddressLine1($accomodationItem['addressLine1'])
@@ -283,7 +286,7 @@ class AppFixtures extends Fixture
                     ->setStartDate($dateStart)
                     ->setEndDate($endDate)
                     ->setStatus($faker->randomElement(['confirmed', 'pending']))
-                    ->setTotalPrice(($interval->days + 1) * $announcementDailyPrice)
+                    ->setTotalPrice(floor(($announcement->getDailyPrice() * 365) / 12))
                     ->setCreatedAt(new DateTimeImmutable())
                     ->setAnnouncement($persistedAnnouncement)
                     ->setUser($randomUser);
