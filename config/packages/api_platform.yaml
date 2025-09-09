@@ -3,7 +3,7 @@ api_platform:
         jsonld: ['application/ld+json']
         json: ['application/json']
     title: 'API REST Liv&Co'
-    description: 'Api description de lutilité de lapi'
+    description: 'Api description nouveau test'
     version: 1.0.0
     defaults:
         stateless: true
