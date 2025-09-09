@@ -2,7 +2,8 @@ api_platform:
     formats:
         jsonld: ['application/ld+json']
         json: ['application/json']
-    title: Hello API Platform
+    title: 'API REST Liv&Co'
+    description: 'Api test description'
     version: 1.0.0
     defaults:
         stateless: true
