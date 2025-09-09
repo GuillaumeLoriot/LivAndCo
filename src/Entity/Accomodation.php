@@ -123,7 +123,7 @@ class Accomodation
     private Collection $images;
 
     #[ORM\ManyToOne(inversedBy: 'accomodations')]
-    #[Groups(['accomodation:read:item'])]
+    #[Groups(['accomodation:read:item', 'announcement:read:item'])]
     private ?User $owner = null;
 
     /**
