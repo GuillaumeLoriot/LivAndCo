@@ -3,7 +3,7 @@ api_platform:
         jsonld: ['application/ld+json']
         json: ['application/json']
     title: 'API REST Liv&Co'
-    description: 'Api description nouveau test'
+    description: 'API RESTful permettant la gestion complète des annonces, réservations, utilisateurs et services de la plateforme de coliving Liv&Co visible ici :https://liv-and-co.vercel.app '
     version: 1.0.0
     defaults:
         stateless: true
