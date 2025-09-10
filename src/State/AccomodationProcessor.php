@@ -24,7 +24,11 @@ class AccomodationProcessor implements ProcessorInterface
 
         /** @var User $user */
         $user = $this->security->getUser();
-        $data->setOwner($user);
+        $data->setOwner($user)
+        ->setCountry('France')
+        ->setOwnershipDeedPath('generic-document.pdf')
+        ->setInsuranceCertificatePath('generic-document.pdf')
+        ->setCoverPicture('generic-dijon-1.jpg');
 
         if ($user->getAccomodations()->count() === 0) {
             $roles = $user->getRoles();

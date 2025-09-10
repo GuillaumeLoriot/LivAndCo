@@ -100,7 +100,7 @@ class Accomodation
     private ?int $surface = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(['accomodation:read:item', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
+    #[Groups(['accomodation:read:item', 'accomodation:read', 'accomodation:write', 'announcement:read:item', 'announcement:read'])]
     private ?bool $mixedGender = null;
 
     #[ORM\Column(length: 255)]
