@@ -56,16 +56,15 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('LivAndCo');
+
     }
 
     public function configureMenuItems(): iterable
     {
 
-        // Accueil & navigation générale
+        // Accueil
         yield MenuItem::linkToDashboard('Tableau de bord', 'fas fa-home');
 
-        yield MenuItem::linkToRoute("Retour à l'accueil du site", 'fas fa-home', 'app_home')
-            ->setCssClass('mb-4');
 
         // Offre & Contenus
         yield MenuItem::section('Offre & Contenus');
@@ -85,12 +84,12 @@ class DashboardController extends AbstractDashboardController
 
         // Paramétrages
         yield MenuItem::section('Paramétrages');
-        yield MenuItem::linkToCrud('Conveniences (équipements)', 'fas fa-list-check', Convenience::class);
+        yield MenuItem::linkToCrud('Equipements', 'fas fa-list-check', Convenience::class);
         yield MenuItem::linkToCrud('Services', 'fas fa-screwdriver-wrench', Service::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
 
         // Outils
         yield MenuItem::section('Outils');
-        // yield MenuItem::linkToLogout('Déconnexion', 'fas fa-right-from-bracket');
+        yield MenuItem::linkToLogout('Déconnexion', 'fas fa-right-from-bracket');
     }
 }

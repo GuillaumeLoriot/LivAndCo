@@ -5,6 +5,28 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --text:#111; --muted:#6c757d; --primary:#0d6efd; --border:#e5e7eb; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family: sans-serif; }
+  .container { max-width:420px; margin:7vh auto; padding:16px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:16px; box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+  .card-body { padding:24px; }
+  .input-container{width:100%; display: flex; flex-direction: column; align-items: center; margin: 70px 0;}
+  h1 { margin:0 0 16px; font-size:20px; text-align:center; }
+  .alert { padding:12px 14px; border-radius:10px; margin-bottom:12px; }
+  .alert-danger { background:#fee2e2; color:#7f1d1d; border:1px solid #fecaca; }
+  .alert-info { background:#eff6ff; color:#1e3a8a; border:1px solid #bfdbfe; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  label { display:block; font-size:14px; margin:8px 0 6px; color:#374151; }
+  input[type="email"], input[type="password"] {
+    width:90%; padding:10px 12px; margin: 10px 0; border:1px solid var(--border); border-radius:10px; font-size:16px; outline:none;
+  }
+  input:focus { border-color:#93c5fd; box-shadow:0 0 0 3px rgba(59,130,246,.2); }
+  .btn { display:block; width:100%; margin-top:12px; padding:12px; border:0; border-radius:10px; background:var(--primary); color:#fff; font-weight:600; cursor:pointer; }
+  .btn:hover { filter:brightness(.95); }
+  .muted { color:var(--muted); text-align:center; margin-top:10px; font-size:14px; }
+  .link { text-decoration:none; color:#2563eb; }
+  .footer { text-align:center; color:var(--muted); font-size:.9rem; margin-top:14px; }
+</style>
         {% endblock %}
 
         {% block javascripts %}

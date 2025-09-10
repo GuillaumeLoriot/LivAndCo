@@ -391,4 +391,10 @@ class Accomodation
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->addressLine1;
+    }
+
 }
