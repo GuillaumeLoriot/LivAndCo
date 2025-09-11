@@ -60,7 +60,7 @@ class AccomodationCrudController extends AbstractCrudController
             AssociationField::new('conveniences', 'Équipements')
                 ->onlyOnForms()
                 ->setFormTypeOptions(['by_reference' => false]),
-            AssociationField::new('conveniences', 'Équipements')->onlyOnDetail(),
+            AssociationField::new('owner', 'Propriétaire'),
         ];
     }
 

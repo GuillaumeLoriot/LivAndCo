@@ -7,17 +7,18 @@ use ApiPlatform\Doctrine\Orm\Util\QueryNameGeneratorInterface;
 use ApiPlatform\Metadata\Operation;
 use App\Entity\Announcement;
 use Doctrine\ORM\QueryBuilder;
-use Symfony\Bundle\SecurityBundle\Security;
 
 final class AnnouncementQueryCollectionExtension implements QueryCollectionExtensionInterface
 {
 
-    public function __construct(
-        private Security $security,
-    ) {
-    }
+    public function __construct() {}
 
-    public function applyToCollection(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, ?Operation $operation = null, array $context = []): void
+    public function applyToCollection(
+        QueryBuilder $queryBuilder, 
+        QueryNameGeneratorInterface $queryNameGenerator, 
+        string $resourceClass, 
+        ?Operation $operation = null, 
+        array $context = []): void
     {
 
         // je vérifie que ce filtre ne s'applique qu'à l'entité Announcement
