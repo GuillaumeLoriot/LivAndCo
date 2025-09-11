@@ -25,8 +25,6 @@ class AppFixtures extends Fixture
     private const GENDERS = ['male', 'female'];
 
     public function __construct(
-        private UserPasswordHasherInterface $hasher,
-
     ) {
     }
 
@@ -60,7 +58,7 @@ class AppFixtures extends Fixture
             $user
                 ->setEmail('regular' . $i . '@user.com')
                 ->setRoles(['ROLE_USER'])
-                ->setPassword($this->hasher->hashPassword($user, 'test'))
+                ->setPassword('test')
                 ->setFirstName($faker->firstName($gender))
                 ->setLastName($faker->lastName())
                 ->setBirthDate(DateTimeImmutable::createFromMutable($faker->dateTimeBetween('1940-01-01', '-20 years', 'Europe/Paris')))
@@ -82,7 +80,7 @@ class AppFixtures extends Fixture
         $regularUser
             ->setEmail('regular@user.com')
             ->setRoles(['ROLE_USER'])
-            ->setPassword($this->hasher->hashPassword($regularUser, 'test'))
+            ->setPassword('test')
             ->setFirstName('john')
             ->setLastName('doe')
             ->setBirthDate(DateTimeImmutable::createFromMutable($faker->dateTimeBetween('1980-01-01', '-20 years', 'Europe/Paris')))
@@ -105,7 +103,7 @@ class AppFixtures extends Fixture
             $owner
                 ->setEmail('owner' . $i . '@user.com')
                 ->setRoles(['ROLE_USER'])
-                ->setPassword($this->hasher->hashPassword($user, 'test'))
+                ->setPassword('test')
                 ->setFirstName($faker->firstName($gender))
                 ->setLastName($faker->lastName())
                 ->setBirthDate(DateTimeImmutable::createFromMutable($faker->dateTimeBetween('1940-01-01', '-20 years', 'Europe/Paris')))
@@ -127,7 +125,7 @@ class AppFixtures extends Fixture
         $adminUser
             ->setEmail('admin@livandco.com')
             ->setRoles(['ROLE_ADMIN'])
-            ->setPassword($this->hasher->hashPassword($adminUser, 'admin'))
+            ->setPassword('admin')
             ->setFirstName('eleanor')
             ->setLastName('green')
             ->setBirthDate(DateTimeImmutable::createFromMutable($faker->dateTimeBetween('1980-01-01', '-20 years', 'Europe/Paris')))

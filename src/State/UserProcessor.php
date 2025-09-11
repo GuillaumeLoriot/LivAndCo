@@ -8,7 +8,7 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class UserPasswordHasherProcessor implements ProcessorInterface
+class UserProcessor implements ProcessorInterface
 {
     public function __construct(
         private EntityManagerInterface $em,
@@ -23,15 +23,9 @@ class UserPasswordHasherProcessor implements ProcessorInterface
         }
 
         $operationName = $operation->getName();
-        $plainPassword = $data->getPassword();
-
-        if ($plainPassword) {
-            $hashedPassword = $this->hasher->hashPassword($data, $plainPassword);
-            $data->setPassword($hashedPassword);
-        }
 
         if ($operationName === 'create_user') {
-            $data->setPassword($this->hasher->hashPassword($data, $plainPassword))
+            $data
                 ->setProfilePicture('generic-user.jpg')
                 ->setRoles(['ROLE_USER'])
                 ->setIsVerified(false)

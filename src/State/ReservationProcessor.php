@@ -4,7 +4,6 @@ namespace App\State;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
-use App\Entity\Announcement;
 use App\Entity\Reservation;
 use App\Entity\User;
 use App\Repository\ReservationRepository;

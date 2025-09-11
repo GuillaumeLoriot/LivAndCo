@@ -14,7 +14,6 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use ApiPlatform\Metadata\Put;
 use App\Repository\ReservationRepository;
 use App\State\ReservationProcessor;
 use Doctrine\DBAL\Types\Types;
@@ -41,11 +40,6 @@ use Symfony\Component\Validator\Constraints as Assert;
             processor: ReservationProcessor::class,
             security: "is_granted('ROLE_USER')"      
         ),
-        new Put(
-            normalizationContext: ['groups' => ['reservation:read:item']],
-            denormalizationContext: ['groups' => ['reservation:write']],
-            security: "object.getUser() == user"
-        ),
         new Patch(
             normalizationContext: ['groups' => ['reservation:read:item']],
             denormalizationContext: ['groups' => ['reservation:write:owner']],
@@ -53,7 +47,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             security: "object.getAnnouncement().getAccomodation().getOwner() == user"
         ),
         new Delete(
-            security: "object.getUser() == user || object.getAnnouncement().getAccomodation().getOwner() == user"
+            security: "object.getUser() == user"
         )
     ]
 )]
@@ -81,6 +75,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 ])]
 class Reservation
 {
+
+    public const STATUSES = ['pending', 'confirmed', 'cancelled'];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -98,6 +95,7 @@ class Reservation
     private ?\DateTimeImmutable $endDate = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Choice(choices: self::STATUSES, message: 'Status invalide.')]
     #[Groups(['reservation:read:item', 'reservation:read', 'reservation:write', 'reservation:write:owner'])]
     private ?string $status = null;
 

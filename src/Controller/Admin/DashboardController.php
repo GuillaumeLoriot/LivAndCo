@@ -61,10 +61,8 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-
         // Accueil
         yield MenuItem::linkToDashboard('Tableau de bord', 'fas fa-home');
-
 
         // Offre & Contenus
         yield MenuItem::section('Offre & Contenus');

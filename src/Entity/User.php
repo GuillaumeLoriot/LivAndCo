@@ -10,11 +10,11 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Controller\UserController;
 use App\Repository\UserRepository;
+use App\State\UserProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use App\State\UserPasswordHasherProcessor;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -44,12 +44,12 @@ use Symfony\Component\Validator\Constraints as Assert;
             name: 'create_user',
             normalizationContext: ['groups' => ['user:read']],
             denormalizationContext: ['groups' => ['user:write']],
-            processor: UserPasswordHasherProcessor::class,
+            processor: UserProcessor::class,
         ),
         new Patch(
             denormalizationContext: ['groups' => ['user:write']],
             normalizationContext: ['groups' => ['user:read:item']],
-            processor: UserPasswordHasherProcessor::class,
+            processor: UserProcessor::class,
             security: "object == user"
         ),
         new Delete(

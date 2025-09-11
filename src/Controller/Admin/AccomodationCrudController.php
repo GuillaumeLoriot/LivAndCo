@@ -32,7 +32,6 @@ class AccomodationCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
 
-
             ImageField::new('coverPicture', 'Image de couverture')
                 ->hideOnForm()
                 ->setBasePath('/uploads/images'),
@@ -42,10 +41,8 @@ class AccomodationCrudController extends AbstractCrudController
             TextField::new('zipCode', 'Code postal'),
             TextField::new('city', 'Ville'),
             TextField::new('country', 'Pays'),
-
             IntegerField::new('surface', 'Surface (m²)'),
             BooleanField::new('mixedGender', 'Mixte'),
-
             TextField::new('latitude', 'Latitude')->hideOnIndex(),
             TextField::new('longitude', 'Longitude')->hideOnIndex(),
 
@@ -79,12 +76,10 @@ class AccomodationCrudController extends AbstractCrudController
                         'multiple' => true,
                     ])
             );
-
     }
 
     public function configureActions(Actions $actions): Actions
     {
-
         $detail = Action::new(Action::DETAIL, 'Voir', 'fas fa-eye')
             ->linkToCrudAction(Action::DETAIL);
 
@@ -100,7 +95,5 @@ class AccomodationCrudController extends AbstractCrudController
                     ->setIcon('fas fa-trash')
                     ->setLabel('Supprimer');
             });
-
     }
-
 }

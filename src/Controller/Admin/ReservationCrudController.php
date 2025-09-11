@@ -32,7 +32,7 @@ class ReservationCrudController extends AbstractCrudController
 
             AssociationField::new('user', 'Client')->hideOnForm(),
 
-            AssociationField::new('announcement', 'Annonce')->hideOnForm(),
+            AssociationField::new('announcement', 'Annonce'),
 
             DateField::new('startDate', 'Date de début'),
             DateField::new('endDate', 'Date de fin'),
@@ -45,6 +45,7 @@ class ReservationCrudController extends AbstractCrudController
             DateTimeField::new('createdAt', 'Créée le')->hideOnForm(),
 
             AssociationField::new('review', 'Avis')->onlyOnDetail(),
+            
         ];
     }
 
