@@ -25,7 +25,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Get(
             normalizationContext: [
                 'groups' => ['message:read:item']],
-                security: "object.getSender() == user || object.getReceiver == user"
+                security: "object.getSender() == user || object.getReceiver() == user"
         ),
         new Post(
             normalizationContext: ['groups' => ['message:read:item', 'message:read']],
